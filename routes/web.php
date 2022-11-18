@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('homepage');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -36,19 +36,25 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
         Route::post('/Category', 'store');
 
         Route::get('/Category/{categorywithid}/edit', 'edit');
-        Route::put('/Category/{categorywithid}','update'); 
+        Route::put('/Category/{categorywithid}','update');
     });
 
     //Brands route
     Route::get('/brands',App\Http\Livewire\Admin\Brand\Index::class);
 
     //Product route
-    Route::controller(App\Http\Controllers\Admin\ProductController::class)->group(function () 
+    Route::controller(App\Http\Controllers\Admin\ProductController::class)->group(function ()
     {
         Route::get('/Products', 'index');
         Route::get('/Products/create', 'create');
         Route::post('/Products', 'store');
-     
+        Route::get('/Products/{product_with_ID}/edit', 'edit');
+        Route::get('/Products/{product_with_ID}/delete', 'destroyProduct');
+        Route::put('/Products/{product_with_ID}','updateProduct');
+        Route::get('Products-Image/{product_image_id}/delete','destroyImage');
+
+
+
     });
-    
+
 });

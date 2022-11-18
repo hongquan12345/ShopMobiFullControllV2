@@ -26,7 +26,7 @@ class ProductFormRequest extends FormRequest
         return [
             'category_id' =>[
                 'required',
-                
+                'integer'
             ],
             'name' =>[
                 'required',
@@ -64,21 +64,21 @@ class ProductFormRequest extends FormRequest
             ],
             'trending' =>[
                 'required',
-                
+
             ],
             'status' =>[
                 'nullable',
-                
+
             ],
-            'meta_title' =>[
+            'metal_title' =>[
                 'required',
                 'string'
             ],
-            'meta_description' =>[
+            'metal_description' =>[
                 'required',
                 'string'
             ],
-            'meta_keyword' =>[
+            'metal_keyword' =>[
                 'required',
                 'string',
                 'max:255',

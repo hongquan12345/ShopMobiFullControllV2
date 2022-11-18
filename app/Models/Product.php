@@ -26,7 +26,9 @@ class Product extends Model
         'metal_description',
     ];
     use HasFactory;
-
+    public function category(){
+        return $this->belongsTo(Category::class, 'category_id','id');
+    }
     public function productImage()
     {
         return $this->hasMany(ProductImage::class,'product_id','id');

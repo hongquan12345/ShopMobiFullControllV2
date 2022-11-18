@@ -24,7 +24,7 @@
        <div>
 
         <h1>
-            đây là home pagae
+            Đây là giao diện homepage gốc khi
         </h1>
        </div>
     </body>
