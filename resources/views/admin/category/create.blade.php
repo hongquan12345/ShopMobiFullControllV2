@@ -2,16 +2,16 @@
 @section('content')
 
 <div class="row"> 
+    
     <div class="col-md-12">
-
-        
       <div class="card-header">
         <h3> Add Category
-            <a href="{{url('adminpage/Category/create')}}" class ="btn btn-dark btn-sm text-white float-end">Back</a>
+            <a href="{{url('adminpage/Category/create')}}"
+            class ="btn btn-dark btn-sm text-white float-end">Back</a>
         </h3>
       </div>
       <div class="card-body">
-       
+
         <form action="{{url('adminpage/Category')}}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="row">
@@ -75,5 +75,5 @@
         </form>
       </div>
     </div>
-  </div>
+</div>
 @endsection

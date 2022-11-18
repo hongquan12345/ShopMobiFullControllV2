@@ -49,12 +49,27 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
         Route::get('/Products/create', 'create');
         Route::post('/Products', 'store');
         Route::get('/Products/{product_with_ID}/edit', 'edit');
+
         Route::get('/Products/{product_with_ID}/delete', 'destroyProduct');
+
         Route::put('/Products/{product_with_ID}','updateProduct');
         Route::get('Products-Image/{product_image_id}/delete','destroyImage');
 
 
+    });
+
+    Route::controller(App\Http\Controllers\Admin\ColorController::class)->group(function ()
+    {
+        Route::get('/Colors', 'index');
+        Route::get('/Colors/create', 'create');
+        Route::post('/Colors/create', 'store_color');
+        Route::get('/Colors/{color}/edit', 'edit_page_color');
+        Route::put('/Colors/{color_id}', 'update_color');
+        
+        Route::get('/Colors/{color_id}/delete', 'destroycolor');
+
 
     });
+
 
 });

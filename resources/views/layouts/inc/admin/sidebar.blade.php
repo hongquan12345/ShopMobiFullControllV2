@@ -47,8 +47,15 @@
       
       <li class="nav-item">
         <a class="nav-link" href="{{url('/adminpage/brands')}}">
-          <i class="mdi mdi-grid-large menu-icon"></i>
+          <i class="mdi mdi-new-box menu-icon"></i>
           <span class="menu-title">Brand</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{{url('/adminpage/Colors')}}">
+          <i class="mdi mdi-border-color menu-icon"></i>
+          <span class="menu-title"> CRUD Color</span>
         </a>
       </li>
   
