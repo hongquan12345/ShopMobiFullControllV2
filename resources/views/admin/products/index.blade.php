@@ -1,12 +1,11 @@
 @extends('layouts.adminpage')
 @section('content')
-    <div class="row">
+    <div class="row" style="background-color: rgb(199, 202, 205)">
         <div class="col-md-12">
             @if (session('message'))
-            <div class="alert alert-success"> {{session('message')}} </div>
-
+            <div class="alert alert-success"> {{session('message')}}
+            </div>
             @endif
-
             <div class="card-header">
                 <h3> Products
                     <a href="{{ url('adminpage/Products/create') }}" class="btn btn-Dark btn-sm btn-primary float-end">
@@ -15,7 +14,7 @@
                 </h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped"  style="background-color:rgb(222, 222, 234)">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -62,6 +61,6 @@
                 </table>
             </div>
         </div>
-    </div>
-    </div>
+</div>
+     
 @endsection

@@ -1,6 +1,6 @@
 @extends('layouts.adminpage')
 @section('content')
-<div class="row">
+<div class="row" style="background-color: rgb(199, 202, 205)" >
     <div class="col-md-12">
         @if (session('message'))
         <div class="alert alert-success"> {{session('message')}} </div>
@@ -15,7 +15,7 @@
             </h3>
         </div>
         <div class="card-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped " style="background-color:rgb(222, 222, 234)">
                 <thead>
                     <tr>
                         <th>ID</th>

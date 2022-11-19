@@ -1,6 +1,6 @@
 @extends('layouts.adminpage')
 @section('content')
-<div style="background-color: blue">
+<div style="">
   <livewire:admin.category.index/>
 </div>
 @endsection

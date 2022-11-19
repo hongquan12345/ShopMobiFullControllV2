@@ -1,7 +1,7 @@
 @extends('layouts.adminpage')
 @section('content')
 
-<div class="row"> 
+<div class="row" style="background-color: rgb(199, 202, 205)"> 
     
     <div class="col-md-12">
       <div class="card-header">
@@ -12,9 +12,9 @@
       </div>
       <div class="card-body">
 
-        <form action="{{url('adminpage/Category')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{url('adminpage/Category')}}" method="POST" enctype="multipart/form-data" >
         @csrf
-            <div class="row">
+            <div class="row" style="background-color:rgb(222, 222, 234)" >
 
                 <div class="col-md-6 mb-3">
                     <label for="">Name</label>
