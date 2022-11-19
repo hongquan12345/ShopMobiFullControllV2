@@ -54,6 +54,9 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
 
         Route::put('/Products/{product_with_ID}','updateProduct');
         Route::get('Products-Image/{product_image_id}/delete','destroyImage');
+        Route::post('product-color/{prod_color_id}','updateProdQty');
+        Route::get('product-color/{prod_color_id}/delete','deleteProdQtyColor');
+
 
 
     });
@@ -65,7 +68,7 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
         Route::post('/Colors/create', 'store_color');
         Route::get('/Colors/{color}/edit', 'edit_page_color');
         Route::put('/Colors/{color_id}', 'update_color');
-        
+
         Route::get('/Colors/{color_id}/delete', 'destroycolor');
 
 

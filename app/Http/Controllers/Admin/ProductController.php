@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\ProductFormRequest;
+use App\Models\Color;
+use App\Models\ProductColors;
 
 class ProductController extends Controller
 {
@@ -23,7 +25,8 @@ class ProductController extends Controller
     {
         $categories = Category::all();
         $brands = Brand::all();
-        return view('admin.products.create', compact('categories', 'brands'));
+        $colors = Color::where('status','0')->get();
+        return view('admin.products.create', compact('categories', 'brands','colors'));
     }
     public function store(ProductFormRequest $request)
     {
@@ -48,21 +51,33 @@ class ProductController extends Controller
                 ]);
 
                 if($request->hasFile('image'))
-                {
-            $uploadPath = 'uploads/products/';
-            $i=1;
-            foreach($request->file('image') as $imageFile)
-                {
-                $extention = $imageFile->getClientOriginalExtension();
-                $filename = time().$i++.'.'.$extention;
-                $imageFile->move($uploadPath,$filename);
-                $finalImagePathName = $uploadPath.$filename;
+                        {
+                            $uploadPath = 'uploads/products/';
+                            $i=1;
+                            foreach($request->file('image') as $imageFile)
+                        {
+                                $extention = $imageFile->getClientOriginalExtension();
+                                $filename = time().$i++.'.'.$extention;
+                                $imageFile->move($uploadPath,$filename);
+                                $finalImagePathName = $uploadPath.$filename;
 
-                $product->productImage()->create([
-                    'product_id' => $product->id,
-                    'image' => $finalImagePathName,
-                ]);
+                                $product->productImage()->create([
+                                    'product_id' => $product->id,
+                                    'image' => $finalImagePathName,
+                        ]);
 
+                    }
+                }
+
+                if($request->colors)
+                {
+                    foreach($request->colors as $key => $color)
+                    {
+                        $product->productColors()->create([
+                            'product_id' => $product->id,
+                            'color_id'=> $color,
+                            'quantity'=> $request ->color_quantity[$key] ?? 0
+                        ]);
                     }
                 }
             return redirect('/adminpage/Products')->with('message','Product Added Succesfully');
@@ -70,10 +85,14 @@ class ProductController extends Controller
     }
     public function edit(int $product_with_ID)
     {
+
         $categories = Category::all();
         $brands = Brand::all();
         $product = Product::findOrFail($product_with_ID);
-        return view('admin.products.edit',compact('categories', 'brands','product'));
+        $product_color = $product->productColors->pluck('color_id')->toArray();
+        $colors = Color::whereNotIn('id',$product_color)->get();
+
+        return view('admin.products.edit',compact('categories', 'brands','product','colors'));
     }
     public function updateProduct(ProductFormRequest $request, int $product_with_ID)
     {
@@ -101,23 +120,35 @@ class ProductController extends Controller
             ]);
 
             if($request->hasFile('image'))
-                {
-            $uploadPath = 'uploads/products/';
-            $i=1;
-            foreach($request->file('image') as $imageFile)
-                {
-                $extention = $imageFile->getClientOriginalExtension();
-                $filename = time().$i++.'.'.$extention;
-                $imageFile->move($uploadPath,$filename);
-                $finalImagePathName = $uploadPath.$filename;
+                        {
+                            $uploadPath = 'uploads/products/';
+                            $i=1;
+                            foreach($request->file('image') as $imageFile)
+                        {
+                                $extention = $imageFile->getClientOriginalExtension();
+                                $filename = time().$i++.'.'.$extention;
+                                $imageFile->move($uploadPath,$filename);
+                                $finalImagePathName = $uploadPath.$filename;
 
-                $product->productImage()->create([
-                    'product_id' => $product->id,
-                    'image' => $finalImagePathName,
-                ]);
+                                $product->productImage()->create([
+                                    'product_id' => $product->id,
+                                    'image' => $finalImagePathName,
+                                ]);
 
+                    }
             }
-            }
+            if($request->colors)
+                {
+                    foreach($request->colors as $key => $color)
+                    {
+                        $product->productColors()->create([
+                            'product_id' => $product->id,
+                            'color_id'=> $color,
+                            'quantity'=> $request ->color_quantity[$key] ?? 0
+                        ]);
+                    }
+                }
+
             return redirect('/adminpage/Products')->with('message','Product Update Succesfully');
         }
         else
@@ -150,6 +181,23 @@ class ProductController extends Controller
         }
         $product->delete();
         return redirect()->back()->with('message','Product  Deleted Succesfully');
+    }
+    public function updateProdQty(Request $request, $prod_color_id)
+    {
+        $productColorData = Product::findOrFail($request->product_id)
+                            ->productColors()->where('id',$prod_color_id)
+                            ->first();
+                            $productColorData->update([
+                                'quantity'=>$request->qty
+                            ]);
+        return response()->json(['message' =>'Product Color Qty updated']);
+    }
+    public function deleteProdQtyColor($prod_color_id)
+    {
+        $prodColor = ProductColors::findOrFail($prod_color_id);
+        $prodColor->delete();
+        return response()->json(['message' =>'Product Color Qty Deleted']);
+
 
     }
 }
