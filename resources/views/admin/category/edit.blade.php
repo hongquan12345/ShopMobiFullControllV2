@@ -39,7 +39,7 @@
                     <label for="">Image</label>
                     <input type="file" name="image"  class="form-control">
                     <br>
-                    <img src="{{asset('/uploads/Category/'.$categorywithid->image)}}" width="60px" height="60px" alt="Categoryid image">
+                    <img src="{{asset("$categorywithid->image")}}" width="60px" height="60px" alt="Categoryid image">
                     @error('image') <small class="text-danger">{{$message}}</small>@enderror
                 </div>
 

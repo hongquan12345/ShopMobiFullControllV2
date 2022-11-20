@@ -34,6 +34,8 @@ class CategoryController extends Controller
 
           $category->description = $vaidatedData['description'];
 
+          $uploadPath = 'uploads/Category/';
+
           if($request->hasFile('image'))
           {
             $file = $request->file('image');
@@ -44,10 +46,10 @@ class CategoryController extends Controller
 
             $file->move('uploads/Category/',$filename);
 
-            $category->image = $filename;
+            $category->image = $uploadPath.$filename;
           }
           
-
+          
           $category->metal_title = $vaidatedData['metal_title'];
           $category->metal_keyword = $vaidatedData['metal_keyword'];
           $category->metal_description = $vaidatedData['metal_description'];
@@ -76,6 +78,7 @@ class CategoryController extends Controller
 
         $category->description = $vaidatedData['description'];
 
+        $uploadPath = 'uploads/Category/';
         if($request->hasFile('image'))
         {
             $path = 'uploads/Category/'.$category->image;
@@ -91,7 +94,7 @@ class CategoryController extends Controller
 
           $file->move('uploads/Category/',$filename);
 
-          $category->image = $filename;
+          $category->image = $uploadPath.$filename;
         }
         
 

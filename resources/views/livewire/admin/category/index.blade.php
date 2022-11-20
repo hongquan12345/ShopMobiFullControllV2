@@ -68,7 +68,7 @@
                     <td>{{$catagory->id}}</td>
                     <td>{{$catagory->name}}</td>
                     <td>
-                        <img src="{{asset('/uploads/Category/'.$catagory->image)}}" width="80px" height="80px" alt="Category image">
+                        <img src="{{asset("$catagory->image")}}" width="80px" height="80px" alt="Category image">
                     </td>
                     <td>{{$catagory->status == '1' ? 'Hidden':'Visible'}}</td>
                     <td>
