@@ -21,8 +21,17 @@ use App\Http\Controllers\FrontEndController;
 
 Auth::routes();
 
-Route::get('/',[App\Http\Controllers\FrontEnd\FrontEndController::class,'indexHomePage']);
-Route::get('/home',[App\Http\Controllers\FrontEnd\FrontEndController::class,'indexHomePage']);
+// Route::get('/',[App\Http\Controllers\FrontEnd\FrontEndController::class,'indexHomePage']);
+// Route::get('/home',[App\Http\Controllers\FrontEnd\FrontEndController::class,'indexHomePage']);
+Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->group(function ()
+{
+    Route::get('/', 'indexHomePage');
+    Route::get('/home', 'indexHomePage');
+    Route::get('/collections', 'categories');
+    Route::get('/collections/{category_slug}', 'products');
+
+
+});
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

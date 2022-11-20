@@ -21,7 +21,7 @@
         <div class="header-top header-top-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="row align-items-center">
-                    {{-- <div class="col-xl-3 col-lg-4">
+                    <div class="col-xl-3 col-lg-4">
                         <div class="header-info">
                             <ul>
                                 <li>
@@ -49,7 +49,7 @@
                                     </ul>
                                 </div>
                             </div>
-                    </div> --}}
+                    </div>
                     <div class="col-xl-12 col-lg-12">
                         <div class="header-info header-info-right">
                             @auth
@@ -72,15 +72,14 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div>     
         {{-- header 2 --}}
         <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="header-wrap">
                     {{-- logo Shop --}}
                     <div class="logo logo-width-1">
-                        <a href="home"><img src="{{asset('frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
+                        <a href="{{url('/home')}}"><img src="{{asset('frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
                     </div>
                      {{-- logo Shop --}}
                     <div class="header-right">
@@ -151,7 +150,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="#"><img src="{{asset('frontend_assets/imgs/logo/logo.png')}}" alt="logo"></a>
+                        <a href="home"><img src="{{asset('frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">
@@ -161,51 +160,13 @@
                             {{-- Browse Categories childern --}}
                             <div class="categori-dropdown-wrap categori-dropdown-active-large">
                                 <ul> 
-                                    <li class="has-children">
-                                        <a href="shop"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a>
-                                        <div class="dropdown-menu">
-                                            <ul class="mega-menu d-lg-flex">
-                                                <li class="mega-menu-col col-lg-7">
-                                                    <ul class="d-lg-flex">
-                                                        <li class="mega-menu-col col-lg-6">
-                                                            <ul>
-                                                                <li><span class="submenu-title">Hot & Trending</span>
-                                                                </li>
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">Cellphones</a></li>
-                                                            </ul>
-                                                        </li>
-                                                        <li class="mega-menu-col col-lg-6">
-                                                            <ul>
-                                                                <li><span class="submenu-title">Accessories</span></li>
-                                                                <li><a class="dropdown-item nav-link nav_item"
-                                                                        href="#">Screen Protectors</a></li>
-                                                            </ul>
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li class="mega-menu-col col-lg-5">
-                                                    <div class="header-banner2">
-                                                        <img src="frontend_assets/imgs/banner/menu-banner-5.jpg"
-                                                            alt="menu_banner1">
-                                                        <div class="banne_info">
-                                                            <h6>10% Off</h6>
-                                                            <h4>New Arrival</h4>
-                                                            <a href="#">Shop now</a>
-                                                        </div>
-                                                    </div>                                                 
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li><a href="shop"><i class="surfsidemedia-font-desktop"></i>Computer & Office</a>
-                                    </li>                                  
-                                        <ul class="more_slide_open" style="display: none;">
-                                            <li><a href="shop"><i class="surfsidemedia-font-desktop"></i>Beauty,Health</a></li>
-                                        </ul>
-                                    </li>
+                                    <li>
+                                      
+                                        <a href="#"><i class="surfsidemedia-font-desktop"></i><strong>asdsa</strong>
+                                        </a>
+                                                                            
+                                    </li>                                                                              
                                 </ul>
-                                <div class="more_categories">Show more...</div>
                             </div>
                             {{-- Browse Categories childern --}}
                         </div>
@@ -213,10 +174,10 @@
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                             <nav>
                                 <ul>
-                                    <li><a class="active" href="home">Home </a></li>
-                                    <li><a href="about.html">About</a></li>
+                                    <li><a class="active" href="{{url('/home')}}">Home</a></li>
+                                    <li><a href="{{url('/collections')}}">All Collections</a></li>
                                     <li><a href="shop">Shop</a></li>
-                                    <li class="position-static"><a href="#">Our Collections 
+                                    {{-- <li class="position-static"><a href="#">Our Collections 
                                         <i
                                             class="fi-rs-angle-down"></i></a>
                                             <ul class="mega-menu">
@@ -250,7 +211,7 @@
                                                     </div>
                                                 </li>
                                             </ul>
-                                        </li>
+                                    </li> --}}
                                     <li><a href="blog.html">Blog </a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
@@ -341,11 +302,11 @@
         </div>
         {{-- header 3 --}}
     </header>
-    {{-- <div class="mobile-header-active mobile-header-wrapper-style">
+    <div class="mobile-header-active mobile-header-wrapper-style">
         <div class="mobile-header-wrapper-inner">
             <div class="mobile-header-top">
                 <div class="mobile-header-logo">
-                    <a href="home"><img src="frontend_assets/imgs/logo/logo.png" alt="logo"></a>
+                    <a href="home"><img src="{{asset('frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
                 </div>
                 <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                     <button class="close-style search-close">
@@ -457,7 +418,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     @yield('contentHome')
 
     <footer class="main">
@@ -565,13 +526,12 @@
                 <div class="col-lg-6">
                     <p class="float-md-left font-sm text-muted mb-0">
                         <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-conditions.html">Terms &
-                            Conditions
-                        </a>
+                            Conditions</a>
                     </p>
                 </div>
                 <div class="col-lg-6">
                     <p class="text-lg-end text-start font-sm text-muted mb-0">
-                        &copy; <strong class="text-brand">QTV Shop</strong> All rights reserved
+                        &copy; <strong class="text-brand">QTV</strong> All rights reserved
                     </p>
                 </div>
             </div>
