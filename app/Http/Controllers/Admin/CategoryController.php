@@ -47,16 +47,28 @@ class CategoryController extends Controller
             $file->move('/uploads/Category/',$filename);
 
             $category->image = $uploadPath.$filename;
+
+            $category->metal_title = $vaidatedData['metal_title'];
+            $category->metal_keyword = $vaidatedData['metal_keyword'];
+            $category->metal_description = $vaidatedData['metal_description'];
+
+            $category->status = $request->status == true ? '1':'0';
+
+            $category->save();
+          }
+          else
+          {
+            $category->image = asset('/emptyimage.jpg');
+            $category->metal_title = $vaidatedData['metal_title'];
+            $category->metal_keyword = $vaidatedData['metal_keyword'];
+            $category->metal_description = $vaidatedData['metal_description'];
+
+            $category->status = $request->status == true ? '1':'0';
+
+            $category->save();
           }
           
           
-          $category->metal_title = $vaidatedData['metal_title'];
-          $category->metal_keyword = $vaidatedData['metal_keyword'];
-          $category->metal_description = $vaidatedData['metal_description'];
-
-          $category->status = $request->status == true ? '1':'0';
-
-          $category->save();
 
           return redirect('adminpage/Category')->with('message','Category added Successfully');
     }

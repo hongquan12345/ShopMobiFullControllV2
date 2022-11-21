@@ -43,7 +43,7 @@ class FrontEndController extends Controller
         {
              $categorys = Category::where('status','0')->get();
              $products = $category->products_in_category()->get();
-             $products =Product::orderBy('id','DESC')->paginate(10);
+            //  $products =Product::orderBy('id','DESC')->paginate(10);
              return view('frontend.Product',['products'=>$products],compact('category','products','categorys'));          
         }
         else

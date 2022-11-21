@@ -24,20 +24,33 @@ class SliderController extends Controller
     {
 
         $validateData = $request->validated();
-        if ($request->hasFile('image')) {
+        if ($request->hasFile('image')) 
+        {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time() . '.' . $ext;
             $file->move('uploads/slider/', $filename);
             $validateData['image'] = "uploads/slider/$filename";
-        }    
-        $validateData['status'] = $request->status == true ? '1' : '0';
-        Slider::create([
-            'title' => $validateData['title'],
-            'description' => $validateData['description'],
-            'image' => $validateData['image'],
-            'status' => $validateData['status'],
-        ]);
+
+            $validateData['status'] = $request->status == true ? '1' : '0';
+            Slider::create([
+                    'title' => $validateData['title'],
+                    'description' => $validateData['description'],
+                    'image' => $validateData['image'],
+                    'status' => $validateData['status'],
+                ]);
+        }
+        else
+        {
+            $validateData['status'] = $request->status == true ? '1' : '0';
+            Slider::create([
+                    'title' => $validateData['title'],
+                    'description' => $validateData['description'],
+                    'image' => asset('/emptyimage.jpg'),
+                    'status' => $validateData['status'],
+                ]);
+        }   
+        
         return redirect('adminpage/Sliders')->with('message', 'Slider is Add Successfully');
     }
     public function edit_slider(Slider $slider_id)

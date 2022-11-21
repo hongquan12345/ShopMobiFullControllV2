@@ -1,7 +1,6 @@
 @extends('layouts.index')
 @section('contentHome')
 <main class="main">
-
     <div class="py-3 py-md-5 bg-light">
         <div class="container">
             <div class="row">
@@ -33,10 +32,7 @@
             
             </div>
         </div>
-
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </main>
 
 @endsection

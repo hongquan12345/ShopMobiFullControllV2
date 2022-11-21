@@ -18,10 +18,12 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Category</th>
-                            <th>Product</th>
-                            <th>Price</th>
+                            <th>Name</th>
+                            <th>SLUG</th>
+                            <th>Orig price</th>
+                            <th>Sell price</th>
                             <th>Quantity</th>
+                            <th>Brand</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -37,9 +39,12 @@
                                     No Category
                                 @endif
                             </td>
-                            <td>{{ $product->name}}</td>
+                            <td>{{ $product->slug}}</td>
+                            <td>{{ $product->original_price}}</td>
                             <td>{{ $product->selling_price}}</td>
                             <td>{{ $product->quantity}}</td>
+                            <td>{{ $product->brand}}</td>
+
                             <td>{{ $product->status == '1' ? 'Hidden' :"Visible"}}</td>
                             <td>
                                 <a href="{{ url('adminpage/Products/'.$product->id.'/edit') }}" class ="btn btn-success">Edit</a>

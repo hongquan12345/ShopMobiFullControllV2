@@ -85,24 +85,27 @@ class ProductController extends Controller
     }
     public function edit(int $product_with_ID)
     {
-
+       
+    
         $categories = Category::all();
+         
         $brands = Brand::all();
+        
         $product = Product::findOrFail($product_with_ID);
+        
         $product_color = $product->productColors->pluck('color_id')->toArray();
+        
         $colors = Color::whereNotIn('id',$product_color)->get();
-
         return view('admin.products.edit',compact('categories', 'brands','product','colors'));
     }
     public function updateProduct(ProductFormRequest $request, int $product_with_ID)
     {
         $validatedData = $request->validated();
         $product = Category::findOrFail($validatedData['category_id'])
-                                ->products_in_category()->where('id',$product_with_ID)->first();
+        ->products_in_category()->where('id',$product_with_ID)->first();
         if ($product)
         {
-            $product->update
-            ([
+            $product->update([
                 'category_id' => $validatedData['category_id'],
                 'name' => $validatedData['name'],
                 'slug' => Str::slug($validatedData['slug']),
@@ -129,7 +132,6 @@ class ProductController extends Controller
                                 $filename = time().$i++.'.'.$extention;
                                 $imageFile->move($uploadPath,$filename);
                                 $finalImagePathName = $uploadPath.$filename;
-
                                 $product->productImage()->create([
                                     'product_id' => $product->id,
                                     'image' => $finalImagePathName,

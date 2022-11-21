@@ -65,7 +65,9 @@
                             @else
                             <ul>
                                 <li><i class="fi-rs-user"></i><a href="{{route('login')}}">Log In </a> / <a
-                                        href="{{route('register')}}">Sign Up</a></li>
+                                        {{-- href="{{route('register')}}">Sign Up</a></li> --}}
+                                        href="{{url('register')}}">Sign Up</a></li>
+
                                 </ul>
                             @endif
                         </div>

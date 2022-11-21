@@ -66,17 +66,16 @@
                                 {{-- product --}}
                                 @forelse ($products as $productItem)
                                 <div class="col-lg-4 col-md-4 col-6 col-sm-6">
-
                                     <div class="product-cart-wrap mb-30">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img img-hover-scale overflow-hidden">
                                                
                                                     @if ($productItem->productImage->count()>0)
                                                    
-                                                    <a href="{{url('/collection/'.$productItem->category->slug.'/'.$productItem->slug)}}">
-                                                    <img  src="{{asset($productItem->productImage[0]->image)}}" alt="{{$productItem->name}}">
-                                                    </a>
-                                                    {{-- <img class="hover-img" src="{{asset($productItem->productImage[0]->image)}}" alt="">     --}}
+                                                        {{-- <a href="{{url('/collection/'.$productItem->category->slug.'/'.$productItem->slug)}}"></a> --}}
+                                                        <img style="height: 300px;width: 250px" src="{{asset($productItem->productImage[0]->image)}}" alt="{{$productItem->name}}">
+                                                        @else
+                                                        <img style="height: 300px;width: 250px" src="{{asset('/no_image_product.png')}}" alt="{{$productItem->name}}">
                                                     @endif
                                                 
                                             </div>
@@ -102,7 +101,6 @@
                                                 <a href="#">{{$productItem->brand}}</a>
                                             </div>
                                             <h2>
-
                                                 <a href="#">{{$productItem->name}}</a>
                                             </h2>
                                             <div class="rating-result" title="90%">
@@ -111,7 +109,7 @@
                                                 </span>
                                             </div>
                                             <div class="product-price">
-                                                <span>${{$productItem->selling_price}}</span>
+                                                <span>{{$productItem->selling_price}}</span>
                                                 <span class="old-price">${{$productItem->original_price}}</span>
                                             </div>
                                             <div class="product-action-1 show">
@@ -127,17 +125,14 @@
                                 </div>
                                 @empty
                                 <div>
-                                    <h4>We can Find Product in {{$category->name}}</h4>
+                                    <h4>We cant Find Product in {{$category->name}}</h4>
                                 </div>
-
-
-
                                 @endforelse
                                 {{-- product --}}
                             </div>
                             
                             <!--pagination-->
-                            {{$products->links()}}
+                            {{-- {{$products->links()}} --}}
                             
                         </div>
                         <div class="col-lg-3 primary-sidebar sticky-sidebar">
