@@ -10,7 +10,7 @@
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('frontend_assets/imgs/theme/favicon.ico')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('./frontend_assets/imgs/theme/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('frontend_assets/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('frontend_assets/css/custom.css')}}">
 </head>
@@ -79,7 +79,7 @@
                 <div class="header-wrap">
                     {{-- logo Shop --}}
                     <div class="logo logo-width-1">
-                        <a href="{{url('/home')}}"><img src="{{asset('frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
+                        <a href="{{url('/home')}}"><img src="{{asset('/frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
                     </div>
                      {{-- logo Shop --}}
                     <div class="header-right">
@@ -97,7 +97,7 @@
                                     <div class="header-action-icon-2">
                                         <a href="shop-wishlist.php">
                                             <img class="svgInject" alt="Surfside Media"
-                                                src="frontend_assets/imgs/theme/icons/icon-heart.svg">
+                                                src="{{asset('frontend_assets/imgs/theme/icons/icon-heart.svg')}}">
                                             <span class="pro-count blue">4</span>
                                         </a>
                                     </div>
@@ -105,7 +105,7 @@
                                     {{-- Cart shop --}}
                                     <div class="header-action-icon-2">
                                         <a class="mini-cart-icon" href="cart">
-                                            <img alt="Surfside Media" src="frontend_assets/imgs/theme/icons/icon-cart.svg">
+                                            <img alt="Surfside Media" src="{{asset('frontend_assets/imgs/theme/icons/icon-cart.svg')}}">
                                             <span class="pro-count blue">2</span>
                                         </a>
                                         <div class="cart-dropdown-wrap cart-dropdown-hm2">
@@ -150,7 +150,7 @@
             <div class="container">
                 <div class="header-wrap header-space-between position-relative">
                     <div class="logo logo-width-1 d-block d-lg-none">
-                        <a href="home"><img src="{{asset('frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
+                        <a href="home"><img src="{{asset('/frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
                         <div class="main-categori-wrap d-none d-lg-block">
@@ -162,7 +162,7 @@
                                 <ul> 
                                     <li>
                                       
-                                        <a href="#"><i class="surfsidemedia-font-desktop"></i><strong>asdsa</strong>
+                                        <a href="#"><i class="surfsidemedia-font-desktop"></i><strong></strong>
                                         </a>
                                                                             
                                     </li>                                                                              

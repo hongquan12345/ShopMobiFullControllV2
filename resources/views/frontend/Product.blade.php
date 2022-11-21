@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.index')   
 @section('contentHome')
 <main class="main">
     <div>
