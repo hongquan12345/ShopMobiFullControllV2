@@ -3,7 +3,7 @@
 <main class="main">
     <section class="home-slider position-relative pt-50">
         <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
-            @foreach ($sliders as $key => $slidersItem)
+            {{-- @foreach ($sliders as $key => $slidersItem)
             <div class="single-hero-slider single-animation-wrap">
                 <div class="container">
                     <div class="row align-items-center slider-animated-1">
@@ -18,7 +18,7 @@
                         <div class="col-lg-7 col-md-6">
                             <div class="single-slider-img single-slider-img-1">
                                 @if ($slidersItem->image)
-                                    <img class="animated slider-1-1" src="{{$slidersItem->image}}" alt="">
+                                    <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">
                                 @else
                                     <img class="animated slider-1-1" src="{{asset('emptyimage.jpg')}}" alt="">
                                 @endif
@@ -28,7 +28,53 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            @endforeach --}}
+            @forelse ($sliders as $key => $slidersItem )
+            <div class="single-hero-slider single-animation-wrap">
+                <div class="container">
+                    <div class="row align-items-center slider-animated-1">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="hero-slider-content-2">
+                                <h4 class="animated fw-900 text-brand">{{$slidersItem->title}}</h4>
+                                <h1 class="animated ">{{$slidersItem->description}}</h1>                                
+                                <a class="animated btn btn-brush btn-brush-3" href="#">Shop Now
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="single-slider-img single-slider-img-1">
+                                @if ($slidersItem->image)
+                                    <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">
+                                @else
+                                    <img class="animated slider-1-1" src="{{asset('emptyimage.jpg')}}" alt="">
+                                @endif
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @empty
+            <div class="single-hero-slider single-animation-wrap">
+                <div class="container">
+                    <div class="row align-items-center slider-animated-1">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="hero-slider-content-2">
+                                <h4 class="animated">Empty</h4>
+                                <h1 class="animated fw-900 text-brand">Empty</h1>                                
+                                <a class="animated btn btn-brush btn-brush-3" href="#">Empty
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="single-slider-img single-slider-img-1">   
+                                <img class="animated slider-1-1" src="{{asset('/emptyimage.jpg')}}" style="width: 800px;height: 540px;" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforelse
             
 
         </div>

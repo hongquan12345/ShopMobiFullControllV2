@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
           $category->description = $vaidatedData['description'];
 
-          $uploadPath = 'uploads/Category/';
+          $uploadPath = '/uploads/Category/';
 
           if($request->hasFile('image'))
           {
@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
             $filename =time().'.'.$ext;
 
-            $file->move('uploads/Category/',$filename);
+            $file->move('/uploads/Category/',$filename);
 
             $category->image = $uploadPath.$filename;
           }
@@ -78,7 +78,7 @@ class CategoryController extends Controller
 
         $category->description = $vaidatedData['description'];
 
-        $uploadPath = 'uploads/Category/';
+        $uploadPath = '/uploads/Category/';
         if($request->hasFile('image'))
         {
             $path = 'uploads/Category/'.$category->image;
@@ -92,7 +92,7 @@ class CategoryController extends Controller
 
           $filename =time().'.'.$ext;
 
-          $file->move('uploads/Category/',$filename);
+          $file->move('/uploads/Category/',$filename);
 
           $category->image = $uploadPath.$filename;
         }

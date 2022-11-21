@@ -150,7 +150,7 @@
                                 <h5 class="section-title style-1 mb-30 wow fadeIn animated">Category</h5>
                                 <ul class="categories">
                                     @foreach ($categorys as $cat)
-                                        <li><a href="#">{{$cat->name}}</a></li>
+                                        <li><a href="{{'/collections/'.$cat->slug}}">{{$cat->name}}</a></li>
                                     @endforeach
                                     {{-- @forelse ( $category as $cat )
                                     <li><a href="#">{{$cat->name}}</a></li>
