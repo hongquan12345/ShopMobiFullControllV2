@@ -65,14 +65,14 @@
                             tabindex="0">
                             <div class="md-3">
                                 <br>
-                                <label for="">Category </label>
-                                <select name="category_id" class="form-select" aria-label="Disabled select example" enabled>
-                                    @foreach ($categories as $cateogry)
-                                        <option value="{{ $cateogry->id }}"{{$cateogry->id == $product->category->id ? 'seleted' :''}}>
-                                            {{ $cateogry->name }}
-                                        </option>
+                                <label for="">Select Category </label>
+                                <select name="category_id" class="form-select" enabled>
+                                    @foreach ($categories as $cat)
+                                    <option value="{{ $cat->id }}" {{$cat->id == $product->category_id ? 'selected':''}}>
+                                    {{ $cat->name }}
+                                    </option>
                                     @endforeach
-                                </select>
+                                    </select>
                             </div>
                             <br>
                             <div class="md-3">
@@ -252,6 +252,8 @@
             </div>
         </div>
     </div>
+
+    
 @endsection
 
 @section('scripts')

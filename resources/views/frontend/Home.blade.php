@@ -1,85 +1,44 @@
 @extends('layouts.index')
 @section('contentHome')
 <main class="main">
-    <section class="home-slider position-relative pt-50">
-        <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
-            {{-- @foreach ($sliders as $key => $slidersItem)
-            <div class="single-hero-slider single-animation-wrap">
-                <div class="container">
-                    <div class="row align-items-center slider-animated-1">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="hero-slider-content-2">
-                                <h4 class="animated">{{$slidersItem->title}}</h4>
-                                <h1 class="animated fw-900 text-brand">{{$slidersItem->description}}</h1>                                
-                                <a class="animated btn btn-brush btn-brush-3" href="#">Shop Now
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-6">
-                            <div class="single-slider-img single-slider-img-1">
-                                @if ($slidersItem->image)
-                                    <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">
-                                @else
-                                    <img class="animated slider-1-1" src="{{asset('emptyimage.jpg')}}" alt="">
-                                @endif
-                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach --}}
-            @forelse ($sliders as $key => $slidersItem )
-            <div class="single-hero-slider single-animation-wrap">
-                <div class="container">
-                    <div class="row align-items-center slider-animated-1">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="hero-slider-content-2">
-                                <h4 class="animated fw-900 text-brand">{{$slidersItem->title}}</h4>
-                                <h1 class="animated ">{{$slidersItem->description}}</h1>                                
-                                <a class="animated btn btn-brush btn-brush-3" href="#">Shop Now
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-6">
-                            <div class="single-slider-img single-slider-img-1">
-                                @if ($slidersItem->image)
-                                    <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">
-                                @else
-                                    <img class="animated slider-1-1" src="{{asset('emptyimage.jpg')}}" alt="">
-                                @endif
-                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @empty
-            <div class="single-hero-slider single-animation-wrap">
-                <div class="container">
-                    <div class="row align-items-center slider-animated-1">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="hero-slider-content-2">
-                                <h4 class="animated">Empty</h4>
-                                <h1 class="animated fw-900 text-brand">Empty</h1>                                
-                                <a class="animated btn btn-brush btn-brush-3" href="#">Empty
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-6">
-                            <div class="single-slider-img single-slider-img-1">   
-                                <img class="animated slider-1-1" src="{{asset('/emptyimage.jpg')}}" style="width: 800px;height: 540px;" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforelse
-            
 
-        </div>
-        <div class="slider-arrow hero-slider-1-arrow"></div>
+
+    <section class="home-slider position-relative pt-50">
+    
+    <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
+        @if($sliders == null)
+     
+        @else
+            @foreach ($sliders as $key => $slidersItem)     
+                <div class="single-hero-slider single-animation-wrap">
+                    <div class="container">
+                        <div class="row align-items-center slider-animated-1">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="hero-slider-content-2">
+                                    <h4 class="animated fw-900 text-brand">{{$slidersItem->title}}</h4>
+                                    <h1 class="animated ">{{$slidersItem->description}}</h1>                                
+                                    <a class="animated btn btn-brush btn-brush-3" href="#">Shop Now
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-6">
+                                <div class="single-slider-img single-slider-img-1">
+                                        <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">                                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        @endif   
+    </div>
+    <div class="slider-arrow hero-slider-1-arrow"></div>
+  
     </section>
+    
+        
+    
+   
 
     {{-- Category --}}
         <section class="popular-categories section-padding mt-15 mb-25">
@@ -112,19 +71,7 @@
                
             </div>
         </section>
-        <div class="top-content">
-            <div class="container-fluid">
-                <div id="carousel-example" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                        <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-3">
-                            <img src="{{$slidersItem->image}}" class="img-fluid mx-auto d-block" alt="img1">
-                          
-                        </div>                       
-                    </div>
-                   
-                </div>
-            </div>
-        </div>
+       
     {{-- Category --}}
 
 

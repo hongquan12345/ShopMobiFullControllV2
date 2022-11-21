@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Category</th>
                             <th>SLUG</th>
                             <th>Orig price</th>
                             <th>Sell price</th>
@@ -33,8 +33,8 @@
                         <tr>
                             <td>{{ $product->id}}</td>
                             <td>
-                                @if ($product->id)
-                                {{ $product->category->name}}
+                                @if ($product->category)
+                                     {{ $product->category->name}}
                                 @else
                                     No Category
                                 @endif
@@ -50,7 +50,6 @@
                                 <a href="{{ url('adminpage/Products/'.$product->id.'/edit') }}" class ="btn btn-success">Edit</a>
                                 <a href="{{ url('adminpage/Products/'.$product->id.'/delete') }}"
                                      onclick="return confirm('Are you Sure, You Want to Deleted This Product ')" class ="btn btn-danger">Delete</a>
-
                             </td>
 
 
