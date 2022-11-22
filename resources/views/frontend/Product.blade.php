@@ -1,4 +1,13 @@
-@extends('layouts.index')   
+@extends('layouts.index')
+@section('title')
+{{ $category->metal_title }}
+@endsection
+@section('meta_keyword')
+{{ $category->metal_keyword }}
+@endsection
+@section('meta_description')
+{{ $category->metal_description }}
+@endsection
 @section('contentHome')
 <main class="main">
     <div>
@@ -7,8 +16,8 @@
                 <div class="container">
                     <div class="breadcrumb">
                         <a href="{{url('/home')}}" rel="nofollow">Home</a>
-                        <span ></span> <a href="{{url('/collections')}}" rel="nofollow">collections</a> 
-                        <span></span>                       
+                        <span ></span> <a href="{{url('/collections')}}" rel="nofollow">collections</a>
+                        <span></span>
                     </div>
                 </div>
             </div>
@@ -67,17 +76,16 @@
                                 @forelse ($products as $productItem)
                                 <div class="col-lg-4 col-md-4 col-6 col-sm-6">
                                     <div class="product-cart-wrap mb-30">
+                                        <a href="{{'/collections/'.$productItem->category->slug.'/'.$productItem->slug}}">
                                         <div class="product-img-action-wrap">
                                             <div class="product-img img-hover-scale overflow-hidden">
-                                               
                                                     @if ($productItem->productImage->count()>0)
-                                                   
                                                         {{-- <a href="{{url('/collection/'.$productItem->category->slug.'/'.$productItem->slug)}}"></a> --}}
                                                         <img style="height: 300px;width: 250px" src="{{asset($productItem->productImage[0]->image)}}" alt="{{$productItem->name}}">
                                                         @else
                                                         <img style="height: 300px;width: 250px" src="{{asset('/no_image_product.png')}}" alt="{{$productItem->name}}">
                                                     @endif
-                                                
+
                                             </div>
                                             <div class="product-action-1">
                                                 <a aria-label="Quick view" class="action-btn hover-up"
@@ -93,9 +101,10 @@
                                                     <span class="stock bg-success">IN STOCK</span>
                                                     @else
                                                     <span class="stock bg-danger">OUT STOCK</span>
-                                                @endif                                               
+                                                @endif
                                             </div>
                                         </div>
+                                    </a>
                                         <div class="product-content-wrap">
                                             <div class="product-category">
                                                 <a href="#">{{$productItem->brand}}</a>
@@ -119,7 +128,7 @@
                                             <div class="product-action-2 float-center">
                                                 <button class="btn btn-success action-btn hover-up">ADD to CART</button>
                                             </div>
-                                         
+
                                         </div>
                                     </div>
                                 </div>
@@ -130,10 +139,10 @@
                                 @endforelse
                                 {{-- product --}}
                             </div>
-                            
+
                             <!--pagination-->
                             {{-- {{$products->links()}} --}}
-                            
+
                         </div>
                         <div class="col-lg-3 primary-sidebar sticky-sidebar">
 
@@ -150,10 +159,10 @@
                                     {{-- @forelse ( $category as $cat )
                                     <li><a href="#">{{$cat->name}}</a></li>
                                     @empty
-                               
+
                                     @endforelse --}}
-                                    
-                                    
+
+
                                 </ul>
                             </div>
 

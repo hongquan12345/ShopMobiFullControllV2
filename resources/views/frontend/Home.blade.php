@@ -1,51 +1,54 @@
 @extends('layouts.index')
+@section('title')
+{{ 'Cửa Hàng Điện Thoại QTV'}}
+@endsection
 @section('contentHome')
 <main class="main">
 
 
     <section class="home-slider position-relative pt-50">
-    
+
     <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
         @if($sliders == null)
-     
+
         @else
-            @foreach ($sliders as $key => $slidersItem)     
+            @foreach ($sliders as $key => $slidersItem)
                 <div class="single-hero-slider single-animation-wrap">
                     <div class="container">
                         <div class="row align-items-center slider-animated-1">
                             <div class="col-lg-5 col-md-6">
                                 <div class="hero-slider-content-2">
                                     <h4 class="animated fw-900 text-brand">{{$slidersItem->title}}</h4>
-                                    <h1 class="animated ">{{$slidersItem->description}}</h1>                                
+                                    <h1 class="animated ">{{$slidersItem->description}}</h1>
                                     <a class="animated btn btn-brush btn-brush-3" href="#">Shop Now
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-6">
                                 <div class="single-slider-img single-slider-img-1">
-                                        <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">                                                     
+                                        <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-        @endif   
+        @endif
     </div>
     <div class="slider-arrow hero-slider-1-arrow"></div>
-  
+
     </section>
-    
-        
-    
-   
+
+
+
+
 
     {{-- Category --}}
         <section class="popular-categories section-padding mt-15 mb-25">
             <div class="container wow fadeIn animated">
                 <h3 class="section-title mb-20"><span>Popular</span> Categories</h3>
                 <div class="carausel-6-columns-cover position-relative">
-                    
+
                     <div class="carausel-6-columns" id="carausel-6-columns">
                         @forelse ($categorys as $categoryItem )
                         <div class="card-1" >
@@ -55,23 +58,23 @@
                                     <img src="{{asset("$categoryItem->image")}}" style="width: 300px;height:300px">
                                     @else
                                     <img src="{{asset('emptyimage.jpg')}}" style="width: 300px;height:300px" alt="">
-                                    @endif                       
+                                    @endif
                                 </figure>
                                 <h3 class="animated fw-900 text-brand">{{$categoryItem->name}}</h3>
                                 <h5 class="animated fw-300 text-bg-warning">{{$categoryItem->description}}</h5>
                             </a>
-                        </div> 
+                        </div>
                         @empty
                                 <h5>No Category Available</h5>
-                        @endforelse                    
+                        @endforelse
 
                     </div>
-                   
+
                 </div>
-               
+
             </div>
         </section>
-       
+
     {{-- Category --}}
 
 
@@ -139,7 +142,7 @@
 
                 <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                     <div class="row product-grid-4">
-                     
+
                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                         <div class="product-cart-wrap mb-30">
                             <div class="product-img-action-wrap">
@@ -186,8 +189,8 @@
                             </div>
                         </div>
                     </div>
-                      
-                        
+
+
                     </div>
 
 
@@ -942,7 +945,7 @@
             </div>
         </div>
     </section> --}}
-  
+
     <section class="banners mb-15">
         <div class="container">
             <div class="row">

@@ -1,4 +1,7 @@
 @extends('layouts.index')
+@section('title')
+{{ 'AllCollection'}}
+@endsection
 @section('contentHome')
 <main class="main">
     <div class="py-3 py-md-5 bg-light">
@@ -16,7 +19,7 @@
                                 <img src="{{asset("$categoryItem->image")}}" style="width: 600px;height:300px">
                                 @else
                                 <img src="{{asset('emptyimage.jpg')}}" style="width: 600px;height:300px" alt="">
-                                @endif  
+                                @endif
                             </div>
                             <div class="category-card-body">
                                 <h3 class="animated fw-900 text-brand">{{$categoryItem->name}}</h3>
@@ -29,7 +32,7 @@
                 @empty
                     <h4>Not thing to show</h4>
                 @endforelse
-            
+
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>

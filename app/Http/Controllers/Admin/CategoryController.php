@@ -13,12 +13,12 @@ class CategoryController extends Controller
 {
      public function index()
     {
-       
+
         return view('admin.category.index');
     }
     public function create()
     {
-       
+
         return view('admin.category.create');
     }
     //make CategoryFormRequest with php artisan make:request CategoryFormRequest
@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
           $category->description = $vaidatedData['description'];
 
-          $uploadPath = '/uploads/Category/';
+          $uploadPath = 'uploads/Category/';
 
           if($request->hasFile('image'))
           {
@@ -44,7 +44,7 @@ class CategoryController extends Controller
 
             $filename =time().'.'.$ext;
 
-            $file->move('/uploads/Category/',$filename);
+            $file->move('uploads/Category/',$filename);
 
             $category->image = $uploadPath.$filename;
 
@@ -67,8 +67,8 @@ class CategoryController extends Controller
 
             $category->save();
           }
-          
-          
+
+
 
           return redirect('adminpage/Category')->with('message','Category added Successfully');
     }
@@ -90,7 +90,7 @@ class CategoryController extends Controller
 
         $category->description = $vaidatedData['description'];
 
-        $uploadPath = '/uploads/Category/';
+        $uploadPath = 'uploads/Category/';
         if($request->hasFile('image'))
         {
             $path = 'uploads/Category/'.$category->image;
@@ -104,11 +104,11 @@ class CategoryController extends Controller
 
           $filename =time().'.'.$ext;
 
-          $file->move('/uploads/Category/',$filename);
+          $file->move('uploads/Category/',$filename);
 
           $category->image = $uploadPath.$filename;
         }
-        
+
 
         $category->metal_title = $vaidatedData['metal_title'];
         $category->metal_keyword = $vaidatedData['metal_keyword'];
@@ -118,8 +118,6 @@ class CategoryController extends Controller
 
         $category->update();
         // $category->save();
-
         return redirect('adminpage/Category')->with('message','Category Update Successfully');
     }
 }
-    

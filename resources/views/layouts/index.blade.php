@@ -2,7 +2,10 @@
 <html class="no-js" lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Cửa Hàng Điện Thoại QTV</title>
+    {{-- <title>{{ 'Cửa Hàng Điện Thoại QTV' }}</title> --}}
+    <title>@yield('title')</title>
+    <title>@yield('meta_keyword')</title>
+    <title>@yield('meta_description')</title>
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -74,7 +77,7 @@
                     </div>
                 </div>
             </div>
-        </div>     
+        </div>
         {{-- header 2 --}}
         <div class="header-middle header-middle-ptb-1 d-none d-lg-block">
             <div class="container">
@@ -125,7 +128,7 @@
                                                         <a href="#"><i class="fi-rs-cross-small"></i></a>
                                                     </div>
                                                 </li>
-                                            
+
                                             </ul>
                                             <div class="shopping-cart-footer">
                                                 <div class="shopping-cart-total">
@@ -136,7 +139,7 @@
                                                     <a href="checkout">Checkout</a>
                                                 </div>
                                             </div>
-                                        </div>                                    
+                                        </div>
                                     </div>
                                     {{-- Cart shop --}}
                                 </div>
@@ -161,13 +164,13 @@
                             </a>
                             {{-- Browse Categories childern --}}
                             <div class="categori-dropdown-wrap categori-dropdown-active-large">
-                                <ul> 
+                                <ul>
                                     <li>
-                                      
+
                                         <a href="#"><i class="surfsidemedia-font-desktop"></i><strong></strong>
                                         </a>
-                                                                            
-                                    </li>                                                                              
+
+                                    </li>
                                 </ul>
                             </div>
                             {{-- Browse Categories childern --}}
@@ -179,7 +182,7 @@
                                     <li><a class="active" href="{{url('/home')}}">Home</a></li>
                                     <li><a href="{{url('/collections')}}">All Collections</a></li>
                                     <li><a href="shop">Shop</a></li>
-                                    {{-- <li class="position-static"><a href="#">Our Collections 
+                                    {{-- <li class="position-static"><a href="#">Our Collections
                                         <i
                                             class="fi-rs-angle-down"></i></a>
                                             <ul class="mega-menu">
@@ -234,7 +237,7 @@
                     <div class="hotline d-none d-lg-block">
                         <p><i class="fi-rs-smartphone"></i><span>Hot Line</span>09383334195</p>
                     </div>
-                    
+
                     <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%
                     </p>
                     <div class="header-action-right d-block d-lg-none">
