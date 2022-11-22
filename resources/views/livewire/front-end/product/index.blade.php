@@ -68,32 +68,39 @@
     </div>
      {{-- div product --}}
 
-      {{-- div filter --}}
+
     <div class="col-lg-2">
+        {{-- div filter --}}
         @if ($category->brands_in_category)
-        <div class="card text-center mb-3" style="max-width: 18rem;">
-            <div class="card-header"><h2>Brand</h2></div>
-            {{-- <div class="card-body">
-                @foreach ($category->brands_in_category as $branditem)
-                 <label class="d-block">
-                  <input type="checkbox" wire:model="brandInputs" name="checkbox" value="{{ $branditem->name}}"/>{{ $branditem ->name}}
-                 </label>
-                @endforeach
-            </div> --}}
-            <div class="text-lg-start form-check form-switch">
-                @foreach ($category->brands_in_category as $branditem)
-                <div style="font-size:20px" >
-                    <input class="form-check-input" wire:model="brandInputs" type="checkbox" role="switch" id="flexSwitchCheckDefault" value="{{ $branditem->name}}" checked>
-                    <label class="form-check-label" for="flexSwitchCheckDefault"><strong>{{ $branditem ->name}}</strong></label>
+            <div class="card text-center mb-3" style="max-width: 18rem;">
+                <div class="card-header"><h2>Brand</h2></div>
+                <div class="text-lg-start form-check form-switch">
+                    @foreach ($category->brands_in_category as $branditem)
+                    <div style="font-size:20px" >
+                        <input class="form-check-input" wire:model="brandInputs" type="checkbox" role="switch" id="flexSwitchCheckDefault" value="{{ $branditem->name}}" checked>
+                        <label class="form-check-label" for="flexSwitchCheckDefault"><strong>{{ $branditem ->name}}</strong></label>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-        </div>
         @endif
 
+         {{-- div filter --}}
 
+
+        <div class="card text-center md-1">
+            <div class="card-header"><h2>Price</h2></div>
+            <div class="card-body float-left" >
+                    <label class="d-block">
+                        <input type="radio" name="priceSort" wire:model="priceInputs"  value="hight-to-low" style="height:15px; width:15px; vertical-align: middle;"/><strong> Hight to Low</strong>
+                    </label>
+                    <label class="d-block">
+                        <input type="radio" name="priceSort" wire:model="priceInputs"  value="low-to-hight" style="height:15px; width:15px; vertical-align: middle;"/><strong> Low to Hight</strong>
+                    </label>
+            </div>
+        </div>
     </div>
-        {{-- div filter --}}
+
 </div>
 
 
