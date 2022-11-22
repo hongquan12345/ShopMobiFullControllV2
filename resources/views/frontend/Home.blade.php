@@ -18,15 +18,27 @@
                         <div class="row align-items-center slider-animated-1">
                             <div class="col-lg-5 col-md-6">
                                 <div class="hero-slider-content-2">
+                                    @if($slidersItem->title)
                                     <h4 class="animated fw-900 text-brand">{{$slidersItem->title}}</h4>
+                                    @else
+                                    <h4 class="animated fw-900 text-brand">Nothing to Show</h4>
+                                    @endif
+                                    @if($slidersItem->description)
                                     <h1 class="animated ">{{$slidersItem->description}}</h1>
+                                    @else
+                                    <h1 class="animated ">Nothing to Show</h1>
+                                    @endif
                                     <a class="animated btn btn-brush btn-brush-3" href="#">Shop Now
                                     </a>
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-6">
                                 <div class="single-slider-img single-slider-img-1">
-                                        <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">
+                                    @if($slidersItem->image)
+                                            <img class="animated slider-1-1" src="{{$slidersItem->image}}" style="width: 800px;height: 540px;" alt="">
+                                        @else
+                                            <img class="animated slider-1-1" src="{{asset('/emptyimage.jpg')}}" style="width: 800px;height: 540px;" alt="">
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -54,10 +66,10 @@
                         <div class="card-1" >
                             <a href="{{'/collections/'.$categoryItem->slug}}">
                                 <figure class="img-hover-scale overflow-hidden">
-                                    @if ($categoryItem->image)
+                                    @if ($categoryItem->image !='null')
                                     <img src="{{asset("$categoryItem->image")}}" style="width: 300px;height:300px">
                                     @else
-                                    <img src="{{asset('emptyimage.jpg')}}" style="width: 300px;height:300px" alt="">
+                                    <img src="{{asset('/emptyimage.jpg')}}" style="width: 300px;height:300px" alt="">
                                     @endif
                                 </figure>
                                 <h3 class="animated fw-900 text-brand">{{$categoryItem->name}}</h3>

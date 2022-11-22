@@ -4474,24 +4474,28 @@ table .product-thumbnail img {
   background: #ffdb33;
 }
 
-.product-color-white {
-  background: #ffffff;
-}
-
 .product-color-orange {
   background: #ffbb51;
-}
-
-.product-color-cyan {
-  background: #80e6ff;
 }
 
 .product-color-green {
   background: #38cf46;
 }
-
+.product-color-blue {
+  background: #3840cf;
+}
 .product-color-purple {
-  background: #ff8ff8;
+  background: #b30fa8;
+}
+.product-color-white {
+  background: #ffffff;
+}
+
+.product-color-cyan {
+  background: #80e6ff;
+}
+.product-color-black {
+  background: #000000;
 }
 
 .detail-gallery .slick-slider {

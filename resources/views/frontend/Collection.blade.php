@@ -15,7 +15,7 @@
                     <div class="category-card">
                         <a href="{{'/collections/'.$categoryItem->slug}}">
                             <div class="category-card-img img-hover-scale overflow-hidden">
-                                @if ($categoryItem->image)
+                                @if ($categoryItem->image !='null')
                                 <img src="{{asset("$categoryItem->image")}}" style="width: 600px;height:300px">
                                 @else
                                 <img src="{{asset('emptyimage.jpg')}}" style="width: 600px;height:300px" alt="">
