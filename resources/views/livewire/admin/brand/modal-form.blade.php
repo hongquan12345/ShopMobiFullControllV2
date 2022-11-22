@@ -42,6 +42,18 @@
         <form wire:submit.prevent="storeBrand">
           <div class="modal-body">
             <div class="md-3">
+                <label for="">Select Category</label>
+                <select wire:model.defer="category_id" required class="form-control">
+                    <option value=""><strong>--Select Category--</strong></option>
+                    @foreach ($categories as $cateITEM)
+                    <option value="{{ $cateITEM->id }}">{{ $cateITEM->name }}
+                    </option>
+                    @endforeach
+                </select>
+              @error('category_id')<small class="text-danger">{{$message}}</small>@enderror
+            </div>
+
+            <div class="md-3">
               <label for="">Brand Name</label>
               <input type="text" class="form-control" style="border-color: rgb(130, 130, 172)" wire:model.defer="name">
               @error('name')<small class="text-danger">{{$message}}</small>@enderror
@@ -79,6 +91,7 @@
   <div class="modal-dialog">
 
     <div class="modal-content">
+
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="brandupdateModal">Update Brand</h1>
         <button type="button" class="btn-close" wire:click="closeModal" data-bs-dismiss="modal"
@@ -115,6 +128,17 @@
       <div wire:loading.remove></div>
       <form wire:submit.prevent="updateBrand">
         <div class="modal-body">
+            <div class="md-3">
+                <label for="">Select Category</label>
+                <select wire:model.defer="category_id" required class="form-control">
+                    <option value=""><strong>--Select Category--</strong></option>
+                    @foreach ($categories as $cateITEM)
+                    <option value="{{ $cateITEM->id }}">{{ $cateITEM->name }}
+                    </option>
+                    @endforeach
+                </select>
+              @error('category_id')<small class="text-danger">{{$message}}</small>@enderror
+            </div>
           <div class="md-3">
             <label for="">Brand Name</label>
             <input type="text" class="form-control" style="border-color: rgb(130, 130, 172)" wire:model.defer="name">

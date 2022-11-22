@@ -2,6 +2,9 @@
     @include('livewire.admin.brand.modal-form')
     <div class="row" style="background-color: rgb(199, 202, 205)">
         <div class="col-md-12">
+            @if(session('message'))
+        <div class="alert alert-success">{{session('message')}}</div>
+        @endif
             <div class="card-header">
                 <h2 class="text-primary">
                     Brands List
@@ -15,6 +18,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Slug</th>
+                            <th>Category</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -25,23 +29,30 @@
                             <td>{{$brand->id}}</td>
                             <td>{{$brand->name}}</td>
                             <td>{{$brand->slug}}</td>
+                            <td>
+                                @if($brand->category_in_brands)
+                                {{$brand->category_in_brands->name}}
+                                @else
+                                     No Category
+                                @endif
+                            </td>
                             <td>{{$brand->status == '1' ? 'hidden' : 'visible'}}
                             </td>
                             <td>
                                     <a href="#" wire:click="editBrand({{$brand->id}})" data-bs-toggle="modal" data-bs-target="#brandupdateModal" class ="btn btn-sm btn-success">Edit</a>
                                     <a href="" wire:click="DeleteBrand({{$brand->id}})" data-bs-toggle="modal" data-bs-target="#brandeDeletedModal" class ="btn btn-sm btn-danger">Delete</a>
                             </td>
-            
+
                         </tr>
                         @empty
                              <tr>
                                 <td colspan="5">No Brand Found</td>
                              </tr>
-                        @endforelse 
+                        @endforelse
                     </tbody>
                 </table>
                 <div>
-                    {{$brands->links()}}    
+                    {{$brands->links()}}
                 </div>
             </div>
         </div>
@@ -57,5 +68,5 @@
         $('#brandeDeletedModal').modal('hide');
     })
 </script>
-    
+
 @endpush
