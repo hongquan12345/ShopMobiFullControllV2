@@ -20,7 +20,7 @@ class FrontEndController extends Controller
     {
         $categorys = Category::where('status','0')->get();
         $products = Product::all();
-        
+
         $sliders = Slider::where('status','0')->get();
         return view('frontend.Home',compact('sliders','categorys','products'));
     }
@@ -28,28 +28,28 @@ class FrontEndController extends Controller
     public function categories()
     {
         $products = Product::all();
-       
+
         $categorys = Category::where('status','0')->get();
         $sliders = Slider::where('status','0')->get();
         return view('frontend.Collection',compact('sliders','categorys','products'));
     }
-    
+
     public function products($category_slug)
     {
-       
+
 
         $category = Category::where('slug',$category_slug)->first();
         if($category)
         {
-             $categorys = Category::where('status','0')->get();
-             $products = $category->products_in_category()->get();
+            //  $categorys = Category::where('status','0')->get();
+            //  $products = $category->products_in_category()->get();
             //  $products =Product::orderBy('id','DESC')->paginate(10);
-             return view('frontend.Product',['products'=>$products],compact('category','products','categorys'));          
+             return view('frontend.Product',compact('category'));
         }
         else
         {
             return redirect()->back();
         }
-        
+
     }
 }
