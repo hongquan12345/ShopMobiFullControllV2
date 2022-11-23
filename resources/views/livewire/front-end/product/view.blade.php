@@ -11,6 +11,11 @@
         </div>
         <section class="mt-50 mb-50">
             <div class="container">
+                @if (session()->has('message'))
+                    <div class="alert alert-success">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="product-detail accordion-detail">
@@ -25,12 +30,12 @@
                                                 <img src="{{asset($products->productImage[0]->image)}}" alt="product image">
                                             </figure>
                                             @else
-                                            <h1>no hình</h1> 
+                                            <h1>no hình</h1>
                                             @endif
-                                                                                  
+
                                         </div>
                                         <!-- THUMBNAILS -->
-                                        {{-- <div class="slider-nav-thumbnails pl-15 pr-15">                                            
+                                        {{-- <div class="slider-nav-thumbnails pl-15 pr-15">
                                             <div><img src="{{asset('/frontend_assets/imgs/shop/thumbnail-4.jpg')}}"alt="product image"></div>
                                         </div> --}}
                                     </div>
@@ -71,7 +76,7 @@
                                                         float: right;" class="label-stock bg-lg bg-danger"><strong>OUT STOCK</strong></label>
                                                     @endif
                                                 </div>
-                                                
+
                                             </div>
 
                                         </div>
@@ -101,9 +106,9 @@
                                                         <li>
                                                             <a href="#" data-color="">
                                                                 <span class="product-color-{{$prodColor->color->code}}" value="{{$prodColor->id}}"></span>
-                                                            </a>       
+                                                            </a></li>
                                                     @endforeach
-                                                @else   
+                                                @else
                                                 <h2>nothing</h2>
                                                 @endif
                                             </ul>
@@ -126,13 +131,14 @@
                                                 <span class="qty-val">1</span>
                                                 <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
                                             </div>
-
                                             <div class="product-extra-link2">
                                                 <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                                <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                                <a aria-label="Add To Wishlist" wire:click="addToWishList({{ $products->id }})"
+                                                    class="action-btn " href="#"><i class="fi-rs-heart"></i>
+                                                </a>
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                             </div>
-                                            
+
                                         </div>
                                         <ul class="product-meta font-xs color-grey mt-50">
                                             <li class="mb-5">SKU: <a href="#">{{$products->slug}}</a></li>
@@ -147,7 +153,7 @@
                                 <ul class="nav nav-tabs text-uppercase">
                                     <li class="nav-item">
                                         <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
-                                    </li>      
+                                    </li>
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
                                     <div class="tab-pane fade show active" id="Description">
@@ -463,10 +469,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
@@ -476,12 +482,10 @@
                                 @foreach ($categorys as $item)
                                     <li><a href="{{'/collections/'.$item->slug}}">{{$item->name}}</a></li>
                                 @endforeach
-                                
-                               
                             </ul>
                         </div>
                         <!-- Fillter By Price -->
-                        
+
                         <!-- Product sidebar Widget -->
                         <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                             <div class="widget-header position-relative mb-20 pb-10">
@@ -500,8 +504,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                        </div>                        
+
+                        </div>
                     </div>
                 </div>
             </div>

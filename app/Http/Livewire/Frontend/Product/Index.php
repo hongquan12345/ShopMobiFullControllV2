@@ -6,6 +6,8 @@ namespace App\Http\Livewire\FrontEnd\Product;
 use App\Models\Product;
 
 use Livewire\Component;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 
 class Index extends Component
 {
@@ -20,8 +22,11 @@ class Index extends Component
     {
         $this->category = $category;
     }
+
+  
     public function render()
     {
+
         $this->products = Product::where('category_id',$this->category->id)
                             ->when($this->brandInputs,function ($q){
                                     $q->whereIn('brand',$this->brandInputs);

@@ -60,7 +60,7 @@ class FrontEndController extends Controller
             $products = $category->products_in_category()->where('slug',$product_slug)->where('status','0')->first();
              if($products)
              {
-                
+
                 return view('frontend.ProductView',compact('category','products'));
              }else
              {
@@ -73,4 +73,5 @@ class FrontEndController extends Controller
         }
 
     }
+
 }

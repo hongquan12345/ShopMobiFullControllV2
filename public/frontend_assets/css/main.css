@@ -232,8 +232,8 @@ input[type=number]:focus,
 }
 
 .hover-up {
-  -webkit-transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
-  transition: all 0.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  -webkit-transition: all 3.25s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 3.25s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
 
 .hover-up:hover {
@@ -2443,7 +2443,7 @@ label {
 
 .page-header.breadcrumb-wrap {
   padding: 20px;
-  background-color: #f7f8f9;
+ 
 }
 
 .page-header .breadcrumb {
@@ -2760,9 +2760,11 @@ label {
 /*table*/
 table {
   width: 100%;
+  border-radius: 2%;
   margin-bottom: 1.5rem;
   border-collapse: collapse;
   vertical-align: middle;
+
 }
 
 table td, table th {
@@ -4676,8 +4678,8 @@ table .product-thumbnail img {
 }
 
 .shopping-summery tbody tr img {
-  border-radius: 0;
-  max-width: 80px;
+  border-radius: 10;
+  max-width: 120px;
 }
 
 .order_review {
@@ -8460,7 +8462,7 @@ span.fi-rs-apps {
 }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 {
   margin: 0;
@@ -9909,7 +9911,7 @@ span.fi-rs-apps {
 }
 
 .search-style-1 form {
-	width: 75%;	
+	width: 75%;
 }
 .header-info-right a{
     padding-left:20px;
@@ -9946,6 +9948,6 @@ span.fi-rs-apps {
 {
 	.mob-app{
 		padding-left:3%;
-	}  
+	}
 }
 

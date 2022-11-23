@@ -16,6 +16,19 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('./frontend_assets/imgs/theme/favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('frontend_assets/css/main.css')}}">
     <link rel="stylesheet" href="{{asset('frontend_assets/css/custom.css')}}">
+    <!-- AlertifyJS CDN-->
+    <!-- CSS -->
+    <script src="{{ asset('frontend_assets/alertify/js/alertify.min.js')}}"></script>
+
+    {{-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/> --}}
+    <link rel="stylesheet" href="{{asset('frontend_assets/alertify/css/alertify.min.css')}}">
+
+    <!-- Default theme -->
+    <link rel="stylesheet" href="{{asset('frontend_assets/alertify/css/themes/default.min.css')}}">
+
+    {{-- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/> --}}
+    <!-- AlertifyJS CDN-->
+
 </head>
 @livewireStyles
 <body>
@@ -100,7 +113,7 @@
                                 <div class="header-action-2">
                                     {{--whislt list --}}
                                     <div class="header-action-icon-2">
-                                        <a href="shop-wishlist.php">
+                                        <a href="{{ url('/Whistlist') }}">
                                             <img class="svgInject" alt="Surfside Media"
                                                 src="{{asset('frontend_assets/imgs/theme/icons/icon-heart.svg')}}">
                                             <span class="pro-count blue">4</span>
@@ -566,6 +579,22 @@
     <!-- Template  JS -->
     <script src="{{ asset('frontend_assets/js/main.js?v=3.3')}}"></script>
     <script src="{{ asset('frontend_assets/js/shop.js?v=3.3')}}"></script>
+
+    <!-- AlertifyJS CDN-->
+    <!-- JavaScript -->
+    <script src="{{ asset('frontend_assets/alertify/js/alertify.min.js')}}"></script>
+    {{-- <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script> --}}
+    <script>
+        window.addEventListener('message', event => {
+
+
+        alertify.set('notifier','position', 'top-right');
+        alertify.notify(event.detail.text,event.detail.type);
+    });
+    </script>
+
+    <!-- AlertifyJS CDN-->
+
     @livewireScripts
 </body>
 

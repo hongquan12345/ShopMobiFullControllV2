@@ -21,8 +21,7 @@ use App\Http\Controllers\FrontEndController;
 
 Auth::routes();
 
-// Route::get('/',[App\Http\Controllers\FrontEnd\FrontEndController::class,'indexHomePage']);
-// Route::get('/home',[App\Http\Controllers\FrontEnd\FrontEndController::class,'indexHomePage']);
+
 Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->group(function ()
 {
     Route::get('/', 'indexHomePage');
@@ -30,12 +29,11 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
     Route::get('/collections', 'categories');
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'products_show');
-
-
-
 });
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::controller(App\Http\Controllers\FrontEnd\WhistListController::class)->group(function ()
+{
+    Route::get('/Whistlist','index');
+});
 
 
 // ----------------------------------------Route ADMIN PAGE----------------------------------------
@@ -86,9 +84,9 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
         Route::put('/Sliders/{slider_id}', 'update_slider');
         Route::get('/Sliders/{slider_id}/delete', 'destroySlider');
 
-        
+
     });
 
-    
+
 
 });
