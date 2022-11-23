@@ -143,7 +143,7 @@
                                         <ul class="product-meta font-xs color-grey mt-50">
                                             <li class="mb-5">SKU: <a href="#">{{$products->slug}}</a></li>
                                             <li class="mb-5">Tags: <a href="#" rel="tag">{{$products->metal_title}}</a>, </li>
-                                            <li>Availability:<span class="in-stock text-success ml-5">{{$products->quantity}} Items In Stock</span></li>
+                                            <li>Availability:<span class="in-stock text-success ml-5"><a><strong>{{$products->quantity}}</strong> </a>Items In Stock</span></li>
                                         </ul>
                                     </div>
                                     <!-- Detail Info -->
