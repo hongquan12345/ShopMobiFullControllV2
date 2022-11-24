@@ -40,7 +40,7 @@
                                         </div> --}}
                                     </div>
                                     <!-- End Gallery -->
-                                    <div class="social-icons single-share">
+                                    {{-- <div class="social-icons single-share">
                                         <ul class="text-grey-5 d-inline-block">
                                             <li><strong class="mr-10">Share this:</strong></li>
                                             <li class="social-facebook"><a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
@@ -48,7 +48,7 @@
                                             <li class="social-instagram"><a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a></li>
                                             <li class="social-linkedin"><a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a></li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-info">
@@ -59,8 +59,8 @@
                                             </div>
 
                                             <div class="product-rate-cover text-end">
-                                                <div class="label-stock">
-                                                    @if ($products->quantity > 0)
+                                                <div class="label-stock">                                                       
+                                                    @if($products->quantity)                 
                                                         <label  style="font-size: 13px;
                                                         padding: 4px 13px;
                                                         border-radius: 15px;
@@ -73,8 +73,9 @@
                                                         border-radius: 5px;
                                                         color: #fff;
                                                         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
-                                                        float: right;" class="label-stock bg-lg bg-danger"><strong>OUT STOCK</strong></label>
+                                                        float: right;" class="label-stock bg-lg bg-danger"><strong>OUT STOCK</strong></label>                           
                                                     @endif
+                                                  
                                                 </div>
 
                                             </div>
@@ -98,31 +99,49 @@
                                                 <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
                                             </ul>
                                         </div>
-                                        <div class="attr-detail attr-color mb-15">
-                                            <strong class="mr-10">Color</strong>
-                                            <ul class="list-filter color-filter">
-                                                @if ($products->productColors)
-                                                    @foreach ($products->productColors as $prodColor)
-                                                        <li>
-                                                            <a href="#" data-color="">
-                                                                <span class="product-color-{{$prodColor->color->code}}" value="{{$prodColor->id}}"></span>
-                                                            </a></li>
-                                                    @endforeach
-                                                @else
-                                                <h2>nothing</h2>
-                                                @endif
-                                            </ul>
-                                        </div>
-                                        {{-- <div class="attr-detail attr-size">
-                                            <strong class="mr-10">Size</strong>
-                                            <ul class="list-filter size-filter font-small">
-                                                <li><a href="#">S</a></li>
-                                                <li class="active"><a href="#">M</a></li>
-                                                <li><a href="#">L</a></li>
-                                                <li><a href="#">XL</a></li>
-                                                <li><a href="#">XXL</a></li>
-                                            </ul>
-                                        </div> --}}
+                                                                                  
+                                        @if ($products->productColors->count() >0)
+                                            @if($products->productColors)
+                                            <div class="attr-detail attr-color mb-15"> 
+                                                <strong class="mr-10">Color</strong>
+                                                     <ul class="list-filter color-filter">
+                                                        @foreach ($products->productColors as $colorItem)
+                                                            <li>
+                                                                <a type="radio" href=" " data-color="">
+                                                                    <span wire:click="colorSelected({{$colorItem->id}})"
+                                                                    style="background-color:{{$colorItem->color->code}} "
+                                                                    value="{{$colorItem->id}}">
+                                                                    </span>
+                                                                </a>
+                                                            </li>
+                                                        @endforeach 
+                                                    </ul>
+                                            </div>
+                                            @endif
+                                            @if($this->ProdColorSelectQuantity == 'outOfStock')
+                                                <ul class="list-filter size-filter font-small">
+                                                    <li> <label  style="font-size: 13px;
+                                                        padding: 4px 13px;
+                                                        border-radius: 15px;
+                                                        color: #fff;
+                                                        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+                                                        float: right;" class="label-stock bg-lg bg-danger">Hết Hàng Màu Này</li>
+                                                </ul>                                              
+                                            @elseif($this->ProdColorSelectQuantity >0)
+                                                <ul class="list-filter size-filter font-small">
+                                                    <li><label  style="font-size: 13px;
+                                                        padding: 4px 13px;
+                                                        border-radius: 15px;
+                                                        color: #fff;
+                                                        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
+                                                        float: right;" class="label-stock bg-lg bg-success">Còn Hàng Màu Này</li>
+                                                </ul>
+                                            @endif
+                                        @else
+                                                    
+                                            
+                                        @endif
+                                       
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
 
@@ -142,10 +161,15 @@
                                             {{-- Quantity drop --}}
 
                                             <div class="product-extra-link2">
-                                                <button type="submit" class="button button-add-to-cart">Add to cart</button>
+                                                {{-- Add to Cash --}}
+                                                <button type="button" wire:click="addtoCart({{$products->id}})" class="button button-add-to-cart">Add to cart</button>
+                                                {{-- Add to Cash --}}
+
+                                                {{-- Wishlist --}}
                                                 <a aria-label="Add To Wishlist" wire:click="addToWishList({{ $products->id }})"
                                                     class="action-btn " href="#"><i class="fi-rs-heart"></i>
                                                 </a>
+                                                {{-- Wishlist --}}
                                                 <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                             </div>
 
