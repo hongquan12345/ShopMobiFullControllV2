@@ -113,7 +113,7 @@
                                                 @endif
                                             </ul>
                                         </div>
-                                        <div class="attr-detail attr-size">
+                                        {{-- <div class="attr-detail attr-size">
                                             <strong class="mr-10">Size</strong>
                                             <ul class="list-filter size-filter font-small">
                                                 <li><a href="#">S</a></li>
@@ -122,15 +122,25 @@
                                                 <li><a href="#">XL</a></li>
                                                 <li><a href="#">XXL</a></li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
 
+                                            {{-- Quantity drop --}}
                                             <div class="detail-qty border radius">
-                                                <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                <span class="qty-val">1</span>
-                                                <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                <a wire:click="incrementQuantity"  class="qty-up">
+                                                    <i class="fi-rs-angle-small-up"></i>
+                                                </a>
+                                                <span class="qty-val" wire:model="QuantityCount"  value="1">
+                                                    {{$this->QuantityCount}}
+                                                </span>
+
+                                                <a  wire:click="decrementQuantity"  class="qty-down">
+                                                    <i class="fi-rs-angle-small-down"></i>
+                                                </a>
                                             </div>
+                                            {{-- Quantity drop --}}
+
                                             <div class="product-extra-link2">
                                                 <button type="submit" class="button button-add-to-cart">Add to cart</button>
                                                 <a aria-label="Add To Wishlist" wire:click="addToWishList({{ $products->id }})"
