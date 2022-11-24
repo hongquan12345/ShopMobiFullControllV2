@@ -28,6 +28,10 @@ class View extends Component
             }
             else
             {
+                //user firinng event
+                $this->emit('WishlistUpdate');
+              
+                //user firinng event
                 Wishlist::create([
                         'user_id' =>auth()->user()->id,
                         'product_id' =>$productID
@@ -70,7 +74,6 @@ class View extends Component
             'products' => $this->products,
             'category '=> $this->category,
             'categorys'=> $this->categorys,
-
         ]);
     }
 }

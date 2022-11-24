@@ -46,6 +46,7 @@ class Index extends Component
                         'user_id' =>auth()->user()->id,
                         'product_id' =>$productID
                 ]);
+                $this->emit('WishlistUpdate');
                 session()->flash('message','Wishlist Added successfully');
                 $this->dispatchBrowserEvent('message', [
                     'text' => 'Wishlist Added successfully',

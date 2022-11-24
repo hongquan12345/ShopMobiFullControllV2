@@ -114,9 +114,10 @@
                                     {{--whislt list --}}
                                     <div class="header-action-icon-2">
                                         <a href="{{ url('/Whistlist') }}">
+                                        {{-- <a href="#" wire:click="showwishlist()"> --}}
                                             <img class="svgInject" alt="Surfside Media"
                                                 src="{{asset('frontend_assets/imgs/theme/icons/icon-heart.svg')}}">
-                                            <span class="pro-count blue">4</span>
+                                            <span class="pro-count blue"><livewire:frontend.wishlist-count></span>
                                         </a>
                                     </div>
                                     {{--whislt list --}}
@@ -258,7 +259,7 @@
                             <div class="header-action-icon-2">
                                 <a href="shop-wishlist.php">
                                     <img alt="Surfside Media" src="frontend_assets/imgs/theme/icons/icon-heart.svg">
-                                    <span class="pro-count white">4</span>
+                                    <span class="pro-count white">1</span>
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
@@ -437,6 +438,7 @@
             </div>
         </div>
     </div>
+
     @yield('contentHome')
 
     <footer class="main">
