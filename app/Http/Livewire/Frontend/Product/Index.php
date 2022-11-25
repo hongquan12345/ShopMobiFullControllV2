@@ -4,7 +4,6 @@ namespace App\Http\Livewire\FrontEnd\Product;
 
 
 use App\Models\Product;
-
 use Livewire\Component;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
@@ -28,16 +27,14 @@ class Index extends Component
         if(Auth::check())
         {
             //check product aready in wishlist
-            if(Wishlist::where('user_id',auth()->user()->id)->where('product_id',$productID)->exists()) 
+            if(Wishlist::where('user_id',auth()->user()->id)->where('product_id',$productID)->exists())
             {
                 session()->flash('message','Oop!! Already have this product in Wishlist');
                 $this->dispatchBrowserEvent('message', [
                     'text' => 'Oop!! Already have this product in Wishlist',
                     'type'=> 'warning',
                     'status'=> 399
-
                 ]);
-
                 return false;
             }
             else
@@ -52,9 +49,7 @@ class Index extends Component
                     'text' => 'Wishlist Added successfully',
                     'type'=> 'success',
                     'status'=> 400
-
                 ]);
-
             }
         }
         else
@@ -64,7 +59,6 @@ class Index extends Component
                 'text' => 'Hmm ! Please Login to continue',
                 'type'=> 'info',
                 'status'=> 401
-
             ]);
             return false;
         }

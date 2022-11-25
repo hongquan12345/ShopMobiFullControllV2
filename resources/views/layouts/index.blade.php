@@ -68,6 +68,7 @@
                     </div>
                     <div class="col-xl-12 col-lg-12">
                         <div class="header-info header-info-right">
+
                             @auth
                             <ul>
                                 <li><i class="fi-rs-user"></i>{{Auth::user()->name}} /
@@ -83,7 +84,6 @@
                                 <li><i class="fi-rs-user"></i><a href="{{route('login')}}">Log In </a> / <a
                                         {{-- href="{{route('register')}}">Sign Up</a></li> --}}
                                         href="{{url('register')}}">Sign Up</a></li>
-
                                 </ul>
                             @endif
                         </div>
@@ -111,23 +111,28 @@
                             {{--card and whilst list--}}
                             <div class="header-action-right">
                                 <div class="header-action-2">
+                                    {{-- Check Login first show wishlist and cart --}}
+                                    @auth
                                     {{--whislt list --}}
                                     <div class="header-action-icon-2">
-                                        <a href="{{ url('/Whistlist') }}">
+                                        @csrf
+                                        <a  href="{{ url('/Whistlist') }}">
                                         {{-- <a href="#" wire:click="showwishlist()"> --}}
                                             <img class="svgInject" alt="Surfside Media"
                                                 src="{{asset('frontend_assets/imgs/theme/icons/icon-heart.svg')}}">
                                             <span class="pro-count blue"><livewire:frontend.wishlist-count></span>
                                         </a>
+
+
                                     </div>
-                                    {{--whislt list --}}
-                                    {{-- Cart shop --}}
+                                        {{--whislt list --}}
+                                        {{-- Cart shop --}}
                                     <div class="header-action-icon-2">
                                         <a class="mini-cart-icon" href="cart">
                                             <img alt="Surfside Media" src="{{asset('frontend_assets/imgs/theme/icons/icon-cart.svg')}}">
-                                            <span class="pro-count blue">2</span>
+                                            <span class="pro-count blue"><livewire:front-end.cart.cart-count></span>
                                         </a>
-                                        <div class="cart-dropdown-wrap cart-dropdown-hm2">
+                                        {{-- <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                             <ul>
                                                 <li>
                                                     <div class="shopping-cart-img">
@@ -153,9 +158,11 @@
                                                     <a href="checkout">Checkout</a>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
-                                    {{-- Cart shop --}}
+                                        {{-- Cart shop --}}
+                                    @endif
+                                    {{-- Check Login first show wishlist and cart --}}
                                 </div>
                             </div>
                             {{--card and whilst list--}}
@@ -233,6 +240,7 @@
                                     </li> --}}
                                     <li><a href="blog.html">Blog </a></li>
                                     <li><a href="contact.html">Contact</a></li>
+                                    @auth
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                         <ul class="sub-menu">
                                             <li><a href="#">Dashboard </a></li>
@@ -244,6 +252,7 @@
                                             <li><a href="#">Logout </a></li>
                                         </ul>
                                     </li>
+                                    @endif
                                 </ul>
                             </nav>
                         </div>

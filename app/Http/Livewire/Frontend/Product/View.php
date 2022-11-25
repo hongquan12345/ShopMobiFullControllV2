@@ -61,14 +61,14 @@ class View extends Component
         if($this->ProdColorSelectQuantity == 0)
         {
             $this->ProdColorSelectQuantity = 'outOfStock';
-        }   
+        }
     }
     public function addtoCart(int $product_id)
     {
         //check login
         if (Auth::check())
-        {  
-            if ($this->products->where('id', $product_id)->where('status','0')->exists()) 
+        {
+            if ($this->products->where('id', $product_id)->where('status','0')->exists())
             {   //check for Product have Color Quantity and add tp cart
                 if($this->products->productColors()->count() > 1)
                 {
@@ -92,26 +92,27 @@ class View extends Component
                                 {
                                     if($productColor->quantity >= $this->QuantityCount)
                                     {
-                                    
+
                                         Cart::create([
                                             'user_id' => auth()->user()->id,
                                             'product_id' => $product_id,
                                             'product_color_id'=> $this->productColorItem,
                                             'quantity' => $this->QuantityCount
                                         ]);
+                                        $this->emit('CardAddedorUpdate');
                                         $this->dispatchBrowserEvent('message', [
                                             'text' => 'Đã add Sản Phẩm Vào Giỏ Hàng',
                                             'type' => 'success',
                                             'status' => 200
                                         ]);
-                                    } 
+                                    }
                                     else
-                                    {      
+                                    {
                                         $this->dispatchBrowserEvent('message', [
                                             'text' => 'Chỉ còn '.$productColor->quantity.' sản phẩm sẳn trong kho',
                                             'type' => 'warning',
                                             'status' => 404
-                                        ]);   
+                                        ]);
                                     }
                                 }
                                 else
@@ -146,16 +147,17 @@ class View extends Component
                     }
                     else
                     {
-                        if ($this->products->quantity > 0) 
-                        {   
+                        if ($this->products->quantity > 0)
+                        {
                             if($this->products->quantity > $this->QuantityCount)
                                 {
                                     Cart::create([
                                         'user_id' => auth()->user()->id,
                                         'product_id' => $product_id,
-                                        
+
                                         'quantity' => $this->QuantityCount
                                     ]);
+                                    $this->emit('CardAddedorUpdate');
                                     $this->dispatchBrowserEvent('message', [
                                         'text' => 'Đã add Sản Phẩm Vào Giỏ Hàng !',
                                         'type' => 'success',
@@ -164,15 +166,15 @@ class View extends Component
                                 }
                             else
                             {
-                                    
+
                                 $this->dispatchBrowserEvent('message', [
                                     'text' => 'Chỉ còn '.$this->products->quantity.' sản phẩm sẳn trong kho',
                                     'type' => 'success',
                                     'status' => 222
-                                ]);   
+                                ]);
                             }
                         }
-                        else 
+                        else
                         {
                             $this->dispatchBrowserEvent('message', [
                             'text' => 'Hết Hàng',
@@ -191,8 +193,8 @@ class View extends Component
                 'status' => 401 ]);
                 return false;
             }
-        } 
-        else 
+        }
+        else
         {
             session()->flash('message', 'Hmm ! Please Login to continue');
             $this->dispatchBrowserEvent('message', [
