@@ -30,10 +30,17 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'products_show');
 });
-Route::controller(App\Http\Controllers\FrontEnd\WhistListController::class)->group(function ()
+Route::middleware(['auth'])->group(function()
 {
-    Route::get('/Whistlist','index');
+    Route::get('/Whistlist',[App\Http\Controllers\FrontEnd\WhistListController::class,'index']);
+    Route::get('/Cart',[App\Http\Controllers\FrontEnd\CartController::class,'index']);
+
+
 });
+// Route::controller(App\Http\Controllers\FrontEnd\WhistListController::class)->group(function ()
+// {
+//     Route::get('/Whistlist','index');
+// });
 
 
 // ----------------------------------------Route ADMIN PAGE----------------------------------------

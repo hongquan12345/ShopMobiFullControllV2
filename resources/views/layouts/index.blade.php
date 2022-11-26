@@ -128,7 +128,7 @@
                                         {{--whislt list --}}
                                         {{-- Cart shop --}}
                                     <div class="header-action-icon-2">
-                                        <a class="mini-cart-icon" href="cart">
+                                        <a class="mini-cart-icon" href="{{ url('/Cart') }}">
                                             <img alt="Surfside Media" src="{{asset('frontend_assets/imgs/theme/icons/icon-cart.svg')}}">
                                             <span class="pro-count blue"><livewire:front-end.cart.cart-count></span>
                                         </a>
