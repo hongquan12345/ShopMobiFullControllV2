@@ -7,8 +7,9 @@ use Livewire\Component;
 
 class CartShow extends Component
 {
-    public $cart;
+    public $cart, $totalPrice = 0 ;
 
+    
     public function incrementQuantity(int $cartID)
     {
             $cartData = Cart::where('id',$cartID)->where('user_id',auth()->user()->id)->first();
@@ -152,6 +153,30 @@ class CartShow extends Component
                     'status' => 399
                 ]);
             }
+    }
+    public function removeCartItem(int $cartID)
+    {
+        
+       $CartRemoveData =  Cart::where('user_id',auth()->user()->id)
+            ->where('id',$cartID)
+            ->delete();
+            if($CartRemoveData)
+            {
+                $this->emit('CardAddedorUpdate');
+                $this->dispatchBrowserEvent('message', [
+                    'text' => 'Xóa sản phẩm trong giỏ hàng thành công',
+                    'type' => 'success',
+                    'status' => 399
+                ]);
+            }else{
+                $this->emit('CardAddedorUpdate');
+                $this->dispatchBrowserEvent('message', [
+                    'text' => 'Xóa sản phẩm trong giỏ hàng thất bại',
+                    'type' => 'error',
+                    'status' => 399
+                ]);
+            }
+            
     }
     public function render()
     {

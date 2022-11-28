@@ -25,6 +25,7 @@
                                         <th scope="col">Color</th>
                                         <th scope="col">Price</th>
                                         <th scope="col">Quantity</th>
+                                        <th scope="col">Total</th>
                                         <th scope="col">Action</th>
 
                                     </tr>
@@ -93,6 +94,14 @@
                                     </div>
                                     {{-- Quantity drop --}}
                                 </td>
+                                <td class="total" data-title="Price">
+                                    <span>
+                                        {{$cartItem->product_in_Cart->selling_price * $cartItem->quantity}}
+                                        @php
+                                            $totalPrice += $cartItem->product_in_Cart->selling_price * $cartItem->quantity
+                                        @endphp
+                                    </span>
+                                </td>
 
 
                                 <td class="action" data-title="Remove">
@@ -102,7 +111,11 @@
                                     color: #fff;
                                     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
                                     float: center;" class="label-stock bg-lg bg-danger"
-                                    href="#"  type="btn" class="text-muted"><i class="fi-rs-trash"></i>
+                                    href="#"  type="btn" class="text-muted" 
+                                    wire:loading.attr="disabled" 
+                                    wire:click="removeCartItem({{ $cartItem->id}})">
+                                        <i class="fi-rs-trash" wire:loading.remove:target="removeCartItem({{ $cartItem->id}})" >: Remove</i>
+                                        <i class="fi-rs-trash" wire:loading wire:target="removeCartItem({{ $cartItem->id}})" >: Removing</i>
                                     </a>
                                 </td>
                                 @endif
@@ -130,14 +143,17 @@
                                 </tbody>
                             </table>
                         </div>
-                        {{-- <div class="cart-action text-end">
-                            <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a>
-                            <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
-                        </div>
+                        <div class="cart-action text-end">
+                            {{-- <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a> --}}
+                            <a href="{{ url('collections/')}}"  class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                            {{-- <a  class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a> --}}
+                           
+                           
+                        </div> 
                         <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                         <div class="row mb-50">
                             <div class="col-lg-6 col-md-12">
-                                <div class="heading_s1 mb-3">
+                                {{-- <div class="heading_s1 mb-3">
                                     <h4>Calculate Shipping</h4>
                                 </div>
                                 <p class="mt-15 mb-30">Flat rate: <span class="font-xl text-brand fw-900">5%</span></p>
@@ -408,8 +424,8 @@
                                             <button class="btn  btn-sm"><i class="fi-rs-shuffle mr-10"></i>Update</button>
                                         </div>
                                     </div>
-                                </form>
-                                <div class="mb-30 mt-50">
+                                </form> --}}
+                                {{-- <div class="mb-30 mt-50">
                                     <div class="heading_s1 mb-3">
                                         <h4>Apply Coupon</h4>
                                     </div>
@@ -429,7 +445,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             <div class="col-lg-6 col-md-12">
                                 <div class="border p-md-4 p-30 border-radius cart-totals">
@@ -440,16 +456,16 @@
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <td class="cart_total_label">Cart Subtotal</td>
-                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">$240.00</span></td>
+                                                    <td class="cart_total_label">Tổng Tiền Hàng</td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">{{ $totalPrice}} $</span></td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="cart_total_label">Shipping</td>
+                                                    <td class="cart_total_label">Hình thức vận chuyển :</td>
                                                     <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="cart_total_label">Total</td>
-                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">$240.00</span></strong></td>
+                                                    <td class="cart_total_label">Tổng chi phí</td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">{{ $totalPrice}}$</span></strong></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -457,7 +473,7 @@
                                     <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
                                 </div>
                             </div>
-                        </div> --}}
+                        </div>
                     </div>
                 </div>
             </div>
