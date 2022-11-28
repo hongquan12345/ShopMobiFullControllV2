@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\FrontEnd\CartController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+
+use App\Http\Controllers\FrontEnd\CheckOutController;
+use App\Http\Controllers\FrontEnd\WhistListController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +38,10 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
 });
 Route::middleware(['auth'])->group(function()
 {
-    Route::get('/Whistlist',[App\Http\Controllers\FrontEnd\WhistListController::class,'index']);
-    Route::get('/Cart',[App\Http\Controllers\FrontEnd\CartController::class,'index']);
+    Route::get('/Whistlist',[WhistListController::class,'index']);
+    Route::get('/Cart',[CartController::class,'index']);
+    Route::get('/CheckOut',[CheckOutController::class,'index']);
+
 
 
 });
@@ -47,9 +55,9 @@ Route::middleware(['auth'])->group(function()
 Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
 {
     //Dashboard route
-    Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
+    Route::get('dashboard', [DashboardController::class, 'index']);
     //Admin Category route
-    Route::controller(App\Http\Controllers\Admin\CategoryController::class)->group(function () {
+    Route::controller(CategoryController::class)->group(function () {
         Route::get('/Category', 'index');
         Route::post('/Category', 'store');
         Route::get('/Category/create', 'create');
