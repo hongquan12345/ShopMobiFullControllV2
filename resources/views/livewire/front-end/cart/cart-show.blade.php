@@ -12,7 +12,7 @@
         <section class="mt-50 mb-50">
 
             <div class="container">
-                <h1>Wish List</h1>
+                <h1>Cart list</h1>
                 <br>
                 <div class="row">
                     <div class="col-12">
@@ -46,37 +46,53 @@
                                         </a>
                                     </h5>
                                 </td>
-                                 <td class="product-des product-name">
+                                 <td class="product-des product-color">
                                     <h5 class="product-name">
                                         @if($cartItem->productColor_in_Cart)
-
                                         <a href="{{ url('collections/'.$cartItem->product_in_Cart->category->slug.'/'.$cartItem->product_in_Cart->slug)}}">
                                            <span > {{ $cartItem->productColor_in_Cart->Color->name}}</span>
                                         </a>
                                         @else
-                                            <a href="{{ url('collections/'.$cartItem->product_in_Cart->category->slug.'/'.$cartItem->product_in_Cart->slug)}}">Product dont have Color Option</a>
+                                            <a href="{{ url('collections/'.$cartItem->product_in_Cart->category->slug.'/'.$cartItem->product_in_Cart->slug)}}">Sản phẩm chỉ có màu mặc định</a>
                                         @endif
-
                                     </h5>
                                 </td>
+
                                 <td class="price" data-title="Price">
                                         <span>
                                             {{ $cartItem->product_in_Cart->selling_price}}
                                         </span>
                                 </td>
 
+                               <td class="text-right" data-title="Quantity">
+                                <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                <div class="detail-extralink">
 
 
+                                    {{-- Quantity drop --}}
+                                    <div class="detail-qty border radius"
+                                        style="max-width: 77px !important;
+                                        padding: 15px 9px !important;
+                                        position: relative !important;
+                                        width: 100% !important;
+                                        border-radius: 14px !important;
+                                        align-items: center !important;
+                                        background-color: rgb(236, 234, 234)">
 
+                                        <a class="qty-up" wire:loading.attr="disabled" wire:click="incrementQuantity({{ $cartItem->id }})" >
+                                            <i class="fi-rs-angle-small-up"></i>
+                                        </a>
 
-                                <td class="text-right" data-title="Quantity">
-                                    <span>
-                                        {{ $cartItem->quantity}}
-                                    </span>
+                                        <span class="qty-val" wire:model="QuantityCount"  value="1">
+                                            <strong>{{ $cartItem->quantity}}</strong>
+                                        </span>
+
+                                        <a  class="qty-down" wire:loading.attr="disabled" wire:click="decrementQuantity({{ $cartItem->id }})" >
+                                            <i class="fi-rs-angle-small-down"></i>
+                                        </a>
+                                    </div>
+                                    {{-- Quantity drop --}}
                                 </td>
-
-
-
 
 
                                 <td class="action" data-title="Remove">

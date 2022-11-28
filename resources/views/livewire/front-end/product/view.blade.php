@@ -59,8 +59,8 @@
                                             </div>
 
                                             <div class="product-rate-cover text-end">
-                                                <div class="label-stock">                                                       
-                                                    @if($products->quantity)                 
+                                                <div class="label-stock">
+                                                    @if($products->quantity)
                                                         <label  style="font-size: 13px;
                                                         padding: 4px 13px;
                                                         border-radius: 15px;
@@ -73,9 +73,9 @@
                                                         border-radius: 5px;
                                                         color: #fff;
                                                         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
-                                                        float: right;" class="label-stock bg-lg bg-danger"><strong>OUT STOCK</strong></label>                           
+                                                        float: right;" class="label-stock bg-lg bg-danger"><strong>OUT STOCK</strong></label>
                                                     @endif
-                                                  
+
                                                 </div>
 
                                             </div>
@@ -99,10 +99,10 @@
                                                 <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
                                             </ul>
                                         </div>
-                                                                                  
+
                                         @if ($products->productColors->count() >0)
                                             @if($products->productColors)
-                                            <div class="attr-detail attr-color mb-15"> 
+                                            <div class="attr-detail attr-color mb-15">
                                                 <strong class="mr-10">Color</strong>
                                                      <ul class="list-filter color-filter">
                                                         @foreach ($products->productColors as $colorItem)
@@ -114,7 +114,7 @@
                                                                     </span>
                                                                 </a>
                                                             </li>
-                                                        @endforeach 
+                                                        @endforeach
                                                     </ul>
                                             </div>
                                             @endif
@@ -126,7 +126,7 @@
                                                         color: #fff;
                                                         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
                                                         float: right;" class="label-stock bg-lg bg-danger">Hết Hàng Màu Này</li>
-                                                </ul>                                              
+                                                </ul>
                                             @elseif($this->ProdColorSelectQuantity >0)
                                                 <ul class="list-filter size-filter font-small">
                                                     <li><label  style="font-size: 13px;
@@ -138,15 +138,15 @@
                                                 </ul>
                                             @endif
                                         @else
-                                                    
-                                            
+
+
                                         @endif
-                                       
+
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                         <div class="detail-extralink">
 
                                             {{-- Quantity drop --}}
-                                            <div class="detail-qty border radius">
+                                            <div >
                                                 <a wire:click="incrementQuantity"  class="qty-up">
                                                     <i class="fi-rs-angle-small-up"></i>
                                                 </a>
@@ -174,6 +174,7 @@
                                             </div>
 
                                         </div>
+
                                         <ul class="product-meta font-xs color-grey mt-50">
                                             <li class="mb-5">SKU: <a href="#">{{$products->slug}}</a></li>
                                             <li class="mb-5">Tags: <a href="#" rel="tag">{{$products->metal_title}}</a>, </li>
