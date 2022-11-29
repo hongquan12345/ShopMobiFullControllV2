@@ -1,6 +1,5 @@
-<div>
-    <main class="main">
-        <div class="page-header breadcrumb-wrap">
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
             <div class="container">
                 <div class="breadcrumb">
                     <a href="index.html" rel="nofollow">Home</a>
@@ -8,7 +7,8 @@
                     <span></span><a href="{{$products->category->name}}" rel="nofollow">{{$products->name}}</a>
                 </div>
             </div>
-        </div>
+    </div>
+
         <section class="mt-50 mb-50">
             <div class="container">
                 @if (session()->has('message'))
@@ -23,21 +23,27 @@
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-gallery">
                                         <span class="zoom-icon"><i class="fi-rs-search"></i></span>
-                                        <!-- MAIN SLIDES -->
-                                        <div class="product-image-slider">
-                                            @if ($products->productImage)
-                                            <figure class="border-radius-10">
-                                                <img src="{{asset($products->productImage[0]->image)}}" alt="product image">
-                                            </figure>
-                                            @else
-                                            <h1>no hình</h1>
-                                            @endif
-
+                                       
+                                        <div class="product-image-slider">                                            
+                                                @foreach ($products->productImage as $pimages) 
+                                                @if ($pimages->count()) 
+                                                <figure class="border-radius-10">
+                                                    <img src="{{asset($pimages->image)}}" alt="product image">              
+                                                </figure>                                                  
+                                                @else
+                                                    <figure class="border-radius-10">
+                                                        <img src="{{asset('no_image_product.png')}}" alt="product image">              
+                                                    </figure>
+                                                @endif
+                                                @endforeach
                                         </div>
                                         <!-- THUMBNAILS -->
-                                        {{-- <div class="slider-nav-thumbnails pl-15 pr-15">
-                                            <div><img src="{{asset('/frontend_assets/imgs/shop/thumbnail-4.jpg')}}"alt="product image"></div>
-                                        </div> --}}
+                                        <div class="slider-nav-thumbnails pl-15 pr-15">
+                                            @foreach ($products->productImage as $pimages)
+                                            <div><img src="{{asset($pimages->image)}}" alt="product image"></div>
+                                        
+                                            @endforeach
+                                        </div>
                                     </div>
                                     <!-- End Gallery -->
                                     {{-- <div class="social-icons single-share">
@@ -85,7 +91,12 @@
                                             <div class="product-price primary-color float-left">
                                                 <ins><span class="text-brand">{{$products->selling_price}}$</span></ins>
                                                 <ins><span class="old-price font-md ml-15">{{$products->original_price}}$</span></ins>
-                                                <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                                @php
+                                                    $sell =0;
+                                                   $sell = 100 - ($products->selling_price/$products->original_price *100) ;
+                                                   $ceiled = ceil($sell)
+                                                @endphp
+                                                <span class="save-price  font-md color3 ml-15">{{$ceiled}}% Off</span>
                                             </div>
                                         </div>
                                         <div class="bt-1 border-color-1 mt-15 mb-15"></div>
@@ -546,4 +557,4 @@
             </div>
         </section>
     </main>
-</div>
+

@@ -5,12 +5,13 @@ namespace App\Http\Livewire\FrontEnd\Product;
 use App\Models\Cart;
 use Livewire\Component;
 use App\Models\Category;
+use App\Models\ProductImage;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 
 class View extends Component
 {
-    public $products, $category,$ProdColorSelectQuantity, $QuantityCount = 1,$productColorItem;
+    public  $products, $category,$ProdColorSelectQuantity, $QuantityCount = 1,$productColorItem;
     public function addToWishList($productID)
     {
         if (Auth::check()) {

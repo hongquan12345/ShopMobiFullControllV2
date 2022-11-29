@@ -9,8 +9,5 @@
 {{ $products->metal_description }}
 @endsection
 @section('contentHome')
-
         <livewire:front-end.product.view :category="$category" :products="$products" />
-
-
 @endsection
