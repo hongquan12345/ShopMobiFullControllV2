@@ -187,7 +187,7 @@
                         </div>
                         <div class="tab-pane fade border p-3" id="color-tab-pane" role="tabpanel" tabindex="0">
                             <div class="md-3">
-                                <h4>Add Product Color</h4>
+                                <h4>EDIT Product Color</h4>
                                 <label for="">Select CRUD Color</label>
                                 <hr/>
                                 <div class="row">
@@ -253,7 +253,7 @@
         </div>
     </div>
 
-    
+
 @endsection
 
 @section('scripts')

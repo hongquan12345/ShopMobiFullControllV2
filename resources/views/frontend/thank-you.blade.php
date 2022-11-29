@@ -8,8 +8,12 @@
             <div class="row">
                 <div class="p-4 shadow bg-white">
                     <div class="col-md-12 text-center">
-                        <h2><img src="{{asset('/frontend_assets/imgs/logo/thank_you_for_shopping.jpg')}}" alt="Logo"></h2></br>
-                        <h4>Thank You for Shopping with QTV Shop</h4></br>
+                        @if (session('message'))
+                            <h5 class="alert alert-success">{{ session('message')}}</h5>
+                        @endif
+
+                        <h2><img src="{{asset('/frontend_assets/imgs/logo/thank_you_for_shopping.png')}}"  alt="Logo"></h2></br>
+                        <h4>Cảm ơn bạn đã mua hàng tại QTV Shop</h4></br>
                         <a href="{{ url('/collections')}}" class="btn btn-warning">Shop now</a>
                     </div>
                 </div>

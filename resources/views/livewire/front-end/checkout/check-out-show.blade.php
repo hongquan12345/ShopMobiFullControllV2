@@ -25,47 +25,51 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label>Full Name</label>
-                                <input type="text" wire:model="full_name" class="form-control" placeholder="Enter Full Name" />
+                                <input type="text" wire:model.defer="full_name" class="form-control" placeholder="Enter Full Name" />
                                 @error('full_name') <small class="text-danger">{{ $message }}</small>@enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Phone Number</label>
-                                <input type="number" wire:model="phone" class="form-control" placeholder="Enter Phone Number" />
+                                <input type="number" wire:model.defer="phone" class="form-control" placeholder="Enter Phone Number" />
                                 @error('phone') <small class="text-danger">{{ $message }}</small>@enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Email Address</label>
-                                <input type="email" wire:model="email" class="form-control" placeholder="Enter Email Address" />
+                                <input type="email" wire:model.defer="email" class="form-control" placeholder="Enter Email Address" />
                                 @error('email') <small class="text-danger">{{ $message }}</small>@enderror
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label>Pin-code (Zip-code)</label>
-                                <input type="number" wire:model="pin_code" class="form-control" placeholder="Enter Pin-code" />
+                                <input type="number" wire:model.defer="pin_code" class="form-control" placeholder="Enter Pin-code" />
                                 @error('pin_code') <small class="text-danger">{{ $message }}</small>@enderror
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>Full Address</label>
-                                <textarea wire:model="address" class="form-control" rows="2"></textarea>
+                                <textarea wire:model.defer="address" class="form-control" rows="2"></textarea>
                                 @error('address') <small class="text-danger">{{ $message }}</small>@enderror
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label>Chọn hình thức thanh toán: </label>
                                 <div class="d-md-flex align-items-start">
                                     <div class="nav col-md-3 flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                        <button class="nav-link active fw-bold" id="cashOnDeliveryTab-tab" data-bs-toggle="pill" data-bs-target="#cashOnDeliveryTab" type="button" role="tab" aria-controls="cashOnDeliveryTab" aria-selected="true">Thanh toán khi nhận hàng :</button>
-                                        <button class="nav-link fw-bold" id="onlinePayment-tab" data-bs-toggle="pill" data-bs-target="#onlinePayment" type="button" role="tab" aria-controls="onlinePayment" aria-selected="false">Thanh toán Online :</button>
+                                        <button wire:loading.attr="disabled" class="nav-link active fw-bold" id="cashOnDeliveryTab-tab" data-bs-toggle="pill" data-bs-target="#cashOnDeliveryTab" type="button" role="tab" aria-controls="cashOnDeliveryTab" aria-selected="true">Thanh toán khi nhận hàng :</button>
+                                        <button wire:loading.attr="disabled" class="nav-link fw-bold" id="onlinePayment-tab" data-bs-toggle="pill" data-bs-target="#onlinePayment" type="button" role="tab" aria-controls="onlinePayment" aria-selected="false">Thanh toán Online :</button>
                                     </div>
                                     <div class="tab-content col-md-9" id="v-pills-tabContent">
                                         <div class="tab-pane active show fade" id="cashOnDeliveryTab" role="tabpanel" aria-labelledby="cashOnDeliveryTab-tab" tabindex="0">
                                             <h6>Thanh toán khi nhận hàng :</h6>
                                             <hr/>
-                                            <button type="button" wire:click="codOrder" class="btn btn-primary">Lập hóa đơn (Thanh toán khi nhận hàng)</button>
+                                            <button type="button" wire:loading.attr="disabled" wire:click="codOrder" class="btn btn-primary">
+                                                <span wire:loading.remove wire:target="codOrder">Lập hóa đơn (Thanh toán khi nhận hàng)</span>
+                                                <span wire:loading.delay.long>Đang Lập hóa đơn (Thanh toán khi nhận hàng)</span>
+
+                                            </button>
 
                                         </div>
                                         <div class="tab-pane fade" id="onlinePayment" role="tabpanel" aria-labelledby="onlinePayment-tab" tabindex="0">
                                             <h6>Thanh toán Online :</h6>
                                             <hr/>
-                                            <button type="button" wire:click="codOrder" class="btn btn-warning">Thanh toán ngay (Thanh toán Online)</button>
+                                            <button type="button" wire:loading.attr="disabled"  class="btn btn-warning">Thanh toán ngay (Thanh toán Online)</button>
                                         </div>
                                     </div>
                                 </div>

@@ -51,9 +51,17 @@ class CheckOutShow extends Component
                 'quantity'=>$cartITEM->quantity,
                 'price'=>$cartITEM->product_in_Cart->selling_price,
             ]);
+            // $this->totalProductAmount += $cartITEM->product_in_Cart->selling_price * $cartITEM->quantity;
+            if($cartITEM->product_color_id != NULL)
+            {
+                $cartITEM->productColor_in_Cart()->where('id',$cartITEM->product_color_id)->decrement('quantity',$cartITEM->quantity);
+                $cartITEM->product_in_Cart()->where('id',$cartITEM->product_id)->decrement('quantity',$cartITEM->quantity);
 
-            $this->totalProductAmount += $cartITEM->product_in_Cart->selling_price * $cartITEM->quantity;
+            }else
+            {
+                $cartITEM->product_in_Cart()->where('id',$cartITEM->product_id)->decrement('quantity',$cartITEM->quantity);
 
+            }
         }
 
         return $order;
@@ -67,7 +75,7 @@ class CheckOutShow extends Component
         if($codOrder)
         {
             Cart::where('user_id',auth()->user()->id)->delete();
-
+            session()->flash('message','Đặt Hàng Thành Công');
             $this->dispatchBrowserEvent('message', [
                 'text' => 'Order Place success',
                 'type' => 'success',
@@ -88,10 +96,11 @@ class CheckOutShow extends Component
 
     public function totalProductAmount()
     {
+        $this->totalProductAmount = 0;
         $this->carts = Cart::where('user_id', auth()->user()->id)->get();
         foreach ($this->carts as $cartITEM)
         {
-            $this->totalProductAmount = $cartITEM->product_in_Cart->selling_price * $cartITEM->quantity;
+            $this->totalProductAmount += $cartITEM->product_in_Cart->selling_price * $cartITEM->quantity;
             // $this->totalProductAmount += $cartITEM->product_in_Cart->selling_price * $cartITEM->quantity;
         }
         return $this->totalProductAmount;
