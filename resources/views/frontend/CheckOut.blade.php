@@ -1,5 +1,5 @@
 @extends('layouts.index')
-@section('title', 'Cart List')
+@section('title', 'CheckOutList')
 
 @section('contentHome')
 

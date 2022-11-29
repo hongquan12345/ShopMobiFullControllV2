@@ -45,6 +45,8 @@ Route::middleware(['auth'])->group(function()
 
 
 });
+    Route::get('/thank-you',[App\Http\Controllers\FrontEnd\FrontEndController::class, 'thankyou']);
+
 // Route::controller(App\Http\Controllers\FrontEnd\WhistListController::class)->group(function ()
 // {
 //     Route::get('/Whistlist','index');
