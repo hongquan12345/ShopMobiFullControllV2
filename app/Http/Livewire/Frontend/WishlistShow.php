@@ -8,7 +8,6 @@ use Livewire\Component;
 
 class WishlistShow extends Component
 {
-    
     public function removeWishlistItem(int $iDwish)
     {
         Wishlist::where('user_id',auth()->user()->id)->where('id',$iDwish)->delete();
@@ -28,7 +27,7 @@ class WishlistShow extends Component
         if(Auth::check())
         {
             $wishlist = Wishlist::where('user_id',auth()->user()->id)->get();
-            return view('livewire.front-end.wishlist-show',[
+            return view('livewire.front-end.wishlist.wishlist-show',[
                 'wishlist'=>$wishlist
             ]);
         }else 
@@ -43,12 +42,9 @@ class WishlistShow extends Component
     }
     public function render()
     {
-     
-            $wishlist = Wishlist::where('user_id',auth()->user()->id)->get();
-            return view('livewire.front-end.wishlist-show',[
-                'wishlist'=>$wishlist
-            ]);
-        
-        
+        $wishlist = Wishlist::where('user_id',auth()->user()->id)->get();
+        return view('livewire.front-end.wishlist.wishlist-show',[
+            'wishlist'=>$wishlist
+        ]);   
     }
 }

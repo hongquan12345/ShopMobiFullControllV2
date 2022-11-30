@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 
 use App\Http\Controllers\FrontEnd\CheckOutController;
+use App\Http\Controllers\FrontEnd\OrderController;
 use App\Http\Controllers\FrontEnd\WhistListController;
 
 /*
@@ -41,7 +42,9 @@ Route::middleware(['auth'])->group(function()
     Route::get('/Whistlist',[WhistListController::class,'index']);
     Route::get('/Cart',[CartController::class,'index']);
     Route::get('/CheckOut',[CheckOutController::class,'index']);
-    Route::get('/MOMO_PAYMENT',[CheckOutController::class,'MOMO_PAYMENT']);
+    Route::get('/Orders',[OrderController::class,'index']);
+    Route::get('/Orders/{orderID}',[OrderController::class,'showOrderID']);
+
 
 
 

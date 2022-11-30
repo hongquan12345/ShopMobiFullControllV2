@@ -125,7 +125,7 @@ class CheckOutShow extends Component
         $orderInfo = "Thanh toán qua MoMo";
         $amount = $this->totalProductAmount;
         $orderId = time() . "";
-        $redirectUrl = "http://127.0.0.1:8000/CheckOut";
+        $redirectUrl = "http://127.0.0.1:8000/thank-you";
         $ipnUrl = "http://127.0.0.1:8000/CheckOut";
         $extraData = "";
         $requestId = time() . "";
@@ -178,7 +178,7 @@ class CheckOutShow extends Component
         $orderInfo = "Thanh toán qua MoMo";
         $amount = $this->totalProductAmount;
         $orderId = time() . "";
-        $redirectUrl = "http://127.0.0.1:8000/CheckOut";
+        $redirectUrl = "http://127.0.0.1:8000/thank-you";
         $ipnUrl = "http://127.0.0.1:8000/CheckOut";
         $extraData = "";
         $requestId = time() . "";
@@ -188,8 +188,8 @@ class CheckOutShow extends Component
         $rawHash = "accessKey=" . $accessKey . "&amount=" . $amount . "&extraData=" . $extraData . "&ipnUrl=" . $ipnUrl . "&orderId=" . $orderId . "&orderInfo=" . $orderInfo . "&partnerCode=" . $partnerCode . "&redirectUrl=" . $redirectUrl . "&requestId=" . $requestId . "&requestType=" . $requestType;
         $signature = hash_hmac("sha256", $rawHash, $secretKey);
         $data = array('partnerCode' => $partnerCode,
-            'partnerName' => "Test",
-            "storeId" => "MomoTestStore",
+            'partnerName' => "QUANKZ",
+            "storeId" => "QTV STORE",
             'requestId' => $requestId,
             'amount' => $amount,
             'orderId' => $orderId,
@@ -209,7 +209,13 @@ class CheckOutShow extends Component
     }
     public function onlOrderWithVNPAY()
     {
-        
+        $this->payment_mode ='Cash on Online WITH VNPAY';
+        $codOrder = $this->placeOrder();
+        if($codOrder)
+            {
+                 Cart::where('user_id',auth()->user()->id)->delete();
+
+            }
         session(['url_prev' => url()->previous()]);
         $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY 
         $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật

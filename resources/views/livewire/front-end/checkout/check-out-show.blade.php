@@ -73,12 +73,12 @@
                                             <hr/>
                                          
                                             <button style="background-color: rgb(193, 23, 124) " type="button" wire:loading.attr="disabled" wire:click="onlOrderwithATM" class="btn btn-primary">
-                                                <span wire:target="onlOrderwithATM">Thanh toán MOMO qua ATM</span>
+                                                <span wire:target="onlOrderwithATM">Thanh toán MOMO ATM</span>
                                             </button>
                                             <button style="background-color: rgb(193, 23, 124) " type="button" wire:loading.attr="disabled" wire:click="onlOrderwithQR" class="btn btn-primary">
-                                                <span wire:target="onlOrderwithQR">Thanh toán MOMO qua QRC</span>
+                                                <span wire:target="onlOrderwithQR">Thanh toán MOMO QRC</span>
                                             </button>
-                                            <button style="background-color: rgb(193, 23, 124) " type="button" wire:loading.attr="disabled" wire:click="onlOrderWithVNPAY" class="btn btn-primary">
+                                            <button style="background: linear-gradient(46.26deg,#005baa,#009edb 96.59%)" type="button" wire:loading.attr="disabled" wire:click="onlOrderWithVNPAY" class="btn btn-primary">
                                                 <span wire:target="onlOrderwithQR">Thanh toán VNPAY</span>
                                             </button>        
                                         </div>

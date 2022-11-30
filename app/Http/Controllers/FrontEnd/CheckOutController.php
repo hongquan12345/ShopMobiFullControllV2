@@ -12,12 +12,4 @@ class CheckOutController extends Controller
         return view('frontend.CheckOut');
     }
 
-
-
-
-    public function MOMO_PAYMENT()
-    {
-        return view('frontend.MOMO_PAYMENT');
-    }
-
 }

@@ -437,6 +437,7 @@ i[class^="fi-rs-"]:before, i[class*=" fi-rs-"]:before, span[class^="fi-rs-"]:bef
 .fi-rs-fingerprint:before {
     content: "\f18b";
 }
+
 .fi-rs-flag:before {
     content: "\f18c";
 }

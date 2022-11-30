@@ -243,13 +243,7 @@
                                     @auth
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                         <ul class="sub-menu">
-                                            <li><a href="#">Dashboard </a></li>
-                                            <li><a href="#">Products </a></li>
-                                            <li><a href="#">Categories </a></li>
-                                            <li><a href="#">Coupons </a></li>
-                                            <li><a href="#">Orders </a></li>
-                                            <li><a href="#">Customers </a></li>
-                                            <li><a href="#">Logout </a></li>
+                                            <li><a href="{{url('/Orders/')}}">My Order</a></li>                                          
                                         </ul>
                                     </li>
                                     @endif

@@ -27,7 +27,7 @@ class WishlistCount extends Component
     public function render()
     {
         $this->wishlistCount = $this->checkwishlistCount();
-        return view('livewire.front-end.wishlist-count',[
+        return view('livewire.front-end.wishlist.wishlist-count',[
             'wishlistCount'=> $this->wishlistCount
         ]);
     }
