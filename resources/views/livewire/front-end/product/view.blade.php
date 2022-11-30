@@ -11,40 +11,36 @@
 
         <section class="mt-50 mb-50">
             <div class="container">
-                @if (session()->has('message'))
+                {{-- @if (session()->has('message'))
                     <div class="alert alert-success">
                         {{ session('message') }}
                     </div>
-                @endif
+                @endif --}}
                 <div class="row">
                     <div class="col-lg-9">
                         <div class="product-detail accordion-detail">
                             <div class="row mb-50">
+
                                 <div class="col-md-6 col-sm-12 col-xs-12">
-                                    <div class="detail-gallery">
+                                    <div class="detail-gallery" >
                                         <span class="zoom-icon"><i class="fi-rs-search"></i></span>
-                                       
-                                        <div class="product-image-slider">                                            
-                                                @foreach ($products->productImage as $pimages) 
-                                                @if ($pimages->count()) 
-                                                <figure class="border-radius-10">
-                                                    <img src="{{asset($pimages->image)}}" alt="product image">              
-                                                </figure>                                                  
-                                                @else
+                                        <div class="product-image-slider" wire:ignore>
+                                                @foreach ($products->productImage as $pimages)
+                                                    @if ($pimages->count())
                                                     <figure class="border-radius-10">
-                                                        <img src="{{asset('no_image_product.png')}}" alt="product image">              
+                                                        <img src="{{asset($pimages->image)}}" alt="product image">
                                                     </figure>
-                                                @endif
+                                                    @endif
                                                 @endforeach
                                         </div>
                                         <!-- THUMBNAILS -->
-                                        <div class="slider-nav-thumbnails pl-15 pr-15">
+                                        <div class="slider-nav-thumbnails pl-15 pr-15" wire:ignore>
                                             @foreach ($products->productImage as $pimages)
-                                            <div><img src="{{asset($pimages->image)}}" alt="product image"></div>
-                                        
+                                                <div><img src="{{asset($pimages->image)}}" alt="product image"></div>
                                             @endforeach
                                         </div>
                                     </div>
+
                                     <!-- End Gallery -->
                                     {{-- <div class="social-icons single-share">
                                         <ul class="text-grey-5 d-inline-block">
@@ -56,6 +52,7 @@
                                         </ul>
                                     </div> --}}
                                 </div>
+
                                 <div class="col-md-6 col-sm-12 col-xs-12">
                                     <div class="detail-info">
                                         <h2 class="title-detail">{{$products->name}}</h2>
@@ -111,24 +108,25 @@
                                             </ul>
                                         </div>
 
-                                        @if ($products->productColors->count() >0)
+                                        @if ($products->productColors->count()>0)
                                             @if($products->productColors)
-                                            <div class="attr-detail attr-color mb-15">
-                                                <strong class="mr-10">Color</strong>
-                                                     <ul class="list-filter color-filter">
-                                                        @foreach ($products->productColors as $colorItem)
-                                                            <li>
-                                                                <a type="radio" href=" " data-color="">
-                                                                    <span wire:click="colorSelected({{$colorItem->id}})"
-                                                                    style="background-color:{{$colorItem->color->code}} "
-                                                                    value="{{$colorItem->id}}">
-                                                                    </span>
-                                                                </a>
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                            </div>
+                                                <div class="attr-detail attr-color mb-15">
+                                                    <strong class="mr-10">Color</strong>
+                                                        <ul class="list-filter color-filter">
+                                                            @foreach ($products->productColors as $colorItem)
+                                                                <li>
+                                                                    <a type="radio" href=" " data-color="">
+                                                                        <span wire:click="colorSelected({{$colorItem->id}})"
+                                                                            style="background-color:{{$colorItem->color->code}} "
+                                                                            value="{{$colorItem->id}}">
+                                                                        </span>
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                </div>
                                             @endif
+
                                             @if($this->ProdColorSelectQuantity == 'outOfStock')
                                                 <ul class="list-filter size-filter font-small">
                                                     <li> <label  style="font-size: 13px;
@@ -138,7 +136,7 @@
                                                         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%);
                                                         float: right;" class="label-stock bg-lg bg-danger">Hết Hàng Màu Này</li>
                                                 </ul>
-                                            @elseif($this->ProdColorSelectQuantity >0)
+                                            @elseif($this->ProdColorSelectQuantity > 0)
                                                 <ul class="list-filter size-filter font-small">
                                                     <li><label  style="font-size: 13px;
                                                         padding: 4px 13px;
@@ -148,9 +146,6 @@
                                                         float: right;" class="label-stock bg-lg bg-success">Còn Hàng Màu Này</li>
                                                 </ul>
                                             @endif
-                                        @else
-
-
                                         @endif
 
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>

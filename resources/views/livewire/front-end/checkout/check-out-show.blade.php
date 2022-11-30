@@ -56,20 +56,27 @@
                                         <button wire:loading.attr="disabled" class="nav-link fw-bold" id="onlinePayment-tab" data-bs-toggle="pill" data-bs-target="#onlinePayment" type="button" role="tab" aria-controls="onlinePayment" aria-selected="false">Thanh toán Online :</button>
                                     </div>
                                     <div class="tab-content col-md-9" id="v-pills-tabContent">
+                                        {{-- Thanh toán offline --}}
                                         <div class="tab-pane active show fade" id="cashOnDeliveryTab" role="tabpanel" aria-labelledby="cashOnDeliveryTab-tab" tabindex="0">
                                             <h6>Thanh toán khi nhận hàng :</h6>
                                             <hr/>
                                             <button type="button" wire:loading.attr="disabled" wire:click="codOrder" class="btn btn-primary">
                                                 <span wire:loading.remove wire:target="codOrder">Lập hóa đơn (Thanh toán khi nhận hàng)</span>
                                                 <span wire:loading.delay.long>Đang Lập hóa đơn (Thanh toán khi nhận hàng)</span>
-
                                             </button>
-
                                         </div>
+                                        {{-- Thanh toán offline --}}
+                                        {{-- Thanh toán onmli --}}
+
                                         <div class="tab-pane fade" id="onlinePayment" role="tabpanel" aria-labelledby="onlinePayment-tab" tabindex="0">
                                             <h6>Thanh toán Online :</h6>
                                             <hr/>
-                                            <button type="button" wire:loading.attr="disabled"  class="btn btn-warning">Thanh toán ngay (Thanh toán Online)</button>
+                                            <button type="button" wire:loading.attr="disabled" wire:click="onlOrderwithATM" class="btn btn-primary">
+                                                <span wire:target="onlOrderwithATM">Lập hóa đơn (Thanh toán MOMO qua ATM)</span>
+                                            </button>
+                                            <button type="button" wire:loading.attr="disabled" wire:click="onlOrderwithQR" class="btn btn-primary">
+                                                <span wire:target="onlOrderwithQR">Lập hóa đơn (Thanh toán MOMO qua QRC)</span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

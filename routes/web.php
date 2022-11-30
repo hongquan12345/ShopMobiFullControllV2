@@ -41,6 +41,7 @@ Route::middleware(['auth'])->group(function()
     Route::get('/Whistlist',[WhistListController::class,'index']);
     Route::get('/Cart',[CartController::class,'index']);
     Route::get('/CheckOut',[CheckOutController::class,'index']);
+    Route::get('/MOMO_PAYMENT',[CheckOutController::class,'MOMO_PAYMENT']);
 
 
 
@@ -100,8 +101,6 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
         Route::get('/Sliders/{slider_id}/edit', 'edit_slider');
         Route::put('/Sliders/{slider_id}', 'update_slider');
         Route::get('/Sliders/{slider_id}/delete', 'destroySlider');
-
-
     });
 
 
