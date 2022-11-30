@@ -71,12 +71,16 @@
                                         <div class="tab-pane fade" id="onlinePayment" role="tabpanel" aria-labelledby="onlinePayment-tab" tabindex="0">
                                             <h6>Thanh toán Online :</h6>
                                             <hr/>
-                                            <button type="button" wire:loading.attr="disabled" wire:click="onlOrderwithATM" class="btn btn-primary">
-                                                <span wire:target="onlOrderwithATM">Lập hóa đơn (Thanh toán MOMO qua ATM)</span>
+                                         
+                                            <button style="background-color: rgb(193, 23, 124) " type="button" wire:loading.attr="disabled" wire:click="onlOrderwithATM" class="btn btn-primary">
+                                                <span wire:target="onlOrderwithATM">Thanh toán MOMO qua ATM</span>
                                             </button>
-                                            <button type="button" wire:loading.attr="disabled" wire:click="onlOrderwithQR" class="btn btn-primary">
-                                                <span wire:target="onlOrderwithQR">Lập hóa đơn (Thanh toán MOMO qua QRC)</span>
+                                            <button style="background-color: rgb(193, 23, 124) " type="button" wire:loading.attr="disabled" wire:click="onlOrderwithQR" class="btn btn-primary">
+                                                <span wire:target="onlOrderwithQR">Thanh toán MOMO qua QRC</span>
                                             </button>
+                                            <button style="background-color: rgb(193, 23, 124) " type="button" wire:loading.attr="disabled" wire:click="onlOrderWithVNPAY" class="btn btn-primary">
+                                                <span wire:target="onlOrderwithQR">Thanh toán VNPAY</span>
+                                            </button>        
                                         </div>
                                     </div>
                                 </div>

@@ -114,6 +114,10 @@ class CheckOutShow extends Component
     {
         $this->payment_mode ='Cash on Online WITH ATM';
         $codOrder = $this->placeOrder();
+        if($codOrder)
+        {
+            Cart::where('user_id',auth()->user()->id)->delete();  
+        }
         $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
         $partnerCode = 'MOMOBKUN20180529';
         $accessKey = 'klm05TvNBzhg7h7j';
@@ -151,25 +155,7 @@ class CheckOutShow extends Component
             //Just a example, please check more in there
             return redirect()->to($jsonResult['payUrl']);
             // header('Location: ' . $jsonResult['payUrl']);
-            if($codOrder)
-                {
-                    Cart::where('user_id',auth()->user()->id)->delete();
-                    session()->flash('message','Đặt Hàng Thành Công');
-                    $this->dispatchBrowserEvent('message', [
-                        'text' => 'Order Place success',
-                        'type' => 'success',
-                        'status' => 200
-                    ]);
-                    return redirect()->to('thank-you');
-                }
-                else
-                {
-                    $this->dispatchBrowserEvent('message', [
-                        'text' => 'Some thing went Wrong',
-                        'type' => 'error',
-                        'status' => 333
-                    ]);
-                }
+           
 
 
 
@@ -220,8 +206,62 @@ class CheckOutShow extends Component
 
             //Just a example, please check more in there
             return redirect()->to($jsonResult['payUrl']);
+    }
+    public function onlOrderWithVNPAY()
+    {
+        
+        session(['url_prev' => url()->previous()]);
+        $vnp_TmnCode = "UDOPNWS1"; //Mã website tại VNPAY 
+        $vnp_HashSecret = "EBAHADUGCOEWYXCMYZRMTMLSHGKNRPBN"; //Chuỗi bí mật
+        $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+        $vnp_Returnurl = "http://127.0.0.1:8000/thank-you";
+        $vnp_TxnRef = date("YmdHis"); //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
+        $vnp_OrderInfo = $this->totalProductAmount;
+        $vnp_OrderType = 'billpayment';
+        $vnp_Amount = $this->totalProductAmount * 100;
+        $vnp_Locale = 'vn';
+        $vnp_IpAddr = request()->ip();
+
+        $inputData = array(
+            "vnp_Version" => "2.0.0",
+            "vnp_TmnCode" => $vnp_TmnCode,
+            "vnp_Amount" => $vnp_Amount,
+            "vnp_Command" => "pay",
+            "vnp_CreateDate" => date('YmdHis'),
+            "vnp_CurrCode" => "VND",
+            "vnp_IpAddr" => $vnp_IpAddr,
+            "vnp_Locale" => $vnp_Locale,
+            "vnp_OrderInfo" => $vnp_OrderInfo,
+            "vnp_OrderType" => $vnp_OrderType,
+            "vnp_ReturnUrl" => $vnp_Returnurl,
+            "vnp_TxnRef" => $vnp_TxnRef,
+        );
+
+        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
+            $inputData['vnp_BankCode'] = $vnp_BankCode;
+        }
+        ksort($inputData);
+        $query = "";
+        $i = 0;
+        $hashdata = "";
+        foreach ($inputData as $key => $value) {
+            if ($i == 1) {
+                $hashdata .= '&' . $key . "=" . $value;
+            } else {
+                $hashdata .= $key . "=" . $value;
+                $i = 1;
+            }
+            $query .= urlencode($key) . "=" . urlencode($value) . '&';
         }
 
+        $vnp_Url = $vnp_Url . "?" . $query;
+        if (isset($vnp_HashSecret)) {
+           // $vnpSecureHash = md5($vnp_HashSecret . $hashdata);
+            $vnpSecureHash = hash('sha256', $vnp_HashSecret . $hashdata);
+            $vnp_Url .= 'vnp_SecureHashType=SHA256&vnp_SecureHash=' . $vnpSecureHash;
+        }
+        return redirect($vnp_Url);
+    }
     public function totalProductAmount()
     {
         $this->totalProductAmount = 0;
