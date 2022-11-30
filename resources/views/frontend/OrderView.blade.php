@@ -68,9 +68,10 @@
                                             <td width="10%">
                                                 <h5 class="product-name">
                                                     {{ $orderItem->product_in_OrderItem->name}}
-                                                    @if ($orderItem->productColor_in_OrderItem->color)
-                                                        <span style="background-color: {{$orderItem->productColor_in_OrderItem->color->code}};
-                                                            color:rgb(219, 219, 226)">{{$orderItem->productColor_in_OrderItem->color->name}} </span>
+                                                    @if ($orderItem->productColor_in_OrderItem->color->id ?? false)
+                                                        <span style="">- {{$orderItem->productColor_in_OrderItem->color->name}}</span> 
+                                                    @else
+                                                        <span> - Non Color</span>
                                                     @endif 
                                                 </h5>
                                             </td>     
