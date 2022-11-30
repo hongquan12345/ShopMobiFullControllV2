@@ -16,7 +16,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-md-6">
-                            <h2 >Order Details</h2>                               
+                            <h2 >Order Detailss</h2>                               
                             <hr>
                             <h4 >Order ID : {{$ordercs->id}}</h4><hr>
                             <h4 >Tracking ID/No.: {{$ordercs->tracking_no}}</h4><hr>
