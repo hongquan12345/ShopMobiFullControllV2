@@ -105,6 +105,13 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
         Route::put('/Sliders/{slider_id}', 'update_slider');
         Route::get('/Sliders/{slider_id}/delete', 'destroySlider');
     });
+    //Admin Order route
+    Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function () {
+        Route::get('/Orders', 'index');
+        Route::get('/Orders/{orderID}','show');
+
+
+    });
 
 
 

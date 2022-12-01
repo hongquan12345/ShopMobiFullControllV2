@@ -86,8 +86,8 @@
                                         </div>
                                         <div class="clearfix product-price-cover">
                                             <div class="product-price primary-color float-left">
-                                                <ins><span class="text-brand">{{$products->selling_price}}$</span></ins>
-                                                <ins><span class="old-price font-md ml-15">{{$products->original_price}}$</span></ins>
+                                                <ins><span class="text-brand">{{number_format($products->selling_price)}} VND</span></ins>
+                                                <ins><span class="old-price font-md ml-15">{{number_format($products->original_price)}}$</span></ins>
                                                 @php
                                                     $sell =0;
                                                    $sell = 100 - ($products->selling_price/$products->original_price *100) ;

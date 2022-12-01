@@ -344,8 +344,8 @@ class ComposerStaticInit4a7b6d8440122b2064ba02f710d7fb77
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -538,6 +538,7 @@ class ComposerStaticInit4a7b6d8440122b2064ba02f710d7fb77
         'App\\Http\\Controllers\\FrontEnd\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/CartController.php',
         'App\\Http\\Controllers\\FrontEnd\\CheckOutController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/CheckOutController.php',
         'App\\Http\\Controllers\\FrontEnd\\FrontEndController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/FrontEndController.php',
+        'App\\Http\\Controllers\\FrontEnd\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/OrderController.php',
         'App\\Http\\Controllers\\FrontEnd\\WhistListController' => __DIR__ . '/../..' . '/app/Http/Controllers/FrontEnd/WhistListController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

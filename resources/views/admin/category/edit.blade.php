@@ -1,20 +1,19 @@
 @extends('layouts.adminpage')
 @section('content')
 
-<div class="row"> 
-    <div class="col-md-12">
+<div class="row">
 
-        
+    <div class="col-md-12">
       <div class="card-header">
         <h3> Edit Category
             <a href="{{url('adminpage/Category/')}}" class ="btn btn-dark btn-sm text-white float-end">Back</a>
         </h3>
       </div>
+
       <div class="card-body">
-       
         <form action="{{ url('adminpage/Category/'.$categorywithid->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+                 @csrf
+            @method('PUT')
             <div class="row">
 
                 <div class="col-md-6 mb-3">
@@ -47,7 +46,7 @@
                     <label for="">Status</label>
                     <input type="checkbox" name="status" {{$categorywithid->status == '1' ? 'checked':''}}>
                 </div>
-                
+
                 <div class="col-md-12 mb-3">
                     <h4>Seo Tags</h4>
                 </div>
@@ -74,7 +73,7 @@
                     <button type="submit" class="btn btn-warning float-end  ">Update</button>
                 </div>
 
-            </div>    
+            </div>
         </form>
       </div>
     </div>

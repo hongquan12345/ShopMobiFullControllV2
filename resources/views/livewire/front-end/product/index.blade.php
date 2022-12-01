@@ -41,13 +41,16 @@
                                                 <a href="#">{{$productItem->name}}</a>
                                             </h2>
                                             <div class="rating-result" title="90%">
-                                                <span>
-                                                    <span>90%</span>
-                                                </span>
+                                                @php
+                                                $sell =0;
+                                               $sell = 100 - ($productItem->selling_price/$productItem->original_price *100) ;
+                                               $ceiled = ceil($sell)
+                                            @endphp
+                                            <span class="save-price  font-md color3 ml-15">{{$ceiled}}% Off</span>
                                             </div>
                                             <div class="product-price">
-                                                <span>{{$productItem->selling_price}}</span>
-                                                <span class="old-price">${{$productItem->original_price}}</span>
+                                                <span>{{number_format($productItem->selling_price)}}VND</span>
+                                                <span class="old-price">{{number_format($productItem->original_price)}}VND</span>
                                             </div>
                                             <div class="product-action-1 show">
                                                 <a aria-label="Add To Cart" class="action-btn hover-up"

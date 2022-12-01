@@ -5,16 +5,16 @@
         <a class="nav-link" href="{{url('/adminpage/dashboard')}}">
           <i class="mdi mdi-home menu-icon"></i>
           <span class="menu-title">Dashboard</span>
-          
+
         </a>
       </li>
        {{-- Dashboard --}}
 
       {{-- Sales --}}
       <li class="list-group-item list-group-item-action">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{url('/adminpage/Orders')}}">
           <i class="mdi mdi-coin menu-icon"></i>
-          <span class="menu-title">Sales</span>
+          <span class="menu-title">Orders</span>
         </a>
       </li>
        {{-- Sales --}}
@@ -74,7 +74,7 @@
         </a>
       </li>
       {{-- Sliders --}}
-  
+
       {{-- Documentation --}}
       <li class="list-group-item list-group-item-action">
         <a class="nav-link" href="#">
