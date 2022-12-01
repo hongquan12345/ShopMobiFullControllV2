@@ -63,7 +63,7 @@ class ProductFormRequest extends FormRequest
                 'integer'
             ],
             'trending' =>[
-                'required',
+                'nullable',
 
             ],
             'status' =>[

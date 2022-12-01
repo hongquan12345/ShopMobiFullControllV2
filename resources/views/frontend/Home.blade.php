@@ -138,10 +138,10 @@
                         <button class="nav-link active" id="nav-tab-one" data-bs-toggle="tab" data-bs-target="#tab-one" type="button" role="tab" aria-controls="tab-one" aria-selected="true">Sản Phẩm Hot</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false">Bán Chạy Nhất</button>
+                        <button class="nav-link" id="nav-tab-two" data-bs-toggle="tab" data-bs-target="#tab-two" type="button" role="tab" aria-controls="tab-two" aria-selected="false"> Sản Phẩm Mới</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Sản Phẩm Mới</button>
+                        <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Bán Chạy Nhất</button>
                     </li>
                 </ul>
                 <a href="#" class="view-more d-none d-md-flex">View More<i
@@ -169,7 +169,7 @@
                                             <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
-                                            <span class="hot">Hot</span>
+                                            <span class="hot">Trending</span>
                                         </div>
                                     </div>
                                     <div class="product-content-wrap">
@@ -205,12 +205,13 @@
                 <!--En tab one (Featured)-->
                 <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
                     <div class="row product-grid-4">
+                        @foreach ($newProduct as $newProductitem)
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <a href="product-details.html">
-                                            <img class="default-img" src="assets/imgs/shop/product-9-1.jpg" alt="">
+                                            <img class="default-img" src="{{ asset($newProductitem->productImage[0]->image) }}" alt="">
                                             <img class="hover-img" src="assets/imgs/shop/product-9-2.jpg" alt="">
                                         </a>
                                     </div>
@@ -220,22 +221,26 @@
                                         <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
-                                        <span class="hot">Hot</span>
+                                        <span class="hot">New</span>
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Donec </a>
+                                        <a href="shop.html">{{ $newProductitem->brand }} </a>
                                     </div>
-                                    <h2><a href="product-details.html">Lorem ipsum dolor</a></h2>
+                                    <h2><a href="product-details.html">{{ $newProductitem->name }}</a></h2>
+                                        @php
+                                            $totalnew=0;
+                                            $totalnew = 100-(($newProductitem->selling_price/$newProductitem->original_price)*100)
+                                        @endphp
                                     <div class="rating-result" title="90%">
                                         <span>
-                                            <span>90%</span>
+                                            <span>{{ number_format($totalnew) }}%</span>
                                         </span>
                                     </div>
                                     <div class="product-price">
-                                        <span>$238.85 </span>
-                                        <span class="old-price">$245.8</span>
+                                        <span>{{number_format($newProductitem->selling_price)}}</span>
+                                        <span class="old-price">{{number_format($newProductitem->original_price)}}</span>
                                     </div>
                                     <div class="product-action-1 show">
                                         <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
@@ -243,6 +248,8 @@
                                 </div>
                             </div>
                         </div>
+                        @endforeach
+
                     </div>
                     <!--End product-grid-4-->
                 </div>

@@ -20,9 +20,10 @@ class FrontEndController extends Controller
     {
         $categorys = Category::where('status','0')->first()->take(6)->get();
         $products = Product::all();
-        $trendingproducts = Product::where('trending','1')->latest()->take(2)->get();
+        $trendingproducts = Product::where('trending','1')->latest()->take(15)->get();
+        $newProduct = Product::latest()->take(15)->get();
         $sliders = Slider::where('status','0')->get();
-        return view('frontend.Home',compact('sliders','categorys','products','trendingproducts'));
+        return view('frontend.Home',compact('sliders','categorys','products','trendingproducts','newProduct'));
     }
 
     public function categories()
