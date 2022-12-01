@@ -12,17 +12,17 @@ class FrontEndController extends Controller
 {
     //
     public function indexlayout()
-    {
-        $categorys= Category::where('status','0')->get();
-        return view('layouts.index',compact('categorys'));
-    }
+        {
+            $categorys= Category::where('status','0')->get();
+            return view('layouts.index',compact('categorys'));
+        }
     public function indexHomePage()
     {
-        $categorys = Category::where('status','0')->get();
+        $categorys = Category::where('status','0')->first()->take(6)->get();
         $products = Product::all();
-
+        $trendingproducts = Product::where('trending','1')->latest()->take(2)->get();
         $sliders = Slider::where('status','0')->get();
-        return view('frontend.Home',compact('sliders','categorys','products'));
+        return view('frontend.Home',compact('sliders','categorys','products','trendingproducts'));
     }
 
     public function categories()
