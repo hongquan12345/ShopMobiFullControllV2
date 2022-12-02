@@ -4,6 +4,15 @@
 @endsection
 @section('contentHome')
 <main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="{{ url('/home') }}" rel="nofollow">Home</a>
+                <span ></span><a href="{{url('/collections')}}" >Danh mục</a>
+        
+            </div>
+        </div>
+    </div>
     <div class="py-3 py-md-5 bg-light">
         <div class="container">
             <div class="row">
@@ -23,7 +32,7 @@
                             </div>
                             <div class="category-card-body" style="text-align: center">
                                 <h3 class="animated fw-900 text-brand " style="text-decoration-line: underline">{{$categoryItem->name}}</h3>
-                              
+
                                 <h5 class="animated fw-300 text-bg-warning">{{$categoryItem->description}}</h5>
                             </div>
                         </a>

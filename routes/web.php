@@ -21,7 +21,16 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
     Route::get('/collections', 'categories');
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'products_show');
+   
+
 });
+
+
+
+
+
+
+
 Route::middleware(['auth'])->group(function()
 {
     Route::get('/Whistlist',[WhistListController::class,'index']);
@@ -31,6 +40,7 @@ Route::middleware(['auth'])->group(function()
     Route::get('/Orders/{orderID}',[OrderController::class,'showOrderID']);
 
 });
+
     Route::get('/thank-you',[App\Http\Controllers\FrontEnd\FrontEndController::class, 'thankyou']);
 
 // Route::controller(App\Http\Controllers\FrontEnd\WhistListController::class)->group(function ()

@@ -2,15 +2,58 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use App\Models\Product;
 use App\Models\Slider;
+use App\Models\Product;
+use App\Models\Category;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
 {
-    //
+    public function addToWishListHomePage($trending_product_id)
+    {
+        if(Auth::check())
+            {
+                //check product aready in wishlist
+                if(Wishlist::where('user_id',auth()->user()->id)->where('product_id',$trending_product_id)->exists())
+                {
+                    session()->flash('message','Oop!! Already have this product in Wishlist');
+                    $this->dispatchBrowserEvent('message', [
+                        'text' => 'Oop!! Already have this product in Wishlist',
+                        'type'=> 'warning',
+                        'status'=> 399
+                    ]);
+                    return false;
+                }
+                else
+                {
+                    Wishlist::create([
+                            'user_id' =>auth()->user()->id,
+                            'product_id' =>$trending_product_id
+                    ]);
+                    $this->emit('WishlistUpdate');
+                    session()->flash('message','Wishlist Added successfully');
+                    $this->dispatchBrowserEvent('message', [
+                        'text' => 'Wishlist Added successfully',
+                        'type'=> 'success',
+                        'status'=> 400
+                    ]);
+                }
+            }
+        else
+        {
+            session()->flash('message','Hmm ! Please Login to continue');
+            $this->dispatchBrowserEvent('message', [
+                'text' => 'Hmm ! Please Login to continue',
+                'type'=> 'info',
+                'status'=> 401
+            ]);
+            return false;
+        }
+
+    }
     public function indexlayout()
         {
             $categorys= Category::where('status','0')->get();
@@ -18,8 +61,7 @@ class FrontEndController extends Controller
         }
     public function indexHomePage()
     {
-
-        $categorys= Category::where('status','0')->take(10)->get();
+        $categorys= Category::where('status','0')->take(4)->get();
         // $categorys = Category::where('status','0')->first()->take(6)->get();
 
         // $categorys = Category::where('status','0')->first()->take(6)->get();
@@ -33,7 +75,6 @@ class FrontEndController extends Controller
     public function categories()
     {
         $products = Product::all();
-
         $categorys = Category::where('status','0')->get();
         $sliders = Slider::where('status','0')->get();
         return view('frontend.Collection',compact('sliders','categorys','products'));

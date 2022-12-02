@@ -102,24 +102,31 @@
                                         </div>
                                         <div class="product_sort_info font-xs mb-30">
                                             <ul>
-                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand Warranty</li>
-                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy</li>
-                                                <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                                                <li class="mb-10"><i class="fi-rs-crown mr-5"></i>Bảo hành 1 năm</li>
+                                                <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>30 ngày đổi trả</li>
+                                                <li class="mb-10"><i class="fi-rs-home mr-5"></i> Thanh toán khi nhận hàng</li>
+                                                <li class="mb-10"><i class="fi-rs-credit-card mr-5"></i> Thanh toán Online</li>
                                             </ul>
                                         </div>
 
                                         @if ($products->productColors->count()>0)
                                             @if($products->productColors)
                                                 <div class="attr-detail attr-color mb-15">
-                                                    <strong class="mr-10">Color</strong>
+                                                    <strong class="mr-10">Color : </strong>
                                                         <ul class="list-filter color-filter">
                                                             @foreach ($products->productColors as $colorItem)
                                                                 <li>
                                                                     <a type="radio" href=" " data-color="">
-                                                                        <span wire:click="colorSelected({{$colorItem->id}})"
-                                                                            style="background-color:{{$colorItem->color->code}} "
+                                                                        {{-- <span wire:click="colorSelected({{$colorItem->id}})"
+                                                                            style="background-color:{{$colorItem->color->code}}"
                                                                             value="{{$colorItem->id}}">
-                                                                        </span>
+                                                                        </span> --}}
+                                                                        <button wire:click="colorSelected({{$colorItem->id}})"
+                                                                            style="background-color:{{$colorItem->color->code}};
+                                                                            border:1px solid #e2c5c5;
+                                                                            border-radius: 4px"
+                                                                            value="{{$colorItem->id}}">{{$colorItem->color->code}}
+                                                                        </button>
                                                                     </a>
                                                                 </li>
                                                             @endforeach

@@ -18,7 +18,7 @@
                                             <a aria-label="Quick view" class="action-btn hover-up"
                                                 data-bs-toggle="modal" data-bs-target="#quickViewModal">
                                                 <i class="fi-rs-search"></i></a>
-                                            <a aria-label="Add To Wishlist" wire:click="addToWishListIndext({{ $productItem->id }})"
+                                            <a aria-label="Add To Wishlist" wire:click="addToWishListIndext({{ $productItem->id}})"
                                                 class="action-btn hover-up"
                                                 href="#"><i class="fi-rs-heart "></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up"

@@ -106,9 +106,9 @@
                         <a href="{{'/collections/'.$categoryItem->slug}}">
                             <figure class="img-hover-scale overflow-hidden">
                                 @if ($categoryItem->image !='null')
-                                <img style="width: 144px;height:112px" src="{{asset("$categoryItem->image")}}">
+                                <img  src="{{asset("$categoryItem->image")}}">
                                 @else
-                                <img style="width: 144px;height:112px" src="{{asset('/emptyimage.jpg')}}" >
+                                <img  src="{{asset('/emptyimage.jpg')}}" >
                                 @endif
                             </figure>
                             <h3 class="animated fw-900 text-brand">{{$categoryItem->name}}</h3>
@@ -144,7 +144,7 @@
                         <button class="nav-link" id="nav-tab-three" data-bs-toggle="tab" data-bs-target="#tab-three" type="button" role="tab" aria-controls="tab-three" aria-selected="false">Bán Chạy Nhất</button>
                     </li>
                 </ul>
-                <a href="#" class="view-more d-none d-md-flex">View More<i
+                <a href="{{ url('/collections') }}" class="view-more d-none d-md-flex">View More<i
                         class="fi-rs-angle-double-small-right"></i></a>
             </div>
 
@@ -165,7 +165,7 @@
                                         </div>
                                         <div class="product-action-1">
                                             <a aria-label="Quick view" class="action-btn hover-up" data-bs-toggle="modal" data-bs-target="#quickViewModal"><i class="fi-rs-eye"></i></a>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
+                                            <a aria-label="Thêm vào yêu thích" class="action-btn hover-up" wire:click="addToWishListHomePage({{ $trendingproductItem->id }})"><i class="fi-rs-heart"wire:click="addToWishListHomePage({{ $trendingproductItem->id }})"></i></a>
                                             <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
@@ -191,7 +191,7 @@
                                             <span class="old-price">{{number_format($trendingproductItem->original_price)}}</span>
                                         </div>
                                         <div class="product-action-1 show">
-                                            <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            <a aria-label="Add To Cart" class="action-btn hover-up"  ><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -624,7 +624,7 @@
             </div>
         </div>
     </section>
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container">
             <h3 class="section-title mb-20 wow fadeIn animated"><span>Featured</span> Brands</h3>
             <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
@@ -632,29 +632,14 @@
                     id="carausel-6-columns-3-arrows"></div>
                 <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
                     <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-1.png" alt="">
+                        <img class="img-grey-hover" src="{{ asset('assets/imgs/banner/brand-1.png') }}" alt="">
                     </div>
                     <div class="brand-logo">
                         <img class="img-grey-hover" src="assets/imgs/banner/brand-2.png" alt="">
                     </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-3.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-4.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-5.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-6.png" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="assets/imgs/banner/brand-3.png" alt="">
-                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </main>
 @endsection

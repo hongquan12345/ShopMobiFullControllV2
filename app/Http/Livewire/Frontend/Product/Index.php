@@ -63,8 +63,6 @@ class Index extends Component
             return false;
         }
     }
-
-
     public function render()
     {
 

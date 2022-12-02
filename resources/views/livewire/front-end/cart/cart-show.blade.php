@@ -4,15 +4,16 @@
             <div class="container">
                 <div class="breadcrumb">
                     <a href="{{ url('/home') }}" rel="nofollow">Home</a>
-                    <span ></span><a href="{{url('/collections')}}" >collections</a>
-                    <span></span> WishList
+                    <span ></span><a href="{{url('/collections')}}" >Danh mục</a>
+                    <span ></span><a href="{{url('/Cart')}}" >Giỏ Hàng</a>
+
                 </div>
             </div>
         </div>
         <section class="mt-50 mb-50">
 
             <div class="container">
-                <h1>Cart list</h1>
+                <h3><span>Danh sách Giỏ hàng</span></h3>
                 <br>
                 <div class="row">
                     <div class="col-12">
@@ -20,13 +21,13 @@
                             <table class="table shopping-summery text-center clean">
                                 <thead>
                                     <tr class="main-heading">
-                                        <th scope="col">Product</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Color</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Total</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">Hình</th>
+                                        <th scope="col">Tên</th>
+                                        <th scope="col">Màu Sắc</th>
+                                        <th scope="col">Giá Tiền</th>
+                                        <th scope="col">Số Lượng</th>
+                                        <th scope="col">Tổng Cộng</th>
+                                        <th scope="col">Hành Động</th>
 
                                     </tr>
                                 </thead>
@@ -145,7 +146,7 @@
                         </div>
                         <div class="cart-action text-end">
                             {{-- <a class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</a> --}}
-                            <a href="{{ url('collections/')}}"  class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
+                            <a href="{{ url('collections/')}}"  class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Tiếp tục mua sắm</a>
                             {{-- <a  class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a> --}}
 
 
@@ -157,7 +158,7 @@
                             <div class="col-lg-6 col-md-12">
                                 <div class="border p-md-4 p-30 border-radius cart-totals">
                                     <div class="heading_s1 mb-3">
-                                        <h4>Cart Totals</h4>
+                                        <h4>Tổng Chi Phí</h4>
                                     </div>
                                     <div class="table-responsive">
                                         <table class="table">
@@ -168,7 +169,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Hình thức vận chuyển :</td>
-                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Miển Phí Mãi Mãi</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="cart_total_label">Tổng chi phí</td>
@@ -177,7 +178,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <a href="{{url('/CheckOut')}}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                                    <a href="{{url('/CheckOut')}}" class="btn "> <i class="fi-rs-box-alt mr-10"></i>Tiến Hành Thanh Toán</a>
                                 </div>
                             </div>
                         </div>
