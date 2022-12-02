@@ -8,7 +8,6 @@
     <section class="home-slider position-relative pt-50">
         <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
             @if($sliders == null)
-
             @else
                 @foreach ($sliders as $key => $slidersItem)
                     <div class="single-hero-slider single-animation-wrap">
@@ -17,16 +16,16 @@
                                 <div class="col-lg-5 col-md-6">
                                     <div class="hero-slider-content-2">
                                         @if($slidersItem->title)
-                                        <h4 class="animated fw-900 text-brand">{{$slidersItem->title}}</h4>
+                                        <h3 class="animated fw-1100 text-brand">{{$slidersItem->title}}</h3>
                                         @else
-                                        <h4 class="animated fw-900 text-brand">Nothing to Show</h4>
+                                        <h3 class="animated fw-1100 text-brand">Nothing to Show</h3>
                                         @endif
                                         @if($slidersItem->description)
                                         <h1 class="animated ">{{$slidersItem->description}}</h1>
                                         @else
                                         <h1 class="animated ">Nothing to Show</h1>
                                         @endif
-                                        <a class="animated btn btn-brush btn-brush-3" href="#">Shop Now
+                                        <a class="animated btn btn-brush btn-brush-3" href="{{ url('collections') }}">Mua Sắm Ngay
                                         </a>
                                     </div>
                                 </div>
@@ -97,18 +96,19 @@
     {{-- Category --}}
     <section class="popular-categories section-padding mt-15 mb-25">
         <div class="container wow fadeIn animated">
-            <h3 class="section-title mb-20"><span>Popular</span> Categories</h3>
-            <div class="carausel-6-columns-cover position-relative">
+            <h3 class="section-title mb-20"> Danh Mục <span>HOT</span></h3>
 
+            <div class="carausel-6-columns-cover position-relative">
+                <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-arrows"></div>
                 <div class="carausel-6-columns" id="carausel-6-columns">
                     @forelse ($categorys as $categoryItem )
-                    <div class="card-1" >
+                    <div class="card-1">
                         <a href="{{'/collections/'.$categoryItem->slug}}">
                             <figure class="img-hover-scale overflow-hidden">
                                 @if ($categoryItem->image !='null')
-                                <img src="{{asset("$categoryItem->image")}}" style="width: 300px;height:300px">
+                                <img style="width: 144px;height:112px" src="{{asset("$categoryItem->image")}}">
                                 @else
-                                <img src="{{asset('/emptyimage.jpg')}}" style="width: 300px;height:300px" alt="">
+                                <img style="width: 144px;height:112px" src="{{asset('/emptyimage.jpg')}}" >
                                 @endif
                             </figure>
                             <h3 class="animated fw-900 text-brand">{{$categoryItem->name}}</h3>
@@ -120,10 +120,10 @@
                     @endforelse
 
                 </div>
-
             </div>
 
         </div>
+
     </section>
     {{-- Category --}}
 

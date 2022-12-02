@@ -13,7 +13,7 @@ class CategoryFormRequest extends FormRequest
      */
     public function authorize()
     {
-        
+
         // return false;
         return true;
     }
@@ -25,7 +25,7 @@ class CategoryFormRequest extends FormRequest
      */
     public function rules()
     {
-        //make sure all field correrct with name in input create.blade.php 
+        //make sure all field correrct with name in input create.blade.php
         return [
            'name' =>[
             'required',
@@ -40,7 +40,7 @@ class CategoryFormRequest extends FormRequest
            ],
            'image' =>[
             'nullable',
-            'mimes:png,jpg,jepg'
+            'mimes:png,jpg,jepg,webp'
            ],
            'metal_title' =>[
             'required',

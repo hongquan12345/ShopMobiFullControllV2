@@ -18,7 +18,11 @@ class FrontEndController extends Controller
         }
     public function indexHomePage()
     {
-        $categorys = Category::where('status','0')->first()->take(6)->get();
+
+        $categorys= Category::where('status','0')->take(10)->get();
+        // $categorys = Category::where('status','0')->first()->take(6)->get();
+
+        // $categorys = Category::where('status','0')->first()->take(6)->get();
         $products = Product::all();
         $trendingproducts = Product::where('trending','1')->latest()->take(15)->get();
         $newProduct = Product::latest()->take(15)->get();
