@@ -103,8 +103,9 @@
                     <div class="header-right">
                             {{--search --}}
                             <div class="search-style-1">
-                                <form action="#">
-                                    <input type="text" placeholder="Search for items...">
+                                <form action="{{ url('search') }}" method="GET" role="search">
+                                    <input name="search_txt" value="{{ Request::get('search_txt') }}" type="text" placeholder="Search for items...">
+                                    <button class="btn bg-white" type="submit">Search</button>
                                 </form>
                             </div>
                             {{--search --}}
@@ -243,7 +244,7 @@
                                     @auth
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                         <ul class="sub-menu">
-                                            <li><a href="{{url('/Orders/')}}">My Order</a></li>                                          
+                                            <li><a href="{{url('/Orders/')}}">My Order</a></li>
                                         </ul>
                                     </li>
                                     @endif
@@ -352,14 +353,7 @@
                         <div class="categori-dropdown-wrap categori-dropdown-active-small">
                             <ul>
                                 <li><a href="shop"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a></li>
-                                <li><a href="shop"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a></li>
-                                <li> <a href="shop"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a></li>
-                                <li><a href="shop"><i class="surfsidemedia-font-desktop"></i>Computer & Office</a></li>
-                                <li><a href="shop"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a></li>
-                                <li><a href="shop"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                                <li><a href="shop"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                                <li><a href="shop"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
-                                <li><a href="shop"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
+
                             </ul>
                         </div>
                     </div>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class View extends Component
 {
-    public  $CommentCount,$products, $category,$ProdColorSelectQuantity, $QuantityCount = 1,$productColorItem;
+    public  $totalcomment,$products, $category,$ProdColorSelectQuantity, $QuantityCount = 1,$productColorItem;
     public function addToWishList($productID)
     {
         if (Auth::check()) {
@@ -233,7 +233,7 @@ class View extends Component
         $this->category = $category;
         $this->products = $products;
     }
-  
+
     public function removeCommentItem(int $iDCom)
     {
         if(Auth::check())
@@ -259,6 +259,7 @@ class View extends Component
 
     public function render()
     {
+
         $categorys = Category::all();
         $this->categorys = $categorys;
         $this->newProducts = Product::where('status','0')->latest()->take(2)->get();
@@ -267,7 +268,6 @@ class View extends Component
             'category ' => $this->category,
             'categorys' => $this->categorys,
             'newProducts' => $this->newProducts,
-            'CommentCount' => $this->CommentCount
         ]);
     }
 }

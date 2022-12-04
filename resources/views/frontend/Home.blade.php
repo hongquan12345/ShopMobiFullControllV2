@@ -210,9 +210,10 @@
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="product-details.html">
+                                        <a href="{{ url('/collections/'.$newProductitem->category->slug.'/'.$newProductitem->slug) }}">
                                             <img class="default-img" src="{{ asset($newProductitem->productImage[0]->image) }}" alt="">
                                             <img class="hover-img" src="assets/imgs/shop/product-9-2.jpg" alt="">
+
                                         </a>
                                     </div>
                                     <div class="product-action-1">

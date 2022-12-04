@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Models\Slider;
+use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Wishlist;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
@@ -62,10 +63,8 @@ class FrontEndController extends Controller
         }
     public function indexHomePage()
     {
-        $categorys= Category::where('status','0')->take(4)->get();
-        // $categorys = Category::where('status','0')->first()->take(6)->get();
 
-        // $categorys = Category::where('status','0')->first()->take(6)->get();
+        $categorys= Category::where('status','0')->take(4)->get();
         $products = Product::all();
         $trendingproducts = Product::where('trending','1')->latest()->take(15)->get();
         $newProduct = Product::latest()->take(15)->get();
@@ -99,7 +98,7 @@ class FrontEndController extends Controller
         }
 
     }
-    
+
     public function products_show(string $category_slug,string $product_slug)
     {
 
@@ -121,6 +120,18 @@ class FrontEndController extends Controller
             return redirect()->back();
         }
 
+    }
+
+    public function searchProduct(Request $request)
+    {
+        if($request->search_txt)
+        {
+            $searchProduct = Product::where('name','LIKE','%'.$request->search_txt.'%')->latest()->paginate(15);
+            return view('frontend.Search',compact('searchProduct'));
+        }else
+        {
+
+        }
     }
     public function thankyou()
     {

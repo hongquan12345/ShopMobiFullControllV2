@@ -47,5 +47,5 @@ class CommentController extends Controller
                 return redirect('login')->with('message', 'Login First');
             }
         }
-
+    
 }

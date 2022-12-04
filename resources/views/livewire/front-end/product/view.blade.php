@@ -198,7 +198,7 @@
                                             <a class="nav-link " id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews({{$CommentCount }})</a>
+                                            <a class="nav-link active" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews</a>
                                         </li>
 
                                     </li>
@@ -312,10 +312,9 @@
                                                 <div class="product-img-action-wrap">
                                                     <div class="product-img product-img-zoom">
                                                         <a href="product-details.html" tabindex="0">
-                                                            <img class="default-img" src="{{ asset($productReledted->productImage[0]->image) }}" alt="#">
-                                                            @if ($productReledted->productImage[0])
-                                                                <img class="hover-img" src="{{ asset($productReledted->productImage[0]->image) }}" alt="#">
-                                                            @endif
+                                                            <a href="{{ url('/collections/'.$productReledted->category->slug.'/'.$productReledted->slug) }}">
+                                                            <img class="default-img" src="{{ asset($productReledted->productImage[0]->image) }}" alt="#"></a>
+                                                          
 
                                                         </a>
                                                     </div>
@@ -370,7 +369,8 @@
                                 @foreach ($newProducts as $newProductItem)
                                 <div class="single-post clearfix">
                                     <div class="image">
-                                        <img src="{{ asset($newProductItem->productImage[0]->image) }}" alt="#">
+                                        <a href="{{ url('/collections/'.$newProductItem->category->slug.'/'.$newProductItem->slug) }}">
+                                        <img src="{{ asset($newProductItem->productImage[0]->image) }}" alt="#"></a>
                                     </div>
                                     <div class="content pt-10">
                                         <h5><a href="product-details.html">{{ $newProductItem->name }}</a></h5>

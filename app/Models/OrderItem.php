@@ -37,4 +37,5 @@ class OrderItem extends Model
     {
         return $this->belongsTo(ProductColors::class, 'product_color_id', 'id');
     }
+  
 }
