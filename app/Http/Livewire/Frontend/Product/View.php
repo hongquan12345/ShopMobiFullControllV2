@@ -3,15 +3,19 @@
 namespace App\Http\Livewire\FrontEnd\Product;
 
 use App\Models\Cart;
+use Livewire\Request;
+use App\Models\Comment;
+use App\Models\Product;
 use Livewire\Component;
 use App\Models\Category;
-use App\Models\ProductImage;
 use App\Models\Wishlist;
+use App\Models\ProductImage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class View extends Component
 {
-    public  $products, $category,$ProdColorSelectQuantity, $QuantityCount = 1,$productColorItem;
+    public  $CommentCount,$products, $category,$ProdColorSelectQuantity, $QuantityCount = 1,$productColorItem;
     public function addToWishList($productID)
     {
         if (Auth::check()) {
@@ -229,14 +233,41 @@ class View extends Component
         $this->category = $category;
         $this->products = $products;
     }
+  
+    public function removeCommentItem(int $iDCom)
+    {
+        if(Auth::check())
+        {
+            Comment::where('user_id',auth()->user()->id)->where('id',$iDCom)->delete();
+            $this->dispatchBrowserEvent('message',[
+                'text' =>'Comment Successfully',
+                'type' =>'success',
+                'status' => 200]);
+
+        }
+        else
+        {
+            $this->dispatchBrowserEvent('message',[
+                'text' =>'You cant Delete Comment Another Account',
+                'type' =>'error',
+                'status' => 200
+
+            ]);
+        }
+
+    }
+
     public function render()
     {
         $categorys = Category::all();
         $this->categorys = $categorys;
+        $this->newProducts = Product::where('status','0')->latest()->take(2)->get();
         return view('livewire.front-end.product.view', [
             'products' => $this->products,
             'category ' => $this->category,
             'categorys' => $this->categorys,
+            'newProducts' => $this->newProducts,
+            'CommentCount' => $this->CommentCount
         ]);
     }
 }

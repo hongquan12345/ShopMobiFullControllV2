@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Comment;
 use App\Models\ProductImage;
 use App\Models\ProductColors;
 use Illuminate\Database\Eloquent\Model;
@@ -38,5 +39,9 @@ class Product extends Model
     {
         return $this->hasMany(ProductColors::class,'product_id','id');
 
+    }
+    public function Comment()
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 }

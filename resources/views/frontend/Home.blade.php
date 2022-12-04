@@ -159,7 +159,7 @@
                                 <div class="product-cart-wrap mb-30">
                                     <div class="product-img-action-wrap">
                                         <div class="product-img product-img-zoom">
-                                            <a href="product-details.html">
+                                            <a href="{{ url('/collections/'.$trendingproductItem->category->slug.'/'.$trendingproductItem->slug) }}">
                                                 <img class="default-img" src="{{ asset($trendingproductItem->productImage[0]->image) }}" alt="">
                                             </a>
                                         </div>

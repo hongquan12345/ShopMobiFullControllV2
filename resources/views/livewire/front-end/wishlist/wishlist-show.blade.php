@@ -54,12 +54,12 @@
                                                         </h5>
                                                     </td>
                                                     <td class="price" data-title="Price">
-                                                        <span>{{ $iDwish->product_in_Wishlist->original_price }}$
+                                                        <span>{{ number_format($iDwish->product_in_Wishlist->original_price )}}$
                                                         </span>
                                                     </td>
 
                                                     <td class="text-right" data-title="Cart">
-                                                        <span>{{ $iDwish->product_in_Wishlist->selling_price }}$</span>
+                                                        <span>{{ number_format($iDwish->product_in_Wishlist->selling_price)}}$</span>
                                                     </td>
 
                                                     <td class="action"
@@ -97,7 +97,7 @@
                             <a class="btn "><i class="fi-rs-shopping-bag mr-10"></i>Continue Shopping</a>
                         </div>
                         <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-                        <div class="row mb-50">
+                        {{-- <div class="row mb-50">
                             <div class="col-lg-6 col-md-12">
                                 <div class="heading_s1 mb-3">
                                     <h4>Calculate Shipping</h4>
@@ -419,7 +419,7 @@
                                     <a href="checkout.html" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

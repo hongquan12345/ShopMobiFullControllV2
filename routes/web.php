@@ -5,10 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\FrontEnd\CartController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
-
-use App\Http\Controllers\FrontEnd\CheckOutController;
 use App\Http\Controllers\FrontEnd\OrderController;
+
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\FrontEnd\CommentController;
+use App\Http\Controllers\FrontEnd\CheckOutController;
 use App\Http\Controllers\FrontEnd\WhistListController;
 
 Auth::routes();
@@ -21,14 +22,11 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
     Route::get('/collections', 'categories');
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'products_show');
-   
+
 
 });
 
-
-
-
-
+    Route::post('/Comments',[CommentController::class,'store']);
 
 
 Route::middleware(['auth'])->group(function()

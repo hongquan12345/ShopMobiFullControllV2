@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Wishlist;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
@@ -98,8 +99,10 @@ class FrontEndController extends Controller
         }
 
     }
+    
     public function products_show(string $category_slug,string $product_slug)
     {
+
         $category = Category::where('slug',$category_slug)->first();
         if($category)
         {
