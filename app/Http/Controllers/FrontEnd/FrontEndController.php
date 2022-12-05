@@ -128,9 +128,10 @@ class FrontEndController extends Controller
         {
             $searchProduct = Product::where('name','LIKE','%'.$request->search_txt.'%')->latest()->paginate(15);
             return view('frontend.Search',compact('searchProduct'));
-        }else
+        }
+        else
         {
-
+            return redirect()->back()->with('message','Nothing to Search');
         }
     }
     public function thankyou()

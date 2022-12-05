@@ -35,9 +35,7 @@
                                                                     @endif
                                                             </div>
                                                             <div class="product-action-1">
-                                                                <a aria-label="Quick view" class="action-btn hover-up"
-                                                                    data-bs-toggle="modal" data-bs-target="#quickViewModal">
-                                                                    <i class="fi-rs-search"></i></a>
+                                                                
                                                                 <a aria-label="Add To Wishlist" wire:click="addToWishListIndext({{ $searchProductItem->id}})"
                                                                     class="action-btn hover-up"
                                                                     href="#"><i class="fi-rs-heart "></i></a>
