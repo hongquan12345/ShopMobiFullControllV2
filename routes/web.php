@@ -10,6 +10,8 @@ use App\Http\Controllers\FrontEnd\OrderController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\FrontEnd\CommentController;
 use App\Http\Controllers\FrontEnd\CheckOutController;
+use App\Http\Controllers\FrontEnd\UserProfile;
+use App\Http\Controllers\FrontEnd\UserProfileController;
 use App\Http\Controllers\FrontEnd\WhistListController;
 
 Auth::routes();
@@ -35,6 +37,11 @@ Route::middleware(['auth'])->group(function()
     Route::get('/CheckOut',[CheckOutController::class,'index']);
     Route::get('/Orders',[OrderController::class,'index']);
     Route::get('/Orders/{orderID}',[OrderController::class,'showOrderID']);
+
+    Route::get('/Profile',[UserProfileController::class,'index']);
+    Route::post('/Profile',[UserProfileController::class,'updateUserDetails']);
+
+
 
 });
 
@@ -103,7 +110,5 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
 
 
     });
-
-
 
 });

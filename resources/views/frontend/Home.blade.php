@@ -365,7 +365,7 @@
             </div>
         </div>
     </section> --}}
-    <section class="section-padding">
+    {{-- <section class="section-padding">
         <div class="container wow fadeIn animated">
             <h3 class="section-title mb-20"><span>New</span> Arrivals</h3>
             <div class="carausel-6-columns-cover position-relative">
@@ -587,7 +587,7 @@
                                 </a>
                             </div>
                             <div class="product-action-1">
-                               
+
                                 <a aria-label="Add To Wishlist" class="action-btn small hover-up"
                                     href="wishlist.php" tabindex="0"><i class="fi-rs-heart"></i></a>
                                 <a aria-label="Compare" class="action-btn small hover-up" href="compare.php"
@@ -610,7 +610,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- <section class="section-padding">
         <div class="container">
             <h3 class="section-title mb-20 wow fadeIn animated"><span>Featured</span> Brands</h3>
