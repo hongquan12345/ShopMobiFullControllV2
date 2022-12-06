@@ -40,6 +40,10 @@ Route::middleware(['auth'])->group(function()
 
     Route::get('/Profile',[UserProfileController::class,'index']);
     Route::post('/Profile',[UserProfileController::class,'updateUserDetails']);
+    Route::get('/change-password',[UserProfileController::class,'passwordCreate']);
+    Route::post('/change-password',[UserProfileController::class,'changepassword']);
+
+
 
 
 
