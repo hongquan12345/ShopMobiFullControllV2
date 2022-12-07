@@ -2,7 +2,6 @@
 @section('content')
 
 <div class="row">
-
     <div class="col-md-12">
       <div class="card-header">
         <h3> Order List
@@ -16,7 +15,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <label for="">Filter by Date</label>
-                            <input  name="date"type="date" value="{{ date('Y-m-d') }}" class="form-control"/>
+                            <input  name="date"type="date" value="{{date('Y-m-d') }}" class="form-control"/>
                         </div>
 
                         <div class="col-md-3">

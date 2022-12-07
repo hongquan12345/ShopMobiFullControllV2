@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Exception;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Mail\InvoiceOrderMailable;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -52,4 +56,35 @@ class OrderController extends Controller
         }
 
     }
+    public function ViewInvoice(int $orderID)
+    {
+        $order = Order::findOrFail($orderID);
+        return view ('admin.invoice.generate-invoice',compact('order'));
+    }
+
+    public function Generatenvoice(int $orderID)
+    {
+
+        $order = Order::findOrFail($orderID);
+        $data = ['order' => $order];
+        $pdf = Pdf::loadView('admin.invoice.generate-invoice', $data);
+        $todayDate = Carbon::now()->format('d-m-Y');
+        return $pdf->download('QTVSHOP_INVOICE-'.$order->id.'-'.$todayDate.'.pdf');
+
+    }
+
+    public function mailInvoice (int $orderID)
+    {
+
+        try{
+            $order = Order::findOrFail($orderID);
+            Mail::to("$order->email")->send(new InvoiceOrderMailable($order));
+            return redirect('/adminpage/Orders/'.$orderID)->with('message', 'Mail has been send to ' . $order->email);
+        }
+        catch(\Exception $e)
+        {
+            return redirect('/adminpage/Orders/'.$orderID)->with('message', 'Something Wrong with mail: '.$order->email);
+        }
+    }
+
 }

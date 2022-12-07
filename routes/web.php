@@ -25,7 +25,7 @@ Route::controller(App\Http\Controllers\FrontEnd\FrontEndController::class)->grou
     Route::get('/collections/{category_slug}', 'products');
     Route::get('/collections/{category_slug}/{product_slug}', 'products_show');
     Route::get('search', 'searchProduct');
-    
+
 
 });
 
@@ -112,8 +112,10 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
         Route::get('/Orders', 'index');
         Route::get('/Orders/{orderID}','show');
         Route::put('/Orders/{orderID}','UpdateStatus');
-
-
+        Route::get('/Invoice/{orderID}','ViewInvoice');
+        Route::get('/Invoice/{orderID}/generate','Generatenvoice');
+        
+        Route::get('/Invoice/{orderID}/mail','mailInvoice');
 
     });
 

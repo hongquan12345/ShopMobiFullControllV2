@@ -9,18 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class PlaceOrderMailable extends Mailable
+class InvoiceOrderMailable extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $order;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -31,7 +31,7 @@ class PlaceOrderMailable extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Place Order Mailable',
+            subject: 'Invoice Order Mailable',
         );
     }
 
@@ -40,11 +40,14 @@ class PlaceOrderMailable extends Mailable
      *
      * @return \Illuminate\Mail\Mailables\Content
      */
-    public function content()
+    // changce name functiln content to build
+    public function build()
     {
-        return new Content(
-            view: 'view.name',
-        );
+        // return new Content(
+        //     view: 'view.name',
+        // );
+        $subject = "Your Order Invoice";
+        return $this->subject($subject)->view('admin.invoice.generate-invoice');
     }
 
     /**
