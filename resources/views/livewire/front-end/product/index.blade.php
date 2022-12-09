@@ -50,12 +50,12 @@
                                                 <span>{{number_format($productItem->selling_price)}}VND</span>
                                                 <span class="old-price">{{number_format($productItem->original_price)}}VND</span>
                                             </div>
-                                            <div class="product-action-1 show">
+                                            {{-- <div class="product-action-1 show">
                                                 <a aria-label="Add To Cart" class="action-btn hover-up"
                                                     href="shop-cart.php"><i class="fi-rs-shopping-bag-add"></i></a>
-                                            </div>
+                                            </div> --}}
                                             <div  class="product-action-2 float-center">
-                                                <button  class="btn btn-success action-btn hover-up">Buy It</button>
+                                                <a class="btn btn-success action-btn hover-up" href="{{ url('/collections/'.$productItem->category->slug.'/'.$productItem->slug) }}">Buy It</a>
                                             </div>
 
                                     </div>

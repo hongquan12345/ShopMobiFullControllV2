@@ -64,6 +64,8 @@ class FrontEndController extends Controller
     public function indexHomePage()
     {
 
+        $categories= Category::orderBy('id','DESC')->paginate(4);
+
         $categorys= Category::where('status','0')->take(4)->get();
         $products = Product::all();
         $trendingproducts = Product::where('trending','1')->latest()->take(15)->get();
@@ -137,6 +139,19 @@ class FrontEndController extends Controller
     public function thankyou()
     {
         return view('frontend.thank-you');
+    }
+
+    public function myTeam()
+    {
+        return view('frontend.Blog');
+    }
+    public function contact()
+    {
+        return view('frontend.Contact');
+    }
+    public function news()
+    {
+        return view('frontend.News');
     }
 
 }

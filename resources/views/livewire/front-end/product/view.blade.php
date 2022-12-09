@@ -40,17 +40,6 @@
                                             @endforeach
                                         </div>
                                     </div>
-
-                                    <!-- End Gallery -->
-                                    {{-- <div class="social-icons single-share">
-                                        <ul class="text-grey-5 d-inline-block">
-                                            <li><strong class="mr-10">Share this:</strong></li>
-                                            <li class="social-facebook"><a href="#"><img src="assets/imgs/theme/icons/icon-facebook.svg" alt=""></a></li>
-                                            <li class="social-twitter"> <a href="#"><img src="assets/imgs/theme/icons/icon-twitter.svg" alt=""></a></li>
-                                            <li class="social-instagram"><a href="#"><img src="assets/imgs/theme/icons/icon-instagram.svg" alt=""></a></li>
-                                            <li class="social-linkedin"><a href="#"><img src="assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a></li>
-                                        </ul>
-                                    </div> --}}
                                 </div>
 
                                 <div class="col-md-6 col-sm-12 col-xs-12">
@@ -153,8 +142,9 @@
                                         @endif
 
                                         <div class="bt-1 border-color-1 mt-30 mb-30"></div>
-                                        <div class="detail-extralink">
-                                            <div >
+                                        <div class="detail-extralink" style="">
+                                            <div style="  border: 1px solid #e2e9e1;
+                                                             border-radius: 12px;">
                                                 <a wire:click="incrementQuantity"  class="qty-up">
                                                     <i class="fi-rs-angle-small-up"></i>
                                                 </a>
@@ -177,7 +167,7 @@
                                                     class="action-btn " href="#"><i class="fi-rs-heart"></i>
                                                 </a>
                                                 {{-- Wishlist --}}
-                                                <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
+                                                {{-- <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a> --}}
                                             </div>
 
                                         </div>
@@ -373,7 +363,7 @@
                                         <img src="{{ asset($newProductItem->productImage[0]->image) }}" alt="#"></a>
                                     </div>
                                     <div class="content pt-10">
-                                        <h5><a href="product-details.html">{{ $newProductItem->name }}</a></h5>
+                                        <h5><a href="#">{{ $newProductItem->name }}</a></h5>
                                         <p class="price mb-0 mt-5">{{number_format( $newProductItem->selling_price) }}</p>
                                         <div class="product-rate">
                                             <div class="product-rating" style="width:90%"></div>

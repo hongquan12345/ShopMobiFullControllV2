@@ -17,7 +17,6 @@
                             <label for="">Filter by Date</label>
                             <input  name="date"type="date" value="{{date('Y-m-d') }}" class="form-control"/>
                         </div>
-
                         <div class="col-md-3">
                             <label for="">Filter by Status</label>
                             <select name="status" class="form-select">

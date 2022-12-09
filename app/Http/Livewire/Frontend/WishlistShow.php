@@ -19,6 +19,19 @@ class WishlistShow extends Component
             'text' =>'WhishList Item Removed Successfully',
             'type' =>'success',
             'status' => 200
+        ]);
+    }
+    public function removeWishlistItemAll()
+    {
+        Wishlist::where('user_id',auth()->user()->id)->delete();
+        //user firinng event
+        $this->emit('WishlistUpdate');
+        //user firinng event
+
+        $this->dispatchBrowserEvent('message',[
+            'text' =>'WhishList Item Removed All Successfully',
+            'type' =>'success',
+            'status' => 200
 
         ]);
     }
@@ -30,13 +43,13 @@ class WishlistShow extends Component
             return view('livewire.front-end.wishlist.wishlist-show',[
                 'wishlist'=>$wishlist
             ]);
-        }else 
+        }else
         {
             $this->dispatchBrowserEvent('message',[
                 'text' =>'aaaa',
                 'type' =>'success',
                 'status' => 200
-    
+
             ]);
         }
     }
@@ -45,6 +58,6 @@ class WishlistShow extends Component
         $wishlist = Wishlist::where('user_id',auth()->user()->id)->get();
         return view('livewire.front-end.wishlist.wishlist-show',[
             'wishlist'=>$wishlist
-        ]);   
+        ]);
     }
 }

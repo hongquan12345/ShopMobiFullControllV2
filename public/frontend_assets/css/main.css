@@ -214,7 +214,6 @@ input[type=number]:focus,
 }
 
 .img-hover-scale img {
-
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
   transition: transform .5s;
@@ -223,7 +222,6 @@ input[type=number]:focus,
 }
 
 .img-hover-scale:hover img {
-
   -webkit-transform: scale(1.05);
   transform: scale(1.05);
   -webkit-transition: -webkit-transform .5s;
@@ -2012,37 +2010,13 @@ label {
   position: relative;
   background: #fff;
   text-align: center;
-  border: 1px solid #33753d;
-  border-radius: 40px;
-}
-.category-card{
-    position: relative;
-  background: #fff;
-  text-align: center;
-  border: 1px solid #33753d;
+  border: 1px solid #cce7d0;
   border-radius: 20px;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid #e2e9e1;
-  border-radius: .25rem;
 }
-.category-card-img{
-    border-radius: 10px;
-  }
 
 .card-1 figure {
   overflow: hidden;
-  margin: 25px;
+  margin: 10px;
   border-radius: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4181,7 +4155,7 @@ table .product-thumbnail img {
   border: none;
   width: auto;
   border-radius: 50px;
-  background-color: #f1c812;
+  background-color: #F15412;
   color: #fff;
   text-align: center;
   margin-right: 0;
@@ -4414,12 +4388,14 @@ table .product-thumbnail img {
 
 .detail-extralink > div {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: center;
+
 }
 
 .detail-extralink .detail-qty {
   margin: 0 6px 15px 0;
   background: #fff;
+
 }
 
 .detail-info .product-price-cover {
@@ -6445,8 +6421,8 @@ h6.post-title {
 
 .header-style-1 .header-top-ptb-1 {
   padding: 13px 0;
-  border-bottom: 3px solid #39b4ac;
-  background-color: #d8f4e2;
+  /* border-bottom: 3px solid #39b4ac; */
+  background-color: white;
   background-image: none;
 }
 
@@ -9929,8 +9905,8 @@ span.fi-rs-apps {
 
 .header-style-1 .header-top-ptb-1 {
 	padding: 13px 0;
-	border-bottom: 1px solid #737975;
-	background-color: #f4f4d8;
+	/* border-bottom: 1px solid #737975; */
+	background-color: #fff;
 	background-image: none;
 }
 
@@ -9948,6 +9924,26 @@ span.fi-rs-apps {
 
 #news-flash{
 	height: 13px !important;
+}
+
+.text{
+  font-size: 14px;
+}
+.moreText{
+  display: none;
+
+}
+.read-more-btn{
+  padding: 15px 60px;
+  background-color: orange;
+  color: black;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+.text.show-more .moreText{
+  display: inline;
 }
 
 @media (max-width:600px)

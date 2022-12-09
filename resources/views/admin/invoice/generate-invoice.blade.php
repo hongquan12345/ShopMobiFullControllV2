@@ -142,7 +142,7 @@
             </tr>
             <tr class="bg-blue">
                 <th>ID</th>
-                <th>Name and Color</th>
+                <th>Product Name and Color</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>

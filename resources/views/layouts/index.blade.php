@@ -37,42 +37,13 @@
         <div class="header-top header-top-ptb-1 d-none d-lg-block">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-xl-3 col-lg-4">
-                        <div class="header-info">
-                            <ul>
-                                <li>
-                                    <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i
-                                            class="fi-rs-angle-small-down"></i></a>
-                                    <ul class="language-dropdown">
-                                        <li><a href="#"><img src="frontend_assets/imgs/theme/flag-fr.png"
-                                                    alt="">Français</a></li>
-                                        <li><a href="#"><img src="frontend_assets/imgs/theme/flag-dt.png"
-                                                    alt="">Deutsch</a></li>
-                                        <li><a href="#"><img src="frontend_assets/imgs/theme/flag-ru.png"
-                                                    alt="">Pусский</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                         </div>
-                        <div class="col-xl-6 col-lg-4">
-                            <div class="text-center">
-                                <div id="news-flash" class="d-inline-block">
-                                    <ul>
-                                        <li>Get great devices up to 50% off <a href="shop">View details</a></li>
-                                        <li>Supper Value Deals - Save more with coupons</li>
-                                        <li>Trendy 25silver jewelry, save up 35% off today <a href="shop">Shop now</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                    </div>
+
                     <div class="col-xl-12 col-lg-12">
                         <div class="header-info header-info-right">
-
                             @auth
                             <ul>
-                                <li><i class="fi-rs-user"></i>{{Auth::user()->name}} /
-                                    <form method="POST" action="{{route('logout')}}">
+                                <li ><i class="fi-rs-user"></i>{{Auth::user()->name}} /
+                                    <form  method="POST" action="{{route('logout')}}">
                                         @csrf
                                         <a href="{{route('logout')}}"
                                         onclick="event.preventDefault(); this.closest('form').submit();">Log Out</a>
@@ -81,9 +52,10 @@
                             </ul>
                             @else
                             <ul>
-                                <li><i class="fi-rs-user"></i><a href="{{route('login')}}">Log In </a> / <a
-
-                                        href="{{url('register')}}">Sign Up</a></li>
+                                <li><i class="fi-rs-user"></i>
+                                    <a href="{{route('login')}}">Log In </a>/<a
+                                        href="{{url('register')}}">Sign Up</a>
+                                    </li>
                                 </ul>
                             @endif
                         </div>
@@ -133,33 +105,7 @@
                                             <img alt="Surfside Media" src="{{asset('frontend_assets/imgs/theme/icons/icon-cart.svg')}}">
                                             <span class="pro-count blue"><livewire:front-end.cart.cart-count></span>
                                         </a>
-                                        {{-- <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                            <ul>
-                                                <li>
-                                                    <div class="shopping-cart-img">
-                                                        <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="frontend_assets/imgs/shop/thumbnail-3.jpg"></a>
-                                                    </div>
-                                                    <div class="shopping-cart-title">
-                                                        <h4><a href="product-details.html">Daisy Casual Bag</a></h4>
-                                                        <h4><span>1 × </span>$800.00</h4>
-                                                    </div>
-                                                    <div class="shopping-cart-delete">
-                                                        <a href="#"><i class="fi-rs-cross-small"></i></a>
-                                                    </div>
-                                                </li>
 
-                                            </ul>
-                                            <div class="shopping-cart-footer">
-                                                <div class="shopping-cart-total">
-                                                    <h4>Total <span>$4000.00</span></h4>
-                                                </div>
-                                                <div class="shopping-cart-button">
-                                                    <a href="cart" class="outline">View cart</a>
-                                                    <a href="checkout">Checkout</a>
-                                                </div>
-                                            </div>
-                                        </div> --}}
                                     </div>
                                         {{-- Cart shop --}}
                                     @endif
@@ -202,16 +148,16 @@
                             <nav>
                                 <ul>
                                     <li><a class="active" href="{{url('/home')}}">Home</a></li>
+                                    <li><a href="news">News</a></li>
                                     <li><a href="{{url('/collections')}}">All collections</a></li>
-                                    <li><a href="shop">Shop</a></li>
-                                    <li><a href="blog.html">Blog </a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    {{-- <li><a href="shop">Shop</a></li> --}}
+                                    <li><a href="{{url('/Blog')}}">Blog </a></li>
+                                    <li><a href="{{url('/Contact')}}">Contact</a></li>
                                     @auth
                                     <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                         <ul class="sub-menu">
                                             <li><a href="{{url('/Orders/')}}">My Order</a></li>
                                             <li><a href="{{url('/Profile/')}}">My Profile</a></li>
-
                                         </ul>
                                     </li>
                                     @endif
@@ -220,7 +166,7 @@
                         </div>
                     </div>
                     <div class="hotline d-none d-lg-block">
-                        <p><i class="fi-rs-smartphone"></i><span>Hot Line</span>09383334195</p>
+                        <p><i class="fi-rs-smartphone"></i><span>Hot Line</span><a href="tel:">0383334195</a></p>
                     </div>
 
                     <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%
@@ -307,97 +253,70 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="mobile-search search-style-3 mobile-header-border">
-                    <form action="#">
+                    {{-- <form action="#">
                         <input type="text" placeholder="Search for items…">
                         <button type="submit"><i class="fi-rs-search"></i></button>
-                    </form>
+                    </form> --}}
+
+                        <form action="{{ url('search') }}" method="GET" role="search">
+                            <input name="search_txt" value="{{ Request::get('search_txt') }}" type="text" placeholder="Search for items...">
+                            <button class="btn bg-white"  type="submit" class="fi-rs-search">Search</button>
+                        </form>
+
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
                     <div class="main-categori-wrap mobile-header-border">
                         <a class="categori-button-active-2" href="#">
                             <span class="fi-rs-apps"></span> Browse Categories
                         </a>
-                        <div class="categori-dropdown-wrap categori-dropdown-active-small">
-                            <ul>
-                                <li><a href="shop"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a></li>
-
-                            </ul>
-                        </div>
                     </div>
-                    <!-- mobile menu start -->
-                    <nav>
-                        <ul class="mobile-menu">
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="home">Home</a>
-                            </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="shop">shop</a>
-                            </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Our
-                                    Collections</a>
-                                <ul class="dropdown">
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                            href="#">Women's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="product-details.html">Dresses</a></li>
-                                            <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                            <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                            <li><a href="product-details.html">Women's Sets</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                            href="#">Men's Fashion</a>
-                                        <ul class="dropdown">
-                                            <li><a href="product-details.html">Jackets</a></li>
-                                            <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                            <li><a href="product-details.html">Genuine Leather</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                            href="#">Technology</a>
-                                        <ul class="dropdown">
-                                            <li><a href="product-details.html">Gaming Laptops</a></li>
-                                            <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                            <li><a href="product-details.html">Tablets</a></li>
-                                            <li><a href="product-details.html">Laptop Accessories</a></li>
-                                            <li><a href="product-details.html">Tablet Accessories</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a
-                                    href="blog.html">Blog</a></li>
-                            <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">English</a></li>
-                                    <li><a href="#">French</a></li>
-                                    <li><a href="#">German</a></li>
-                                    <li><a href="#">Spanish</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
+
                     <!-- mobile menu end -->
                 </div>
                 <div class="mobile-header-info-wrap mobile-header-border">
                     <div class="single-mobile-header-info mt-30">
-                        <a href="contact.html"> Our location </a>
+                        <a href=" {{url('/home')}}"> Home </a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="login.html">Log In </a>
+                        <a href="news">New</a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="register.html">Sign Up</a>
+                        <a href="{{url('/collections')}}">All collections</a>
                     </div>
                     <div class="single-mobile-header-info">
-                        <a href="#">(+1) 0000-000-000 </a>
+                        <a href="{{url('/Blog')}}">Blog</a>
+                    </div>
+                    <div class="single-mobile-header-info">
+                        <a href="{{url('/Contact')}}">Contact</a>
+                    </div>
+                    @auth
+                    <div class="mobile-menu-wrap mobile-header-border">
+                        <nav>
+                            <ul class="mobile-menu">
+                                <li class="menu-item-has-children"><a href="#">My Account</a>
+                                    <ul class="dropdown">
+                                        <li class="menu-item-has-children">
+                                            <a href="{{url('/Orders/')}}">My order</a>
+
+                                        </li>
+                                        <li class="menu-item-has-children">
+
+                                            <a href="{{url('/Profile/')}}">My Profile</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- mobile menu end -->
+                    </div>
+                    @endif
+                    <div class="single-mobile-header-info">
+                        <a href="tel:">0383334195</a>
                     </div>
                 </div>
                 <div class="mobile-social-icon">
                     <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                    <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                    <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                    <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                    <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                    <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                    <a href="https://www.facebook.com/nhqkz95/"><img src="frontend_assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
                 </div>
             </div>
         </div>
@@ -445,39 +364,34 @@
                                 <strong>Địa Chỉ: </strong>Chung Cư Prosper Plaza
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Phone: </strong>0383334195
+                                <strong>Phone: </strong><a href="tel:">0383334195</a>
                             </p>
                             <p class="wow fadeIn animated">
-                                <strong>Email: </strong>quannhts2201011@fpt.edu.vn
+                                <strong>Email: </strong> <a href="email:">quannhts2201011@fpt.edu.vn</a>
                             </p>
                             <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                             <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                                <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                                <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                                <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                                <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                                <a href="#"><img src="frontend_assets/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                                <a href="https://www.facebook.com/nhqkz95"><img src="frontend_assets/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                                <a href="https://github.com/hongquan12345"><img src="frontend_assets/imgs/theme/icons/icon-githubt.svg" alt=""></a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-2 col-md-3">
                         <h5 class="widget-title wow fadeIn animated">About</h5>
                         <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Delivery Information</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms &amp; Conditions</a></li>
-                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="{{ url('Blog') }}">Blog</a></li>
+                            <li><a href="{{ url('news') }}">New</a></li>
+                            <li><a href="{{ url('Contact') }}">Contact</a></li>
                         </ul>
                     </div>
                     <div class="col-lg-2  col-md-3">
                         <h5 class="widget-title wow fadeIn animated">My Account</h5>
                         <ul class="footer-list wow fadeIn animated">
-                            <li><a href="my-account.html">My Account</a></li>
-                            <li><a href="#">View Cart</a></li>
-                            <li><a href="#">My Wishlist</a></li>
-                            <li><a href="#">Track My Order</a></li>
-                            <li><a href="#">Order</a></li>
+                            <li><a href="{{ url('Profile') }}">My Account</a></li>
+                            <li><a href="{{ url('Cart') }}">View Cart</a></li>
+                            <li><a href="{{ url('Whistlist') }}">My Wishlist</a></li>
+                            <li><a href="{{ url('Orders') }}">Track My Order</a></li>
+
                         </ul>
                     </div>
                     <div class="col-lg-4 mob-center">
@@ -485,6 +399,7 @@
                         <div class="row">
                             <div class="col-md-8 col-lg-12">
                                 <p class="wow fadeIn animated">Từ App Store và Google Play</p>
+                                <p class="wow fadeIn animated alert-danger">Coming soon</p>
                                 <div class="download-app wow fadeIn animated mob-app">
                                     <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
                                             src="frontend_assets/imgs/theme/app-store.jpg" alt=""></a>
