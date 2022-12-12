@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     {{-- <title>{{ 'Cửa Hàng Điện Thoại QTV' }}</title> --}}
@@ -31,6 +32,7 @@
 
 </head>
 @livewireStyles
+
 <body>
     <header class="header-area header-style-1 header-height-2">
 
@@ -42,21 +44,19 @@
                         <div class="header-info header-info-right">
                             @auth
                             <ul>
-                                <li ><i class="fi-rs-user"></i>{{Auth::user()->name}} /
-                                    <form  method="POST" action="{{route('logout')}}">
+                                <li><i class="fi-rs-user"></i>{{Auth::user()->name}} /
+                                    <form method="POST" action="{{route('logout')}}">
                                         @csrf
-                                        <a href="{{route('logout')}}"
-                                        onclick="event.preventDefault(); this.closest('form').submit();">Log Out</a>
+                                        <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</a>
                                 </li>
                                 </form>
                             </ul>
                             @else
                             <ul>
                                 <li><i class="fi-rs-user"></i>
-                                    <a href="{{route('login')}}">Log In </a>/<a
-                                        href="{{url('register')}}">Sign Up</a>
-                                    </li>
-                                </ul>
+                                    <a href="{{route('login')}}">Log In </a>/<a href="{{url('register')}}">Sign Up</a>
+                                </li>
+                            </ul>
                             @endif
                         </div>
                     </div>
@@ -71,48 +71,51 @@
                     <div class="logo logo-width-1">
                         <a href="{{url('/home')}}"><img src="{{asset('/frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
                     </div>
-                     {{-- logo Shop --}}
+                    {{-- logo Shop --}}
                     <div class="header-right">
-                            {{--search --}}
-                            <div class="search-style-1">
-                                <form action="{{ url('search') }}" method="GET" role="search">
-                                    <input name="search_txt" value="{{ Request::get('search_txt') }}" type="text" placeholder="Search for items...">
-                                    <button class="btn bg-white" type="submit">Search</button>
-                                </form>
-                            </div>
-                            {{--search --}}
-                            {{--card and whilst list--}}
-                            <div class="header-action-right">
-                                <div class="header-action-2">
-                                    {{-- Check Login first show wishlist and cart --}}
-                                    @auth
-                                    {{--whislt list --}}
-                                    <div class="header-action-icon-2">
-                                        @csrf
-                                        <a  href="{{ url('/Whistlist') }}">
+                        {{--search --}}
+                        <div class="search-style-1">
+                            <form action="{{ url('search') }}" method="GET" role="search">
+                                <input name="search_txt" value="{{ Request::get('search_txt') }}" type="text" placeholder="Search for items...">
+                                <button class="btn bg-white" type="submit">Search</button>
+                            </form>
+                        </div>
+                        {{--search --}}
+                        {{--card and whilst list--}}
+                        <div class="header-action-right">
+                            <div class="header-action-2">
+                                {{-- Check Login first show wishlist and cart --}}
+                                @auth
+                                {{--whislt list --}}
+                                <div class="header-action-icon-2">
+                                    @csrf
+                                    <a href="{{ url('/Whistlist') }}">
                                         {{-- <a href="#" wire:click="showwishlist()"> --}}
-                                            <img class="svgInject" alt="Surfside Media"
-                                                src="{{asset('frontend_assets/imgs/theme/icons/icon-heart.svg')}}">
-                                            <span class="pro-count blue"><livewire:frontend.wishlist-count></span>
-                                        </a>
+                                        <img class="svgInject" alt="Surfside Media" src="{{asset('frontend_assets/imgs/theme/icons/icon-heart.svg')}}">
+                                        <span class="pro-count blue">
+                                            <livewire:frontend.wishlist-count>
+                                        </span>
+                                    </a>
 
 
-                                    </div>
-                                        {{--whislt list --}}
-                                        {{-- Cart shop --}}
-                                    <div class="header-action-icon-2">
-                                        <a class="mini-cart-icon" href="{{ url('/Cart') }}">
-                                            <img alt="Surfside Media" src="{{asset('frontend_assets/imgs/theme/icons/icon-cart.svg')}}">
-                                            <span class="pro-count blue"><livewire:front-end.cart.cart-count></span>
-                                        </a>
-
-                                    </div>
-                                        {{-- Cart shop --}}
-                                    @endif
-                                    {{-- Check Login first show wishlist and cart --}}
                                 </div>
+                                {{--whislt list --}}
+                                {{-- Cart shop --}}
+                                <div class="header-action-icon-2">
+                                    <a class="mini-cart-icon" href="{{ url('/Cart') }}">
+                                        <img alt="Surfside Media" src="{{asset('frontend_assets/imgs/theme/icons/icon-cart.svg')}}">
+                                        <span class="pro-count blue">
+                                            <livewire:front-end.cart.cart-count>
+                                        </span>
+                                    </a>
+
+                                </div>
+                                {{-- Cart shop --}}
+                                @endif
+                                {{-- Check Login first show wishlist and cart --}}
                             </div>
-                            {{--card and whilst list--}}
+                        </div>
+                        {{--card and whilst list--}}
                     </div>
                 </div>
             </div>
@@ -126,23 +129,7 @@
                         <a href="home"><img src="{{asset('/frontend_assets/imgs/logo/qtvshop.png')}}" alt="logo"></a>
                     </div>
                     <div class="header-nav d-none d-lg-flex">
-                        <div class="main-categori-wrap d-none d-lg-block">
-                            <a class="categori-button-active" href="#">
-                                <span class="fi-rs-apps"></span> Browse Categories
-                            </a>
-                            {{-- Browse Categories childern --}}
-                            <div class="categori-dropdown-wrap categori-dropdown-active-large">
-                                <ul>
-                                    <li>
 
-                                        <a href="#"><i class="surfsidemedia-font-desktop"></i><strong></strong>
-                                        </a>
-
-                                    </li>
-                                </ul>
-                            </div>
-                            {{-- Browse Categories childern --}}
-                        </div>
 
                         <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                             <nav>
@@ -168,7 +155,6 @@
                     <div class="hotline d-none d-lg-block">
                         <p><i class="fi-rs-smartphone"></i><span>Hot Line</span><a href="tel:">0383334195</a></p>
                     </div>
-
                     <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%
                     </p>
                     <div class="header-action-right d-block d-lg-none">
@@ -188,8 +174,7 @@
                                     <ul>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="frontend_assets/imgs/shop/thumbnail-3.jpg"></a>
+                                                <a href="product-details.html"><img alt="Surfside Media" src="frontend_assets/imgs/shop/thumbnail-3.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="product-details.html">Plain Striola Shirts</a></h4>
@@ -201,8 +186,7 @@
                                         </li>
                                         <li>
                                             <div class="shopping-cart-img">
-                                                <a href="product-details.html"><img alt="Surfside Media"
-                                                        src="frontend_assets/imgs/shop/thumbnail-4.jpg"></a>
+                                                <a href="product-details.html"><img alt="Surfside Media" src="frontend_assets/imgs/shop/thumbnail-4.jpg"></a>
                                             </div>
                                             <div class="shopping-cart-title">
                                                 <h4><a href="product-details.html">Macbook Pro 2022</a></h4>
@@ -258,19 +242,13 @@
                         <button type="submit"><i class="fi-rs-search"></i></button>
                     </form> --}}
 
-                        <form action="{{ url('search') }}" method="GET" role="search">
-                            <input name="search_txt" value="{{ Request::get('search_txt') }}" type="text" placeholder="Search for items...">
-                            <button class="btn bg-white"  type="submit" class="fi-rs-search">Search</button>
-                        </form>
+                    <form action="{{ url('search') }}" method="GET" role="search">
+                        <input name="search_txt" value="{{ Request::get('search_txt') }}" type="text" placeholder="Search for items...">
+                        <button class="btn bg-white" type="submit" class="fi-rs-search">Search</button>
+                    </form>
 
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border">
-                    <div class="main-categori-wrap mobile-header-border">
-                        <a class="categori-button-active-2" href="#">
-                            <span class="fi-rs-apps"></span> Browse Categories
-                        </a>
-                    </div>
-
                     <!-- mobile menu end -->
                 </div>
                 <div class="mobile-header-info-wrap mobile-header-border">
@@ -401,16 +379,13 @@
                                 <p class="wow fadeIn animated">Từ App Store và Google Play</p>
                                 <p class="wow fadeIn animated alert-danger">Coming soon</p>
                                 <div class="download-app wow fadeIn animated mob-app">
-                                    <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active"
-                                            src="frontend_assets/imgs/theme/app-store.jpg" alt=""></a>
-                                    <a href="#" class="hover-up"><img src="frontend_assets/imgs/theme/google-play.jpg"
-                                            alt=""></a>
+                                    <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="frontend_assets/imgs/theme/app-store.jpg" alt=""></a>
+                                    <a href="#" class="hover-up"><img src="frontend_assets/imgs/theme/google-play.jpg" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
                                 <p class="mb-20 wow fadeIn animated">Cổng Thanh Toán An Toàn</p>
-                                <img class="wow fadeIn animated" src="frontend_assets/imgs/theme/payment-method.png"
-                                    alt="">
+                                <img class="wow fadeIn animated" src="frontend_assets/imgs/theme/payment-method.png" alt="">
                             </div>
                         </div>
                     </div>
@@ -469,9 +444,9 @@
         window.addEventListener('message', event => {
 
 
-        alertify.set('notifier','position', 'top-right');
-        alertify.notify(event.detail.text,event.detail.type);
-    });
+            alertify.set('notifier', 'position', 'top-right');
+            alertify.notify(event.detail.text, event.detail.type);
+        });
     </script>
 
     <!-- AlertifyJS CDN-->
