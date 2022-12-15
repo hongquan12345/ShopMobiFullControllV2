@@ -16,6 +16,6 @@
 # /.fleet
 # /.idea
 # /.vscode
-/vendor/fakerphp/faker/rector-migrate.php
-/vendor/nesbot/carbon/src/Carbon/Traits/MagicParameter.php
-/vendor/phpunit/phpunit/src/Framework/MockObject/Exception/ClassIsReadonlyException.php
+# /rector-migrate.php
+# /MagicParameter.php
+# /ClassIsReadonlyException.php
