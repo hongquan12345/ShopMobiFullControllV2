@@ -8,7 +8,7 @@
                 <div class="shadow bg-white p-3">
                     <h4 class="text-primary">
                         Tổng giá sản phẩm :
-                        <span class="float-end"><h1 style="color: #3f81eb !important">${{ $this->totalProductAmount }}</h1></span>
+                        <span class="float-end"><h1 style="color: #3f81eb !important">{{ number_format($this->totalProductAmount)}} VND</h1></span>
                     </h4>
                     <hr>
                     <small>* Sản phẩm sẽ được gửi đi sau 3 - 5 ngày.</small>
@@ -71,7 +71,7 @@
                                         <div class="tab-pane fade" id="onlinePayment" role="tabpanel" aria-labelledby="onlinePayment-tab" tabindex="0">
                                             <h6>Thanh toán Online :</h6>
                                             <hr/>
-                                         
+
                                             <button style="background-color: rgb(193, 23, 124) " type="button" wire:loading.attr="disabled" wire:click="onlOrderwithATM" class="btn btn-primary">
                                                 <span wire:target="onlOrderwithATM">Thanh toán MOMO ATM</span>
                                             </button>
@@ -80,7 +80,7 @@
                                             </button>
                                             <button style="background: linear-gradient(46.26deg,#005baa,#009edb 96.59%)" type="button" wire:loading.attr="disabled" wire:click="onlOrderWithVNPAY" class="btn btn-primary">
                                                 <span wire:target="onlOrderwithQR">Thanh toán VNPAY</span>
-                                            </button>        
+                                            </button>
                                         </div>
                                     </div>
                                 </div>

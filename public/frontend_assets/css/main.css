@@ -9974,4 +9974,14 @@ span.fi-rs-apps {
 		padding-left:3%;
 	}
 }
+.marquee{
+  display: flex;
+  margin-top: 10px;
+  gap: 10%;
+}
+.marqueediv {
+  align-content: center;
+  justify-items: center;
+}
+
 

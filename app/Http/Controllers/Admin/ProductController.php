@@ -68,6 +68,13 @@ class ProductController extends Controller
 
                     }
                 }
+                else
+                {
+                    $product->productImage()->create([
+                        'product_id' => $product->id,
+                        'image' => asset('/emptyimage.jpg'),
+                    ]);
+                }
 
                 if($request->colors)
                 {
@@ -193,7 +200,7 @@ class ProductController extends Controller
 
 
             $productColorData = Product::findOrFail($request->product_id)->productColors()->where('id',$prod_color_id)->first();
-             
+
             $productColorData->update(['quantity'=>$request->qty]);
 
              return response()->json(['message' =>'Product Color Qty updated']);

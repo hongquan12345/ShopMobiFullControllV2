@@ -11,7 +11,7 @@
             <h3> Edit CRUD Color
                 <a href="{{url('adminpage/Colors')}}"
                 class="btn btn-Dark btn-sm btn-primary float-end">
-                    Back
+                    Back.
                 </a>
             </h3>
         </div>
@@ -23,7 +23,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="">CRUD Name</label>
                         <input type="text" name="name" value="{{$color->name}}" class="form-control">
-                    
+
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="">CRUD Code</label>
@@ -32,8 +32,8 @@
                     <div class="col-md-6 mb-3">
                         <label for="">CRUD STATUS</label>
                         <input type="checkbox"
-                        {{$color->status ? 'checked':''}} 
-                        name="status" 
+                        {{$color->status ? 'checked':''}}
+                        name="status"
                         style="width: 30px;height:30px">
                             checked = Hidden, Uncheck = Visible
                     </div>

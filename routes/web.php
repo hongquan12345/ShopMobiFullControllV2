@@ -67,6 +67,8 @@ Route::prefix('adminpage')->middleware('auth','isAdmin')->group(function()
 {
     //Dashboard route
     Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::get('/', [DashboardController::class, 'index']);
+
     //Admin Category route
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/Category', 'index');

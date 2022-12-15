@@ -167,7 +167,7 @@
                                                     class="action-btn " href="#"><i class="fi-rs-heart"></i>
                                                 </a>
                                                 {{-- Wishlist --}}
-                                                {{-- <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a> --}}
+
                                             </div>
 
                                         </div>
@@ -205,9 +205,7 @@
                                             @if (session('message'))
                                                 <h6 class="alert alert-success">{{ session('message') }}</h6>
                                             @endif
-                                            <h4 class="mb-15">Add a review</h4>
-                                            <div class="product-rate d-inline-block mb-30">
-                                            </div>
+                                           
                                             <div class="row">
                                                 <div class="col-lg-8 col-md-12">
                                                     <form class="form-contact comment_form" action="{{ url('Comments') }}" method="POST" id="commentForm">
@@ -263,9 +261,7 @@
 
                                                                                </p>
                                                                             </p>
-                                                                            @if(Auth::check())
-                                                                                <a href="#" class="text-brand btn-reply">Reply <i class="fi-rs-arrow-right"></i> </a>
-                                                                            @endif
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -311,7 +307,7 @@
                                                         <a aria-label="Add To Wishlist" class="action-btn small hover-up" href="wishlist.php" tabindex="0" wire:click="addToWishListProductRelated({{ $productReledted->id}})">
                                                             <i class="fi-rs-heart"></i>
                                                         </a>
-                                                        <a aria-label="Compare" class="action-btn small hover-up" href="compare.php" tabindex="0"><i class="fi-rs-shuffle"></i></a>
+
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
                                                         <span class="hot">{{ $productReledted->brand }}</span>

@@ -19,8 +19,7 @@
                                             <a aria-label="Add To Wishlist" wire:click="addToWishListIndext({{ $productItem->id}})"
                                                 class="action-btn hover-up"
                                                 href="#"><i class="fi-rs-heart "></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up"
-                                                href="compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            
                                         </div>
                                         <div class="product-badges product-badges-position product-badges-mrg">
                                             @if ($productItem->quantity >0)

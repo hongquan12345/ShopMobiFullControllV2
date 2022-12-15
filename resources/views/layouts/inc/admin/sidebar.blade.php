@@ -76,12 +76,12 @@
       {{-- Sliders --}}
 
       {{-- Documentation --}}
-      <li class="list-group-item list-group-item-action">
+      {{-- <li class="list-group-item list-group-item-action">
         <a class="nav-link" href="#">
           <i class="mdi mdi-file-document-box-outline menu-icon"></i>
           <span class="menu-title">Documentation</span>
         </a>
-      </li>
+      </li> --}}
       {{-- Documentation --}}
     </ul>
   </nav>

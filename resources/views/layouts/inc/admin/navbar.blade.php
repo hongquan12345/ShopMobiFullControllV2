@@ -3,7 +3,6 @@
   <div class="navbar-brand-wrapper d-flex justify-content-center">
     <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
       <a class="navbar-brand brand-logo" href="{{url('/adminpage/dashboard')}}">
-        {{-- <img src="{{asset('admin/images/logo.svg" alt="logo')}}" /> --}}
         QTV SHOP
       </a>
       <a class="navbar-brand brand-logo-mini" href="{{url('/adminpage/dashboard')}}">
@@ -20,17 +19,7 @@
     {{-- search --}}
 
     <ul class="navbar-nav mr-lg-4 w-100">
-      <li class="nav-item nav-search d-none d-lg-block w-100">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="search">
-              <i class="mdi mdi-magnify"></i>
-            </span>
-          </div>
-          <input type="text" class="form-control" placeholder="Search now" aria-label="search" aria-describedby="search">
-       
-        </div>
-      </li>
+
     </ul>
 
     <ul class="navbar-nav navbar-nav-right">
@@ -39,8 +28,7 @@
         {{-- message dropdown--}}
         <a class="nav-link count-indicator dropdown-toggle d-flex justify-content-center align-items-center"
           id="messageDropdown" href="#" data-bs-toggle="dropdown">
-          <i class="mdi mdi-message-text mx-0"></i>
-          <span class="count"></span>
+
         </a>
         {{-- message dropdown--}}
         {{-- message body--}}
@@ -67,8 +55,7 @@
       <li class="nav-item dropdown me-4">
         <a class="nav-link count-indicator dropdown-toggle d-flex align-items-center justify-content-center notification-dropdown"
           id="notificationDropdown" href="#" data-bs-toggle="dropdown">
-          <i class="mdi mdi-bell mx-0"></i>
-          <span class="count"></span>
+
         </a>
         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
           <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
